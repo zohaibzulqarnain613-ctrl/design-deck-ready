@@ -115,15 +115,10 @@ const ContactFooter: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl mx-auto max-w-7xl overflow-hidden"
+          className="container grid items-center gap-12 px-4 md:px-6 lg:grid-cols-2 border-t border-white/5 mx-auto max-w-7xl"
         >
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 p-6"
-          >
-            <div className="inline-block rounded-3xl bg-white/10 border border-white/20 px-3 py-1 text-sm text-blue-300 font-medium mb-2">Contact</div>
+          <div className="space-y-8 p-6 lg:p-12">
+            <div className="inline-block rounded-full bg-blue-500/10 border border-blue-500/20 px-3 py-1 text-xs text-blue-400 font-bold uppercase tracking-wider mb-2">Connect</div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-5xl/tight text-white drop-shadow-2xl">Let's Work Together</h2>
             <p className="max-w-[600px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Ready to start your next project? Get in touch with us to discuss how we can help bring your vision to life.
@@ -185,7 +180,7 @@ const ContactFooter: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 shadow-2xl"
+            className="rounded-2xl border border-white/5 bg-[#0a0a0a] p-8 shadow-2xl"
           >
             <h3 className="text-xl font-bold text-white">Send Us a Message</h3>
             <p className="text-sm text-gray-300 mb-6">
@@ -248,7 +243,8 @@ const ContactFooter: React.FC = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     placeholder="Enter your first name" 
-                    className="rounded-3xl bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                    className="rounded-lg bg-white/[0.03] border-white/10 text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50" 
+
                   />
                 </div>
                 <div className="space-y-2">
@@ -264,7 +260,8 @@ const ContactFooter: React.FC = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     placeholder="Enter your last name" 
-                    className="rounded-3xl bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                    className="rounded-lg bg-white/[0.03] border-white/10 text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50" 
+
                   />
                 </div>
               </div>
@@ -282,7 +279,7 @@ const ContactFooter: React.FC = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Enter your email" 
-                  className="rounded-3xl bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                  className="rounded-lg bg-white/[0.03] border-white/10 text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50" 
                 />
               </div>
               <div className="space-y-2">
@@ -298,7 +295,7 @@ const ContactFooter: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Enter your message" 
-                  className="min-h-[120px] rounded-3xl bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" 
+                  className="min-h-[120px] rounded-lg bg-white/[0.03] border-white/10 text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 resize-none" 
                 />
               </div>
               {submitError && (
@@ -314,7 +311,7 @@ const ContactFooter: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold h-12 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/25"
+                  className="w-full rounded-lg bg-white text-black font-bold h-12 hover:bg-gray-200 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isLoading ? 'Sending...' : 'Send Message'}
                 </Button>

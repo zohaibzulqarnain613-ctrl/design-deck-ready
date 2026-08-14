@@ -4,13 +4,9 @@ import { ArrowRight } from 'lucide-react';
 import TeamModal from './TeamModal';
 import GalleryHoverCarousel from './ui/gallery-hover-carousel';
 import { Component as HeroSection } from './ui/hero-section';
-import CardFlip from './ui/flip-card';
 import TeamMessageModal from './TeamMessageModal';
-import { MissionSection } from './MissionSection';
-import { VisionSection } from './VisionSection';
-import { ValuesSection } from './ValuesSection';
-import { WhyChooseUsSection } from './WhyChooseUsSection';
-import { PromiseSection } from './PromiseSection';
+// Removed redundant section imports to consolidate layout logic
+
 
 interface TeamMemberProps {
   name: string;
@@ -197,7 +193,9 @@ const AboutUsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 pt-16">
       {/* Hero Section */}
+      {/* Vision Section replaced by HeroSection */}
       <HeroSection />
+
 
       {/* Mission Section */}
       <MissionSection />
