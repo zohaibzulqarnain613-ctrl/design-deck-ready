@@ -159,20 +159,20 @@ const HomePage = () => {
       <ServicesSection />
 
       {/* Marquee Animation Section */}
-      <section className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/40 to-black/40 border-t border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-3 sm:gap-4 md:gap-5">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 bg-[#050505]">
+        <div className="max-w-7xl mx-auto flex flex-col gap-6">
           <Suspense fallback={<div className="h-12 bg-white/5 animate-pulse rounded-lg" />}>
             <MarqueeAnimation
               direction="left"
-              baseVelocity={-1.5}
-              className="bg-gradient-to-r from-blue-600/20 via-blue-500/10 to-cyan-600/20 text-blue-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-blue-500/20 rounded-lg"
+              baseVelocity={-1}
+              className="text-gray-400 py-4 tracking-[0.2em] opacity-60 hover:opacity-100 transition-opacity font-mono text-xs uppercase"
             >
               AI Phone Callers • AI Chatbots • Web Development • Content Creation • App Development • Cold Email
             </MarqueeAnimation>
             <MarqueeAnimation
               direction="right"
-              baseVelocity={-1.5}
-              className="bg-gradient-to-r from-purple-600/20 via-purple-500/10 to-pink-600/20 text-purple-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-purple-500/20 rounded-lg"
+              baseVelocity={-1}
+              className="text-gray-500 py-4 tracking-[0.2em] opacity-40 hover:opacity-80 transition-opacity font-mono text-xs uppercase"
             >
               Automation • Scalability • Intelligence • Growth • Transformation
             </MarqueeAnimation>

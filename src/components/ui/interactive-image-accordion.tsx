@@ -103,19 +103,18 @@ export function LandingAccordionItem() {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
-      {/* Background Effects */}
+    <div className="relative bg-[#050505] overflow-hidden">
+      {/* Background Effects - More subtle */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-72 h-72 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/[0.02] rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/[0.02] rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
       <section className="relative z-10 container mx-auto px-4 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 
           <div className="w-full md:w-1/2 text-center md:text-left px-2 sm:px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight tracking-tighter drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight tracking-tighter drop-shadow-2xl">
               Transform Your Business with Intelligent AI Solutions
             </h1>
             <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed px-2 sm:px-0">

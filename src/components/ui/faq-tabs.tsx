@@ -62,30 +62,19 @@ const FAQTabs = ({
   selected: string;
   setSelected: (key: string) => void;
 }) => (
-  <div className="relative z-10 flex flex-wrap items-center justify-center gap-4">
+  <div className="relative z-10 flex flex-wrap items-center justify-center gap-2 md:gap-8 border-b border-white/5 pb-4">
     {Object.entries(categories).map(([key, label]) => (
       <button
         key={key}
         onClick={() => setSelected(key)}
         className={cn(
-          "relative overflow-hidden whitespace-nowrap rounded-md border px-3 py-1.5 text-sm font-medium transition-colors duration-500",
+          "relative overflow-hidden whitespace-nowrap px-4 py-2 text-sm font-semibold transition-all duration-300 tracking-tight",
           selected === key
-            ? "border-primary text-background"
-            : "border-border bg-transparent text-muted-foreground hover:text-foreground"
+            ? "text-white border-b-2 border-primary"
+            : "text-gray-500 hover:text-gray-300 border-b-2 border-transparent"
         )}
       >
         <span className="relative z-10">{label}</span>
-        <AnimatePresence>
-          {selected === key && (
-            <motion.span
-              initial={{ y: "100%" }}
-              animate={{ y: "0%" }}
-              exit={{ y: "100%" }}
-              transition={{ duration: 0.5, ease: "backIn" }}
-              className="absolute inset-0 z-0 bg-gradient-to-r from-primary to-primary/80"
-            />
-          )}
-        </AnimatePresence>
       </button>
     ))}
   </div>
