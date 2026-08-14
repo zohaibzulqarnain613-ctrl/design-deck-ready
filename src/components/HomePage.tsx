@@ -164,15 +164,15 @@ const HomePage = () => {
           <Suspense fallback={<div className="h-12 bg-white/5 animate-pulse rounded-lg" />}>
             <MarqueeAnimation
               direction="left"
-              baseVelocity={-1.5}
-              className="text-gray-400 py-2 tracking-widest opacity-60 hover:opacity-100 transition-opacity"
+              baseVelocity={-1}
+              className="text-gray-400 py-4 tracking-[0.2em] opacity-60 hover:opacity-100 transition-opacity font-mono text-xs uppercase"
             >
               AI Phone Callers • AI Chatbots • Web Development • Content Creation • App Development • Cold Email
             </MarqueeAnimation>
             <MarqueeAnimation
               direction="right"
-              baseVelocity={-1.5}
-              className="text-gray-500 py-2 tracking-widest opacity-40 hover:opacity-80 transition-opacity"
+              baseVelocity={-1}
+              className="text-gray-500 py-4 tracking-[0.2em] opacity-40 hover:opacity-80 transition-opacity font-mono text-xs uppercase"
             >
               Automation • Scalability • Intelligence • Growth • Transformation
             </MarqueeAnimation>

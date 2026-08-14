@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabase';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -50,6 +50,10 @@ const ContactFooter = () => {
     setSubmitError(null);
 
     try {
+      if (!supabase) {
+        throw new Error("Connection to the backend is not established.");
+      }
+
       const { error } = await supabase
         .from('contacts')
         .insert([
