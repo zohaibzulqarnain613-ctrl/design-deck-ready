@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
             {/* Two Column Layout */}
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center md:items-start">
 
               {/* Left Column - Brand */}
               <div className="flex flex-col items-center md:items-start space-y-6">

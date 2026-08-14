@@ -114,11 +114,11 @@ export function LandingAccordionItem() {
       <section className="relative z-10 container mx-auto px-4 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 
-          <div className="w-full md:w-1/2 text-center md:text-left">
+          <div className="w-full md:w-1/2 text-center md:text-left px-2 sm:px-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight tracking-tighter drop-shadow-2xl">
               Transform Your Business with Intelligent AI Solutions
             </h1>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed px-2 sm:px-0">
               At SamysAI, we design and deploy advanced AI systems — from phone callers and chatbots to web development and content automation — empowering businesses to operate smarter and scale efficiently.
             </p>
             <div className="mt-6 sm:mt-8">

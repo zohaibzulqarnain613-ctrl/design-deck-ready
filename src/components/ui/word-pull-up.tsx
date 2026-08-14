@@ -35,7 +35,7 @@ function WordPullUp({
       initial="hidden"
       animate="show"
       className={cn(
-        "font-display text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-snug md:leading-[5rem] tracking-[-0.02em] drop-shadow-sm",
+        "font-display text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-snug md:leading-[5rem] tracking-[-0.02em] drop-shadow-sm flex flex-wrap justify-center",
         className,
       )}
     >
@@ -43,7 +43,8 @@ function WordPullUp({
         <motion.span
           key={i}
           variants={framerProps}
-          style={{ display: "inline-block", paddingRight: "8px" }}
+          style={{ display: "inline-block" }}
+          className="mr-[0.25em]"
         >
           {word === "" ? <span>&nbsp;</span> : word}
         </motion.span>
