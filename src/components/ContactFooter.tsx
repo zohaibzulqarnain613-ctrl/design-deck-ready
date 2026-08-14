@@ -115,7 +115,7 @@ const ContactFooter: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl mx-auto max-w-7xl"
+          className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl mx-auto max-w-7xl overflow-hidden"
         >
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -123,8 +123,8 @@ const ContactFooter: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6 p-6"
           >
-            <div className="inline-block rounded-3xl bg-white/10 px-3 py-1 text-sm text-white">Contact</div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-white">Let's Work Together</h2>
+            <div className="inline-block rounded-3xl bg-white/10 border border-white/20 px-3 py-1 text-sm text-blue-300 font-medium mb-2">Contact</div>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl/tight text-white drop-shadow-2xl">Let's Work Together</h2>
             <p className="max-w-[600px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Ready to start your next project? Get in touch with us to discuss how we can help bring your vision to life.
             </p>
@@ -314,7 +314,7 @@ const ContactFooter: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-3xl bg-white text-gray-900 font-semibold hover:bg-gray-100 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold h-12 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/25"
                 >
                   {isLoading ? 'Sending...' : 'Send Message'}
                 </Button>
@@ -354,7 +354,7 @@ const ContactFooter: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="container grid gap-6 px-4 py-10 md:px-6 lg:grid-cols-4 border-x border-white/10 mx-auto max-w-7xl"
+          className="container grid gap-12 px-4 py-16 md:px-6 lg:grid-cols-4 mx-auto max-w-7xl"
         >
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">

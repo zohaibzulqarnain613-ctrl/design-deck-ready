@@ -12,12 +12,12 @@ const HowItWorksSection: React.FC = () => {
 
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl">
               How It Works
             </span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Transform your business with AI automation in four intelligent steps.
           </p>
         </div>

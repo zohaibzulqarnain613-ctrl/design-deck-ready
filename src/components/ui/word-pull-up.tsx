@@ -35,7 +35,7 @@ function WordPullUp({
       initial="hidden"
       animate="show"
       className={cn(
-        "font-display text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-snug md:leading-[5rem] tracking-[-0.02em] drop-shadow-sm flex flex-wrap justify-center",
+        "font-display text-center text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight sm:leading-snug md:leading-tight tracking-[-0.03em] drop-shadow-sm flex flex-wrap justify-center",
         className,
       )}
     >
