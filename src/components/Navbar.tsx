@@ -60,14 +60,31 @@ const Navbar: React.FC = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const services = [
-    { name: 'AI Phone Callers', path: '/services/ai-phone-callers' },
-    { name: 'AI Chatbots', path: '/services/ai-chatbots' },
-    { name: 'Web Development', path: '/services/web-development' },
-    { name: 'Content Creation', path: '/services/content-creation' },
-    { name: 'Cold Email Dashboards', path: '/services/cold-email-dashboard' },
-    { name: 'App Development', path: '/services/app-development' }
+  const serviceCategories = [
+    {
+      label: 'AI & Automation',
+      items: [
+        { name: 'AI Phone Callers', path: '/services/ai-phone-callers' },
+        { name: 'AI Chatbots', path: '/services/ai-chatbots' }
+      ]
+    },
+    {
+      label: 'Digital Development',
+      items: [
+        { name: 'Web Development', path: '/services/web-development' },
+        { name: 'App Development', path: '/services/app-development' }
+      ]
+    },
+    {
+      label: 'Growth & Operations',
+      items: [
+        { name: 'Cold Email Dashboards', path: '/services/cold-email-dashboard' },
+        { name: 'Content Creation', path: '/services/content-creation' }
+      ]
+    }
   ];
+
+  const allServices = serviceCategories.flatMap(cat => cat.items);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -209,20 +226,26 @@ const Navbar: React.FC = () => {
                   : 'opacity-0 scale-95 -translate-y-4 rotate-1 pointer-events-none'
               }`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl"></div>
-                <div className="py-2">
-                  {services.map((service, index) => (
-                    <Link
-                      key={service.name}
-                      to={service.path}
-                      onClick={() => setIsServicesOpen(false)}
-                      className={`relative block px-4 py-3 text-gray-200 hover:text-white hover:bg-white/20 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(147,197,253,0.8)] transform hover:translate-x-2 hover:scale-105 ${
-                        isServicesOpen ? 'animate-fade-in' : ''
-                      }`}
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-                      <span className="relative z-10">{service.name}</span>
-                    </Link>
+                <div className="py-2 px-1">
+                  {serviceCategories.map((category, catIndex) => (
+                    <div key={category.label} className="mb-2 last:mb-0">
+                      <div className="px-4 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400/60 font-semibold">
+                        {category.label}
+                      </div>
+                      {category.items.map((service, index) => (
+                        <Link
+                          key={service.name}
+                          to={service.path}
+                          onClick={() => setIsServicesOpen(false)}
+                          className={`relative block px-4 py-2.5 text-sm text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(147,197,253,0.5)] transform hover:translate-x-1 rounded-lg ${
+                            isServicesOpen ? 'animate-fade-in' : ''
+                          }`}
+                          style={{ animationDelay: `${(catIndex * 2 + index) * 40}ms` }}
+                        >
+                          <span className="relative z-10">{service.name}</span>
+                        </Link>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -288,18 +311,25 @@ const Navbar: React.FC = () => {
             <div className={`mt-2 ml-4 space-y-2 overflow-hidden transition-all duration-300 ${
               isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}>
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  to={service.path}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setIsMobileServicesOpen(false);
-                  }}
-                  className="block text-gray-300 py-2 px-4 hover:bg-white/10 hover:text-white rounded-lg transition-all"
-                >
-                  {service.name}
-                </Link>
+              {serviceCategories.map((category) => (
+                <div key={category.label} className="mb-4 last:mb-0">
+                  <div className="px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400/60 font-semibold">
+                    {category.label}
+                  </div>
+                  {category.items.map((service) => (
+                    <Link
+                      key={service.name}
+                      to={service.path}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsMobileServicesOpen(false);
+                      }}
+                      className="block text-gray-300 py-2.5 px-4 hover:bg-white/10 hover:text-white rounded-lg transition-all"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
               ))}
             </div>
           </div>

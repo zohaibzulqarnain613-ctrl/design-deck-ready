@@ -69,7 +69,7 @@ const HomePage = () => {
             <div className="flex-1 flex flex-col justify-center text-left space-y-4 sm:space-y-6 w-full">
               {/* Main Title */}
               <WordPullUp
-                words="Scale Your Business with Intelligent AI Systems"
+                words="Scale Your Business with AI-Powered Systems"
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl text-left tracking-tighter"
                 wrapperFramerProps={{
                   hidden: { opacity: 0 },
@@ -90,7 +90,7 @@ const HomePage = () => {
               <div className="w-full min-h-[64px] sm:min-h-[80px] md:min-h-[96px] flex items-center justify-start">
                 <div className="w-full h-full">
                   <ResponsiveVaporizeText
-                    texts={["Automate Repetitive Work", "Reduce Manual Tasks", "Improve Efficiency", "Scale Operations"]}
+                    texts={["Automate Communication", "Automate Customer Interaction", "Build Digital Foundation", "Create Business Software", "Scale Outbound Operations"]}
                     color="rgb(147, 197, 253)"
                     spread={4}
                     density={7}
@@ -109,7 +109,7 @@ const HomePage = () => {
               {/* Description */}
               <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl">
                 <TypewriterEffect
-                  text="We design and deploy custom AI systems—from autonomous phone callers to smart chatbots—that handle your repetitive tasks so you can focus on growth."
+                  text="We design and build AI-powered systems, digital products, and growth infrastructure—from intelligent phone agents and chatbots to websites, applications, and automated sales systems."
                   speed={50}
                   showCursor={false}
                 />
@@ -131,7 +131,7 @@ const HomePage = () => {
                   href="#services"
                   className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300"
                 >
-                  Explore AI Systems
+                  Explore Our Services
                 </a>
               </div>
             </div>
