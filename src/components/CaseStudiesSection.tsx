@@ -29,7 +29,7 @@ const CaseStudiesSection: React.FC = () => {
                 +87%
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Higher Engagement through AI-personalized outreach that resonates with every prospect.
+                Higher engagement through AI-personalized outreach that resonates with prospects.
               </p>
             </div>
           </GlareCard>
@@ -37,10 +37,10 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                5x
+                Lead Growth
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                More Leads in 30 Days using fully automated multi-channel outreach systems.
+                Increased lead volume using automated multi-channel outreach systems.
               </p>
             </div>
           </GlareCard>
@@ -48,7 +48,7 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                +72%
+                Efficiency Gain
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
                 Time Saved with smart workflows that eliminate repetitive manual tasks.
@@ -59,7 +59,7 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                +64%
+                Conversation Depth
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
                 Stronger Conversations powered by AI-driven interactions that feel natural and human.
