@@ -85,7 +85,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
 };
 
 export function LandingAccordionItem() {
-  const [activeIndex, setActiveIndex] = useState(5);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
