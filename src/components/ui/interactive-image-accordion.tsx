@@ -49,9 +49,16 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile }: { item: typeo
     >
       <img
         src={item.imageUrl}
+        key={item.imageUrl}
         alt={item.title}
+        loading="eager"
+        decoding="sync"
         className="absolute inset-0 w-full h-full object-cover"
-        onError={(e) => { const target = e.target as HTMLImageElement; target.onerror = null; target.src = 'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error'; }}
+        onError={(e) => { 
+          const target = e.target as HTMLImageElement; 
+          target.onerror = null; 
+          target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
+        }}
       />
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
