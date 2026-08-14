@@ -26,10 +26,10 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                Engagement Boost
+                Operational Speed
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Higher engagement through AI-personalized outreach that resonates with prospects.
+                Engineered for faster customer response and reduced cycle times.
               </p>
             </div>
           </GlareCard>
@@ -37,10 +37,10 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                Lead Growth
+                Lead Handling
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Increased lead volume using automated multi-channel outreach systems.
+                Designed for smarter lead qualification and automated multi-channel engagement.
               </p>
             </div>
           </GlareCard>
@@ -48,10 +48,10 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                Efficiency Gain
+                Task Efficiency
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Higher productivity with smart workflows that eliminate repetitive manual tasks.
+                Architected to eliminate repetitive manual work through intelligent workflows.
               </p>
             </div>
           </GlareCard>
@@ -59,10 +59,10 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                Conversation Depth
+                Scalable Systems
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Improved outcomes powered by AI-driven interactions that feel natural and human.
+                Built to support growth with robust and flexible digital infrastructure.
               </p>
             </div>
           </GlareCard>
