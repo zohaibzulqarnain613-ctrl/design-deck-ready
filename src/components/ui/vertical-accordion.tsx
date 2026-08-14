@@ -91,7 +91,7 @@ const Panel = ({
   return (
     <>
       <button
-        className="bg-white hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-900 transition-colors p-3 border-r-[1px] border-b-[1px] border-gray-200 dark:border-gray-800 flex flex-row-reverse lg:flex-col justify-end items-center gap-4 relative group"
+        className="bg-transparent hover:bg-gray-900/50 transition-colors p-3 border-r-[1px] border-b-[1px] border-gray-800 flex flex-row-reverse lg:flex-col justify-end items-center gap-4 relative group"
         onClick={() => setOpen(id)}
       >
         <span
@@ -107,7 +107,7 @@ const Panel = ({
           <Icon />
         </div>
         <span
-          className="w-4 h-4 bg-white group-hover:bg-gray-100 dark:bg-black dark:group-hover:bg-gray-900 transition-colors border-r-[1px] border-b-[1px] lg:border-b-0 lg:border-t-[1px] border-gray-200 dark:border-gray-800 rotate-45 absolute bottom-0 lg:bottom-[50%] right-[50%] lg:right-0 translate-y-[50%] translate-x-[50%] z-20"
+          className="w-4 h-4 bg-gray-900 group-hover:bg-gray-800 transition-colors border-r-[1px] border-b-[1px] lg:border-b-0 lg:border-t-[1px] border-gray-800 rotate-45 absolute bottom-0 lg:bottom-[50%] right-[50%] lg:right-0 translate-y-[50%] translate-x-[50%] z-20"
         />
       </button>
 
