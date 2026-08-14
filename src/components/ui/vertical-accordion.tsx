@@ -178,34 +178,34 @@ const descriptionVariants = {
 const items = [
   {
     id: 1,
-    title: "Discover & Strategize",
+    title: "Discover",
     Icon: FiDollarSign,
     imgSrc: discoverStrategize,
     description:
-      "We analyze your business and identify how AI can automate growth.",
+      "We analyze your business architecture to identify where AI and automation can drive the highest impact.",
   },
   {
     id: 2,
-    title: "Design & Develop",
+    title: "Design",
     Icon: FiPlay,
     imgSrc: designDevelop,
     description:
-      "Our team builds custom AI callers, chatbots, and smart systems for your goals.",
+      "Our team architects the technical solution, ensuring seamless integration with your existing growth stack.",
   },
   {
     id: 3,
-    title: "Integrate & Automate",
+    title: "Build",
     Icon: FiBell,
     imgSrc: integrateAutomate,
     description:
-      "We connect everything — CRM, email, and workflows — into one seamless system.",
+      "We develop your AI callers, chatbots, or custom software with a focus on performance and reliability.",
   },
   {
     id: 4,
-    title: "Launch & Scale",
+    title: "Deploy & Optimize",
     Icon: FiBarChart,
     imgSrc: launchScale,
     description:
-      "We deploy, track performance, and optimize your automations for ongoing results.",
+      "We launch your systems and continuously refine performance based on real-world data and feedback.",
   },
 ];

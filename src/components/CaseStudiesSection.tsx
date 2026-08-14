@@ -14,11 +14,11 @@ const CaseStudiesSection: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl">
-              Proven Results
+              Measurable Outcomes
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            AI automation that delivers measurable growth.
+            Professional AI systems built for real-world business results.
           </p>
         </div>
 
