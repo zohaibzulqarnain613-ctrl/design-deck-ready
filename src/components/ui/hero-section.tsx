@@ -167,29 +167,30 @@ export function Component() {
             className="text-[12px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-blue-300 px-2"
           >
             <span className="word" data-delay="0">
-              Welcome
+              SamysAI
             </span>
             <span className="word" data-delay="200">
-              to
-            </span>
-            <span className="word" data-delay="400">
-              <b>SamysAI</b>
-            </span>
-            <span className="word" data-delay="600">
               —
             </span>
+            <span className="word" data-delay="400">
+              <b>AI</b>
+            </span>
+            <span className="word" data-delay="600">
+              systems,
+            </span>
             <span className="word" data-delay="800">
-              Empowering
-            </span>
-            <span className="word" data-delay="1000">
-              your
-            </span>
-            <span className="word" data-delay="1200">
               digital
             </span>
-            <span className="word" data-delay="1400">
-              future.
+            <span className="word" data-delay="1000">
+              products,
             </span>
+            <span className="word" data-delay="1200">
+              growth
+            </span>
+            <span className="word" data-delay="1400">
+              infrastructure.
+            </span>
+
           </h2>
           <div
             className="mt-3 md:mt-4 mx-auto w-12 md:w-16 h-px opacity-30 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
@@ -199,14 +200,15 @@ export function Component() {
         <div className="text-center max-w-5xl mx-auto w-full px-4 my-8 md:my-0">
           <div className="mb-4 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
             <p className="word" data-delay="1600">
-              SamysAI is a next-generation AI automation agency that helps businesses transform their communication, marketing, and workflows through intelligent systems.
+              SamysAI builds intelligent systems and digital products that help businesses operate, communicate, and grow more effectively.
             </p>
             <p className="word" data-delay="2000">
-              From AI-powered callers and chatbots to automated outreach and content creation, our solutions save time, increase efficiency, and drive consistent growth.
+              We combine AI and automation, web and app development, and growth infrastructure — AI phone callers, chatbots, digital products, cold email dashboards, and content systems — into one connected technology stack.
             </p>
             <p className="word" data-delay="2400">
-              Our mission is simple — empower companies to scale smarter using the latest AI and automation technologies.
+              Our focus is practical: build technology around the actual business problem, then make it reliable enough to run every day.
             </p>
+
           </div>
         </div>
 
