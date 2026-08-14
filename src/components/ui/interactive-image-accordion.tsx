@@ -115,10 +115,10 @@ export function LandingAccordionItem() {
 
           <div className="w-full md:w-1/2 text-center md:text-left px-2 sm:px-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight tracking-tighter drop-shadow-2xl">
-              Scale Your Operations with Custom AI Systems
+              Scale Your Business with AI-Powered Systems
             </h1>
             <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed px-2 sm:px-0">
-              At SamysAI, we build intelligent systems—from automated phone callers to smart web platforms—designed to eliminate manual work and accelerate your business growth.
+              We design and build AI-powered systems, digital products, and growth infrastructure designed to automate repetitive tasks and accelerate your business growth.
             </p>
             <div className="mt-6 sm:mt-8">
               <a
