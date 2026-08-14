@@ -299,7 +299,7 @@ const ContactFooter = () => {
                       >
                         <span className="relative z-10 flex items-center space-x-2">
                           <span>📅</span>
-                          <span>Book Strategy Consultation</span>
+                          <span>Book a Strategy Consultation</span>
                           <ExternalLink className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
                         </span>
                         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg scale-110"></div>
