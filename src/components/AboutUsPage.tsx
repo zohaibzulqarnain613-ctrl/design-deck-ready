@@ -89,12 +89,35 @@ const AboutUsPage: React.FC = () => {
       {/* Hero Section */}
       <HeroSection />
 
+      {/* Who We Are */}
+      <section className="py-24 px-6 bg-[#050505] border-t border-white/5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Who We Are</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tighter leading-tight">
+              One technology team across AI, software, and growth systems.
+            </h3>
+          </div>
+          <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
+            <p>
+              SamysAI builds AI powered systems, digital products, and growth infrastructure for businesses. Our work spans three connected areas: AI and automation, including phone callers and chatbots; digital development, covering web and app builds; and growth and operations, including cold email dashboards and content systems.
+            </p>
+            <p>
+              These are not separate service lines. A chatbot is more useful when it is wired into the product it supports. An outreach dashboard is more useful when the content feeding it is planned alongside it. We build the pieces so they work together.
+            </p>
+            <p>
+              We start from the business problem rather than the technology. If automation is the right answer, we automate. If the answer is a better tool, a cleaner process, or a simpler build, we do that instead.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Mission Section - Distinct Layout */}
       <section className="py-32 px-6 bg-[#050505]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-8">Our Purpose</h2>
+          <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-8">Our Mission</h2>
           <p className="text-3xl md:text-5xl font-bold leading-tight tracking-tighter text-white">
-            At SamysAI, we empower businesses with intelligent systems that amplify human potential and make technology feel <span className="text-blue-400">seamless</span>.
+            To take repetitive work off people's hands with systems that are genuinely <span className="text-blue-400">useful</span>, so teams can spend their time on the work that needs them.
           </p>
         </div>
       </section>
@@ -105,21 +128,59 @@ const AboutUsPage: React.FC = () => {
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white tracking-tight">Our Vision</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
-              We aim to lead the global transformation of modern business through AI that feels natural, learns continuously, and scales effortlessly.
+              We want to help build a business environment where intelligent systems work alongside people rather than around them: handling routine communication, carrying operational load, and giving teams better digital tools to work with.
+            </p>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              Technology of this kind should be available to any business that needs it, not only to companies with large internal engineering teams.
             </p>
           </div>
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white tracking-tight">Our Values</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {['Innovation', 'Integrity', 'Excellence', 'Empowerment'].map((v) => (
-                <div key={v} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] text-sm font-semibold text-gray-300">
-                  {v}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Innovation', body: 'We adopt new technology when it solves a real problem, not because it is new.' },
+                { title: 'Integrity', body: 'We set realistic expectations and say clearly what a system can and cannot do.' },
+                { title: 'Excellence', body: 'We judge our work by how well it holds up in daily use, not how it looks at launch.' },
+                { title: 'Empowerment', body: 'We build tools that make people better at their work rather than replacing them.' },
+              ].map((v) => (
+                <div key={v.title} className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <p className="text-sm font-semibold text-gray-200">{v.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-400">{v.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Why Choose SamysAI & Our Promise */}
+      <section className="py-24 px-6 border-t border-white/5 bg-[#050505]">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Why SamysAI</h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Built around the problem, not the tool</h3>
+            <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
+              <li>We define the business problem first, then decide what should be built.</li>
+              <li>AI and automation sit alongside real software development, so a system can be delivered end to end.</li>
+              <li>Usability drives the design. A system only pays off if the team actually uses it.</li>
+              <li>We plan for growth, so what we build can be extended as the business changes.</li>
+              <li>Automation, communication, digital products, and growth infrastructure are connected rather than delivered in isolation.</li>
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em]">Our Promise</h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Clear communication and work you can rely on</h3>
+            <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
+              <li>We explain what we are building, why, and what it will realistically do.</li>
+              <li>We propose practical solutions and tell you when something is not worth building.</li>
+              <li>We implement carefully and test before anything goes live.</li>
+              <li>We deliver on what we agree, and raise it early when something changes.</li>
+              <li>We build systems that can evolve with the business instead of needing a rebuild.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
 
       {/* Team Section */}
       <section ref={teamRef} className="relative py-24 bg-[#050505]">
