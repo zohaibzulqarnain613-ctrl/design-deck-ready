@@ -109,7 +109,7 @@ const ContactFooter: React.FC = () => {
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Contact Section */}
-      <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
+      <section id="contact" className="w-full py-12 md:py-24 lg:py-32 overflow-hidden">
         <motion.div
           initial="hidden"
           whileInView="visible"

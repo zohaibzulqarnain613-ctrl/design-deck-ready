@@ -243,8 +243,8 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-x-0 top-16 bg-gray-900 backdrop-blur-xl border-b border-white/20 transition-all duration-300 z-40 overflow-y-auto shadow-2xl ${
-        isMobileMenuOpen ? 'max-h-[calc(100vh-4rem)] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+      <div className={`lg:hidden fixed inset-x-0 top-16 bg-gray-900/95 backdrop-blur-xl border-b border-white/20 transition-all duration-300 z-40 overflow-y-auto shadow-2xl ${
+        isMobileMenuOpen ? 'max-h-[calc(100dvh-4rem)] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
       }`}>
         <div className="px-4 py-6 space-y-4 pb-safe">
           {/* Home */}
