@@ -240,6 +240,7 @@ const AboutUsPage: React.FC = () => {
                 'Growth Expert'
               ]}
               color="#3b82f6"
+              imageUrl="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(0)}
             />
             <CardFlip
@@ -253,6 +254,7 @@ const AboutUsPage: React.FC = () => {
                 'Innovation Pioneer'
               ]}
               color="#8b5cf6"
+              imageUrl="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(1)}
             />
             <CardFlip
@@ -266,6 +268,7 @@ const AboutUsPage: React.FC = () => {
                 'Clean Architecture'
               ]}
               color="#06b6d4"
+              imageUrl="https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(2)}
             />
             <CardFlip
