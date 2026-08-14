@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import SplineScene from '@/components/SplineScene';
 import ServicesSection from '@/components/ServicesSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
@@ -15,6 +15,18 @@ const ContactFooter = lazy(() => import('@/components/ContactFooter'));
 const DottedSurface = lazy(() => import('@/components/ui/dotted-surface').then(module => ({ default: module.DottedSurface })));
 
 const ParticleBackground: React.FC = () => {
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    // Only show particles on desktop or high-performance devices to save mobile CPU
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isMobile) {
+      setShowParticles(true);
+    }
+  }, []);
+
+  if (!showParticles) return null;
+
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     size: Math.random() * 4 + 2,
@@ -149,20 +161,22 @@ const HomePage = () => {
       {/* Marquee Animation Section */}
       <section className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/40 to-black/40 border-t border-b border-white/10">
         <div className="max-w-7xl mx-auto flex flex-col gap-3 sm:gap-4 md:gap-5">
-          <MarqueeAnimation
-            direction="left"
-            baseVelocity={-1.5}
-            className="bg-gradient-to-r from-blue-600/20 via-blue-500/10 to-cyan-600/20 text-blue-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-blue-500/20 rounded-lg"
-          >
-            AI Phone Callers • AI Chatbots • Web Development • Content Creation • App Development • Cold Email
-          </MarqueeAnimation>
-          <MarqueeAnimation
-            direction="right"
-            baseVelocity={-1.5}
-            className="bg-gradient-to-r from-purple-600/20 via-purple-500/10 to-pink-600/20 text-purple-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-purple-500/20 rounded-lg"
-          >
-            Automation • Scalability • Intelligence • Growth • Transformation
-          </MarqueeAnimation>
+          <Suspense fallback={<div className="h-12 bg-white/5 animate-pulse rounded-lg" />}>
+            <MarqueeAnimation
+              direction="left"
+              baseVelocity={-1.5}
+              className="bg-gradient-to-r from-blue-600/20 via-blue-500/10 to-cyan-600/20 text-blue-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-blue-500/20 rounded-lg"
+            >
+              AI Phone Callers • AI Chatbots • Web Development • Content Creation • App Development • Cold Email
+            </MarqueeAnimation>
+            <MarqueeAnimation
+              direction="right"
+              baseVelocity={-1.5}
+              className="bg-gradient-to-r from-purple-600/20 via-purple-500/10 to-pink-600/20 text-purple-200 py-3 sm:py-4 md:py-5 px-4 sm:px-6 backdrop-blur-sm border border-purple-500/20 rounded-lg"
+            >
+              Automation • Scalability • Intelligence • Growth • Transformation
+            </MarqueeAnimation>
+          </Suspense>
         </div>
       </section>
 
