@@ -240,7 +240,7 @@ const AboutUsPage: React.FC = () => {
                 'Growth Expert'
               ]}
               color="#3b82f6"
-              imageUrl="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600"
+              imageUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(0)}
             />
             <CardFlip
@@ -254,7 +254,7 @@ const AboutUsPage: React.FC = () => {
                 'Innovation Pioneer'
               ]}
               color="#8b5cf6"
-              imageUrl="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600"
+              imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(1)}
             />
             <CardFlip
@@ -268,7 +268,7 @@ const AboutUsPage: React.FC = () => {
                 'Clean Architecture'
               ]}
               color="#06b6d4"
-              imageUrl="https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&cs=tinysrgb&w=600"
+              imageUrl="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(2)}
             />
             <CardFlip
@@ -282,7 +282,7 @@ const AboutUsPage: React.FC = () => {
                 'Engagement Expert'
               ]}
               color="#ec4899"
-              imageUrl="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=600"
+              imageUrl="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(3)}
             />
             <CardFlip
@@ -296,7 +296,7 @@ const AboutUsPage: React.FC = () => {
                 'Scalable Solutions'
               ]}
               color="#10b981"
-              imageUrl="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600"
+              imageUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
               onLearnMore={() => setActiveMember(4)}
             />
           </div>

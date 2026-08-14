@@ -4,32 +4,32 @@ const accordionItems = [
   {
     id: 1,
     title: 'AI Phone Callers',
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/8867431/pexels-photo-8867431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
     id: 2,
     title: 'AI Chatbots',
-    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
     id: 3,
     title: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
     id: 4,
     title: 'Content Creation',
-    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/3585088/pexels-photo-3585088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
     id: 5,
     title: 'Cold Email Dashboards',
-    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
     id: 6,
     title: 'App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 ];
 
@@ -49,9 +49,16 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile }: { item: typeo
     >
       <img
         src={item.imageUrl}
+        key={item.imageUrl}
         alt={item.title}
+        loading="eager"
+        decoding="sync"
         className="absolute inset-0 w-full h-full object-cover"
-        onError={(e) => { const target = e.target as HTMLImageElement; target.onerror = null; target.src = 'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error'; }}
+        onError={(e) => { 
+          const target = e.target as HTMLImageElement; 
+          target.onerror = null; 
+          target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
+        }}
       />
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
