@@ -122,11 +122,11 @@ const TestimonialsSection: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl">
-              Client Experiences
+              Client Outcomes
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            See how businesses are leveraging our AI systems to transform their operations.
+            The impact of SamysAI systems on business operations and scaling.
           </p>
         </div>
         
