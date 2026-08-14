@@ -33,7 +33,7 @@ const accordionItems = [
   },
 ];
 
-const AccordionItem = ({ item, isActive, onMouseEnter, isMobile }: { item: typeof accordionItems[0], isActive: boolean, onMouseEnter: () => void, isMobile: boolean }) => {
+const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item: typeof accordionItems[0], isActive: boolean, onMouseEnter: () => void, isMobile: boolean, index: number }) => {
   return (
     <div
       className={`
@@ -48,11 +48,13 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile }: { item: typeo
       onClick={onMouseEnter}
     >
       <img
-        src={item.imageUrl}
+        src={`${item.imageUrl}&w=800`}
+        srcSet={`${item.imageUrl}&w=400 400w, ${item.imageUrl}&w=800 800w`}
+        sizes={isActive ? "(max-width: 768px) 100vw, 400px" : "60px"}
         key={item.imageUrl}
         alt={item.title}
-        loading="eager"
-        decoding="sync"
+        loading={index === 0 ? "eager" : "lazy"}
+        decoding={index === 0 ? "sync" : "async"}
         className="absolute inset-0 w-full h-full object-cover"
         onError={(e) => { 
           const target = e.target as HTMLImageElement; 
@@ -83,7 +85,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile }: { item: typeo
 };
 
 export function LandingAccordionItem() {
-  const [activeIndex, setActiveIndex] = useState(5);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -137,6 +139,7 @@ export function LandingAccordionItem() {
                 <AccordionItem
                   key={item.id}
                   item={item}
+                  index={index}
                   isActive={index === activeIndex}
                   onMouseEnter={() => handleItemHover(index)}
                   isMobile={isMobile}

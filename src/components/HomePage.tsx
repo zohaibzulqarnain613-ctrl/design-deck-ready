@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import SplineScene from '@/components/SplineScene';
 import ServicesSection from '@/components/ServicesSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
-import CaseStudiesSection from '@/components/CaseStudiesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import FAQSection from '@/components/FAQSection';
-import ContactFooter from '@/components/ContactFooter';
 import { WordPullUp } from '@/components/ui/word-pull-up';
 import { Tag } from '@/components/ui/vapour-text-effect';
 import ResponsiveVaporizeText from '@/components/ResponsiveVaporizeText';
 import TypewriterEffect from '@/components/TypewriterEffect';
-import { DottedSurface } from '@/components/ui/dotted-surface';
 import { MarqueeAnimation } from '@/components/ui/marquee-effect';
+
+const CaseStudiesSection = lazy(() => import('@/components/CaseStudiesSection'));
+const TestimonialsSection = lazy(() => import('@/components/TestimonialsSection'));
+const FAQSection = lazy(() => import('@/components/FAQSection'));
+const ContactFooter = lazy(() => import('@/components/ContactFooter'));
+const DottedSurface = lazy(() => import('@/components/ui/dotted-surface').then(module => ({ default: module.DottedSurface })));
 
 const ParticleBackground: React.FC = () => {
   const particles = Array.from({ length: 20 }, (_, i) => ({
@@ -46,7 +47,9 @@ const HomePage = () => {
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 sm:pt-20">
-        <DottedSurface />
+        <Suspense fallback={null}>
+          <DottedSurface />
+        </Suspense>
         <ParticleBackground />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
@@ -166,17 +169,19 @@ const HomePage = () => {
       {/* How It Works Section */}
       <HowItWorksSection />
       
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
-      
-      {/* Testimonials Section */}
-      <TestimonialsSection />
+      <Suspense fallback={<div className="h-96 bg-black" />}>
+        {/* Case Studies Section */}
+        <CaseStudiesSection />
+        
+        {/* Testimonials Section */}
+        <TestimonialsSection />
 
-      {/* FAQ Section */}
-      <FAQSection />
+        {/* FAQ Section */}
+        <FAQSection />
 
-      {/* Contact Footer */}
-      <ContactFooter />
+        {/* Contact Footer */}
+        <ContactFooter />
+      </Suspense>
     </>
   );
 };

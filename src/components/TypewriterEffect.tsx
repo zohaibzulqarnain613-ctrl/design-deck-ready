@@ -15,15 +15,18 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }, speed);
+    let i = 0;
+    const intervalId = setInterval(() => {
+      setDisplayedText(text.substring(0, i + 1));
+      i++;
+      if (i >= text.length) {
+        clearInterval(intervalId);
+        setCurrentIndex(text.length);
+      }
+    }, speed);
 
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, text, speed]);
+    return () => clearInterval(intervalId);
+  }, [text, speed]);
 
   return (
     <span>

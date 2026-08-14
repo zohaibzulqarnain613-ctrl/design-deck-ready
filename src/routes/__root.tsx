@@ -97,6 +97,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       {
+        rel: "preconnect",
+        href: "https://images.unsplash.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://images.pexels.com",
+      },
+      {
+        rel: "preload",
+        href: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
+        as: "fetch",
+        crossOrigin: "anonymous",
+      },
+      {
         rel: "stylesheet",
         href: appCss,
       },
