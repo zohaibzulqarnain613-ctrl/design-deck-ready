@@ -58,7 +58,7 @@ function MarqueeAnimation({
     <div className="overflow-hidden w-full text-nowrap flex-nowrap flex relative">
       <motion.div
         className={cn(
-          "font-bold uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl flex flex-nowrap text-nowrap *:block *:me-4 sm:*:me-6 md:*:me-8 lg:*:me-10",
+          "font-bold uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl flex flex-nowrap text-nowrap *:block *:me-4 sm:*:me-6 md:*:me-8 lg:*:me-10 will-change-transform",
           className
         )}
         style={{ x }}
