@@ -26,7 +26,7 @@ const CaseStudiesSection: React.FC = () => {
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
-                +87%
+                Engagement Boost
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
                 Higher engagement through AI-personalized outreach that resonates with prospects.
@@ -51,7 +51,7 @@ const CaseStudiesSection: React.FC = () => {
                 Efficiency Gain
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Time Saved with smart workflows that eliminate repetitive manual tasks.
+                Higher productivity with smart workflows that eliminate repetitive manual tasks.
               </p>
             </div>
           </GlareCard>
@@ -62,7 +62,7 @@ const CaseStudiesSection: React.FC = () => {
                 Conversation Depth
               </div>
               <p className="text-gray-300 leading-relaxed text-base">
-                Stronger Conversations powered by AI-driven interactions that feel natural and human.
+                Improved outcomes powered by AI-driven interactions that feel natural and human.
               </p>
             </div>
           </GlareCard>
