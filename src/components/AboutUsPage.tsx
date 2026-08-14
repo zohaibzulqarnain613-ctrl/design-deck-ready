@@ -228,7 +228,7 @@ const AboutUsPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 max-w-7xl mx-auto justify-items-center">
             <CardFlip
               title={teamMembers[0].name}
               subtitle={teamMembers[0].role}
@@ -318,12 +318,12 @@ const AboutUsPage: React.FC = () => {
       {/* Closing Section */}
       <section className="relative py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className={`relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 transition-all duration-1000 ${
+          <div className={`relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-12 transition-all duration-1000 ${
             teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
           style={{ transitionDelay: '800ms' }}>
             <div className="relative z-10">
-              <p className="text-2xl md:text-3xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 leading-relaxed">
                 Together, we're building the future of automation — one intelligent system at a time.
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

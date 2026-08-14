@@ -197,7 +197,7 @@ export function Component() {
         </div>
 
         <div className="text-center max-w-5xl mx-auto w-full px-4">
-          <div className="mb-4 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto space-y-3 md:space-y-4">
+          <div className="mb-4 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
             <p className="word" data-delay="1600">
               SamysAI is a next-generation AI automation agency that helps businesses transform their communication, marketing, and workflows through intelligent systems.
             </p>
