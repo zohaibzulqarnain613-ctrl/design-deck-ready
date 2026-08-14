@@ -271,10 +271,17 @@ export function Component() {
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 md:hover:scale-110 transition-all duration-500 ease-in-out overflow-hidden"
             >
-              <span className="relative z-10">Book a Consultation</span>
+              <span className="relative z-10">Book a Strategy Consultation</span>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg scale-110"></div>
               <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
             </a>
+            <a
+              href="/#services"
+              className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300"
+            >
+              <span className="relative z-10">Explore Our Services</span>
+            </a>
+
           </div>
 
           <div
