@@ -69,7 +69,7 @@ const HomePage = () => {
             <div className="flex-1 flex flex-col justify-center text-left space-y-4 sm:space-y-6 w-full">
               {/* Main Title */}
               <WordPullUp
-                words="SamysAI"
+                words="Scale Your Business with Intelligent AI Systems"
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl text-left tracking-tighter"
                 wrapperFramerProps={{
                   hidden: { opacity: 0 },
@@ -90,7 +90,7 @@ const HomePage = () => {
               <div className="w-full min-h-[64px] sm:min-h-[80px] md:min-h-[96px] flex items-center justify-start">
                 <div className="w-full h-full">
                   <ResponsiveVaporizeText
-                    texts={["SamysAI", "AI Automation", "that Scales", "Your Business"]}
+                    texts={["Automate Repetitive Work", "Reduce Manual Tasks", "Improve Efficiency", "Scale Operations"]}
                     color="rgb(147, 197, 253)"
                     spread={4}
                     density={7}
@@ -109,13 +109,12 @@ const HomePage = () => {
               {/* Description */}
               <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl">
                 <TypewriterEffect
-                  text="The future belongs to those who automate intelligently. At SamysAI, we craft AI experiences that think, learn, and evolve with you."
+                  text="We design and deploy custom AI systems—from autonomous phone callers to smart chatbots—that handle your repetitive tasks so you can focus on growth."
                   speed={50}
                   showCursor={false}
                 />
               </div>
 
-              {/* CTA Buttons */}
               <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                 <a
                   href="https://calendly.com/samysai/clients"
@@ -123,10 +122,16 @@ const HomePage = () => {
                   rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 md:hover:scale-110 transition-all duration-500 ease-in-out overflow-hidden"
                 >
-                  <span className="relative z-10">Book a Consultation</span>
+                  <span className="relative z-10">Book a Strategy Consultation</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg scale-110"></div>
                   <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-300 to-purple-300 opacity-0 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
+                </a>
+                <a
+                  href="#services"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300"
+                >
+                  Explore AI Systems
                 </a>
               </div>
             </div>
@@ -158,23 +163,19 @@ const HomePage = () => {
       {/* Services Section */}
       <ServicesSection />
 
-      {/* Marquee Animation Section */}
+      {/* Technology Ecosystem Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 bg-[#050505]">
         <div className="max-w-7xl mx-auto flex flex-col gap-6">
+          <div className="text-center mb-4">
+            <h3 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] opacity-80">Our Technology Ecosystem</h3>
+          </div>
           <Suspense fallback={<div className="h-12 bg-white/5 animate-pulse rounded-lg" />}>
             <MarqueeAnimation
               direction="left"
               baseVelocity={-1}
               className="text-gray-400 py-4 tracking-[0.2em] opacity-60 hover:opacity-100 transition-opacity font-mono text-xs uppercase"
             >
-              AI Phone Callers • AI Chatbots • Web Development • Content Creation • App Development • Cold Email
-            </MarqueeAnimation>
-            <MarqueeAnimation
-              direction="right"
-              baseVelocity={-1}
-              className="text-gray-500 py-4 tracking-[0.2em] opacity-40 hover:opacity-80 transition-opacity font-mono text-xs uppercase"
-            >
-              Automation • Scalability • Intelligence • Growth • Transformation
+              OpenAI • Anthropic • Vapi • Retell • Meta • Google Cloud • AWS • Pinecone • LangChain • Twilio
             </MarqueeAnimation>
           </Suspense>
         </div>

@@ -14,11 +14,11 @@ const HowItWorksSection: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl">
-              How It Works
+              The SamysAI Integration Framework
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Transform your business with AI automation in four intelligent steps.
+            A professional 4-step methodology to integrate intelligence into your business.
           </p>
         </div>
 
