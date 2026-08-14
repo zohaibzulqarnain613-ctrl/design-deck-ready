@@ -220,41 +220,42 @@ export function Component() {
             className="text-[12px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-purple-300 px-2 mb-6 md:mb-8"
           >
             <span className="word" data-delay="5200">
-              Building
+              Technology
             </span>
             <span className="word" data-delay="5350">
-              the
+              built
             </span>
             <span className="word" data-delay="5500">
-              future
+              around
             </span>
             <span className="word" data-delay="5650">
-              of
+              real
             </span>
             <span className="word" data-delay="5800">
-              automation
+              business
             </span>
             <span className="word" data-delay="5950">
-              —
+              problems
             </span>
             <span className="word" data-delay="6100">
-              one
+              —
             </span>
             <span className="word" data-delay="6250">
-              intelligent
+              designed
             </span>
             <span className="word" data-delay="6400">
-              system
+              to
             </span>
             <span className="word" data-delay="6550">
-              at
+              run
             </span>
             <span className="word" data-delay="6700">
-              a
+              every
             </span>
             <span className="word" data-delay="6850">
-              time.
+              day.
             </span>
+
           </h2>
 
           <div
