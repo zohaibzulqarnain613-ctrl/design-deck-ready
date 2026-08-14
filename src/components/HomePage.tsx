@@ -183,7 +183,8 @@ const HomePage = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 bg-[#050505]">
         <div className="max-w-7xl mx-auto flex flex-col gap-6">
           <div className="text-center mb-4">
-            <h3 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] opacity-80">Our Technology Ecosystem</h3>
+            <h3 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] opacity-80">Our Core Technology Stack</h3>
+            <p className="text-[10px] font-mono text-gray-500 uppercase mt-2 tracking-[0.1em]">Integrated systems and APIs utilized in our custom deployments</p>
           </div>
           <Suspense fallback={<div className="h-12 bg-white/5 animate-pulse rounded-lg" />}>
             <MarqueeAnimation
