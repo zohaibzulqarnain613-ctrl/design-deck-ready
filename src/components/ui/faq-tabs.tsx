@@ -48,7 +48,7 @@ const FAQHeader = ({ title, subtitle }: { title: string; subtitle: string }) => 
     <span className="mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-medium text-transparent">
       {subtitle}
     </span>
-    <h2 className="mb-6 text-5xl md:text-7xl font-bold">{title}</h2>
+    <h2 className="mb-6 text-4xl sm:text-5xl md:text-7xl font-bold text-center">{title}</h2>
     <span className="absolute -top-[350px] left-[50%] z-0 h-[500px] w-[600px] -translate-x-[50%] rounded-full bg-gradient-to-r from-primary/10 to-primary/5 blur-3xl" />
   </div>
 );

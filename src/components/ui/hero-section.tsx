@@ -161,10 +161,10 @@ export function Component() {
       <div className="floating-element hidden md:block" style={{ top: "40%", left: "10%", animationDelay: "6s" }}></div>
       <div className="floating-element hidden md:block" style={{ top: "75%", left: "90%", animationDelay: "6.5s" }}></div>
 
-      <div className="relative z-10 min-h-screen flex flex-col justify-between items-center px-4 py-8 sm:px-6 md:px-12 lg:px-16 md:py-16 lg:py-20">
-        <div className="text-center w-full">
+      <div className="relative z-10 min-h-screen flex flex-col justify-around md:justify-between items-center px-4 py-20 sm:py-24 md:py-16 lg:py-20">
+        <div className="text-center w-full mt-4 md:mt-0">
           <h2
-            className="text-[10px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-blue-300 px-2"
+            className="text-[12px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-blue-300 px-2"
           >
             <span className="word" data-delay="0">
               Welcome
@@ -196,8 +196,8 @@ export function Component() {
           ></div>
         </div>
 
-        <div className="text-center max-w-5xl mx-auto w-full px-4">
-          <div className="mb-4 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto space-y-3 md:space-y-4">
+        <div className="text-center max-w-5xl mx-auto w-full px-4 my-8 md:my-0">
+          <div className="mb-4 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
             <p className="word" data-delay="1600">
               SamysAI is a next-generation AI automation agency that helps businesses transform their communication, marketing, and workflows through intelligent systems.
             </p>
@@ -210,12 +210,12 @@ export function Component() {
           </div>
         </div>
 
-        <div className="text-center w-full">
+        <div className="text-center w-full mb-4 md:mb-0">
           <div
             className="mb-3 md:mb-4 mx-auto w-12 md:w-16 h-px opacity-30 bg-gradient-to-r from-transparent via-purple-400 to-transparent"
           ></div>
           <h2
-            className="text-[10px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-purple-300 px-2 mb-6 md:mb-8"
+            className="text-[12px] sm:text-xs md:text-sm font-mono font-light uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-80 text-purple-300 px-2 mb-6 md:mb-8"
           >
             <span className="word" data-delay="5200">
               Building
