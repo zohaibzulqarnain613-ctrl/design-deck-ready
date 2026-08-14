@@ -33,21 +33,33 @@ const ResponsiveVaporizeText: React.FC<ResponsiveVaporizeTextProps> = ({
   const [fontSize, setFontSize] = useState(32);
 
   useEffect(() => {
+    let timeoutId: number;
     const updateFontSize = () => {
       const width = window.innerWidth;
+      let newSize = 32;
       if (width < 640) {
-        setFontSize(24);
+        newSize = 24;
       } else if (width < 768) {
-        setFontSize(28);
-      } else {
-        setFontSize(32);
+        newSize = 28;
+      }
+      
+      if (newSize !== fontSize) {
+        setFontSize(newSize);
       }
     };
 
+    const debouncedUpdate = () => {
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(updateFontSize, 150);
+    };
+
     updateFontSize();
-    window.addEventListener('resize', updateFontSize);
-    return () => window.removeEventListener('resize', updateFontSize);
-  }, []);
+    window.addEventListener('resize', debouncedUpdate);
+    return () => {
+      window.removeEventListener('resize', debouncedUpdate);
+      clearTimeout(timeoutId);
+    };
+  }, [fontSize]);
 
   return (
     <VaporizeTextCycle
