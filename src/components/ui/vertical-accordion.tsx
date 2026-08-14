@@ -98,12 +98,12 @@ const Panel = ({
           style={{
             writingMode: "vertical-lr",
           }}
-          className="hidden lg:block text-xl font-light rotate-180 text-black dark:text-white"
+          className="hidden lg:block text-xl font-light rotate-180 text-white"
         >
           {title}
         </span>
-        <span className="block lg:hidden text-xl font-light text-black dark:text-white">{title}</span>
-        <div className="w-6 lg:w-full aspect-square bg-black text-white dark:bg-white dark:text-black grid place-items-center">
+        <span className="block lg:hidden text-xl font-light text-white">{title}</span>
+        <div className="w-6 lg:w-full aspect-square bg-white text-black grid place-items-center">
           <Icon />
         </div>
         <span
