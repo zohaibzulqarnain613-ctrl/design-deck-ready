@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import TeamModal from './TeamModal';
-import GalleryHoverCarousel from './ui/gallery-hover-carousel';
 import { Component as HeroSection } from './ui/hero-section';
 import TeamMessageModal from './TeamMessageModal';
-// Removed redundant section imports to consolidate layout logic
-
+import CardFlip from './ui/flip-card';
 
 interface TeamMemberProps {
   name: string;
@@ -16,61 +13,6 @@ interface TeamMemberProps {
   isVisible: boolean;
   onClick: () => void;
 }
-
-const TeamMemberCard: React.FC<TeamMemberProps> = ({
-  name,
-  role,
-  description,
-  index,
-  isVisible,
-  onClick
-}) => {
-  return (
-    <div
-      className={`group relative transition-all duration-1000 ease-out cursor-pointer ${
-        isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-12'
-      }`}
-      style={{ transitionDelay: `${index * 200}ms` }}
-      onClick={onClick}
-    >
-      {/* Glassmorphism Card */}
-      <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-blue-400/50 transition-all duration-700 hover:scale-105 hover:rotate-1 hover:shadow-2xl hover:shadow-blue-500/25 group-hover:bg-white/10 transform-gpu perspective-1000">
-        {/* Gradient Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-cyan-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-purple-600/5 rounded-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
-        
-        {/* Avatar Placeholder */}
-        <div className="relative mb-6 flex justify-center">
-          <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 rounded-full flex items-center justify-center shadow-2xl group-hover:shadow-blue-500/60 transition-all duration-700 group-hover:scale-110 group-hover:rotate-12">
-            {/* Icon Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-500 blur-lg animate-pulse"></div>
-            <div className="text-white text-3xl font-bold relative z-10 group-hover:scale-110 transition-transform duration-500">
-              {name.charAt(0)}
-            </div>
-          </div>
-        </div>
-        
-        {/* Content */}
-        <div className="relative text-center z-10">
-          <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all duration-500">
-            {name}
-          </h3>
-          <p className="text-blue-300 font-semibold mb-3 text-lg">
-            {role}
-          </p>
-          <p className="text-gray-300 leading-relaxed text-sm group-hover:text-gray-100 transition-colors duration-500">
-            {description}
-          </p>
-        </div>
-        
-        {/* Hover Glow Border */}
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 blur-sm -z-10"></div>
-      </div>
-    </div>
-  );
-};
 
 const AboutUsPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -122,51 +64,7 @@ const AboutUsPage: React.FC = () => {
     }
   ];
 
-  const carouselTeamMembers = [
-    {
-      id: "member-1",
-      title: "Samy - CEO",
-      summary: "Leading innovation at SamysAI with strategic vision and business excellence.",
-      initial: "S",
-      image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=400",
-      onClick: () => setActiveMember(0),
-    },
-    {
-      id: "member-2",
-      title: "JZ - AI Head",
-      summary: "Pioneering AI solutions and automation technologies for business transformation.",
-      initial: "J",
-      image: "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400",
-      onClick: () => setActiveMember(1),
-    },
-    {
-      id: "member-3",
-      title: "Zaibi - Web Development Head",
-      summary: "Creating high-performance websites and digital experiences that convert.",
-      initial: "Z",
-      image: "https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&cs=tinysrgb&w=400",
-      onClick: () => setActiveMember(2),
-    },
-    {
-      id: "member-4",
-      title: "AZ - Content Creation Head",
-      summary: "Crafting compelling content strategies that engage and drive results.",
-      initial: "A",
-      image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400",
-      onClick: () => setActiveMember(3),
-    },
-  ];
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
     const teamObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -176,57 +74,63 @@ const AboutUsPage: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
     if (teamRef.current) {
       teamObserver.observe(teamRef.current);
     }
 
     return () => {
-      observer.disconnect();
       teamObserver.disconnect();
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 pt-16">
+    <div className="min-h-screen bg-[#050505] pt-16">
       {/* Hero Section */}
-      {/* Vision Section replaced by HeroSection */}
       <HeroSection />
 
+      {/* Mission Section - Distinct Layout */}
+      <section className="py-32 px-6 bg-[#050505]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-8">Our Purpose</h2>
+          <p className="text-3xl md:text-5xl font-bold leading-tight tracking-tighter text-white">
+            At SamysAI, we empower businesses with intelligent systems that amplify human potential and make technology feel <span className="text-blue-400">seamless</span>.
+          </p>
+        </div>
+      </section>
 
-      {/* Mission Section */}
-      <MissionSection />
-
-      {/* Vision Section */}
-      <VisionSection />
-
-      {/* Values Section */}
-      <ValuesSection />
-
-      {/* Why Choose Us Section */}
-      <WhyChooseUsSection />
-
-      {/* Promise Section */}
-      <PromiseSection />
-
-      {/* Team Section */}
-      <section ref={teamRef} className="relative py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-2xl">
-                Meet the Team
-              </span>
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Meet the talented individuals driving innovation at SamysAI.
+      {/* Vision & Values - Grid Layout */}
+      <section className="py-24 px-6 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-tight">Our Vision</h3>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              We aim to lead the global transformation of modern business through AI that feels natural, learns continuously, and scales effortlessly.
             </p>
           </div>
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-tight">Our Values</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {['Innovation', 'Integrity', 'Excellence', 'Empowerment'].map((v) => (
+                <div key={v} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] text-sm font-semibold text-gray-300">
+                  {v}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 max-w-7xl mx-auto justify-items-center">
+      {/* Team Section */}
+      <section ref={teamRef} className="relative py-24 bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16 text-center">
+            <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em] mb-4">The Experts</h2>
+            <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
+              Meet the Team
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 max-w-7xl mx-auto justify-items-center">
             <CardFlip
               title={teamMembers[0].name}
               subtitle={teamMembers[0].role}
@@ -314,33 +218,25 @@ const AboutUsPage: React.FC = () => {
       )}
 
       {/* Closing Section */}
-      <section className="relative py-16">
+      <section className="relative py-24 bg-black border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className={`relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-12 transition-all duration-1000 ${
-            teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-          style={{ transitionDelay: '800ms' }}>
-            <div className="relative z-10">
-              <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 leading-relaxed">
-                Together, we're building the future of automation — one intelligent system at a time.
-              </p>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button
-                  onClick={() => {
-                    window.location.href = '/#contact';
-                  }}
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-110 transition-all duration-500 ease-in-out overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center space-x-2">
-                    <span>Contact Our Team</span>
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg scale-110"></div>
-                  <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-300 to-purple-300 opacity-0 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
-                </button>
-              </motion.div>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-2xl md:text-4xl font-bold text-white mb-12 tracking-tighter leading-tight">
+              Together, we're building the future of automation — one intelligent system at a time.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <button
+                onClick={() => {
+                  window.location.href = '/#contact';
+                }}
+                className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-white/5 border border-white/10 rounded-full shadow-2xl hover:bg-white/10 transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center space-x-2">
+                  <span>Contact Our Team</span>
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+              </button>
+            </motion.div>
           </div>
         </div>
       </section>
