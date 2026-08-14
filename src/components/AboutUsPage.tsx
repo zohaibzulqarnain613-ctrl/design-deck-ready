@@ -218,8 +218,8 @@ const AboutUsPage: React.FC = () => {
       <section ref={teamRef} className="relative py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-2xl">
                 Meet the Team
               </span>
             </h2>
