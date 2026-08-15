@@ -41,13 +41,15 @@ interface TextParallaxContentProps {
   subheading: string;
   heading: string;
   children: React.ReactNode;
+  isFirst?: boolean;
 }
 
 const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
   imgUrl,
   subheading,
   heading,
-  children
+  children,
+  isFirst
 }) => {
   return (
     <div
@@ -59,7 +61,7 @@ const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
     >
       <div className="relative h-[150vh] w-full">
         <StickyImage imgUrl={imgUrl} />
-        <OverlayCopy heading={heading} subheading={subheading} />
+        <OverlayCopy heading={heading} subheading={subheading} isFirst={isFirst} />
       </div>
       {children}
     </div>
