@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 
 const AIPhoneCallersBlogPost = () => {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
       <script type="application/ld+json">
         {JSON.stringify({
