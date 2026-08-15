@@ -319,12 +319,12 @@ const AIChatbotsBlogPost = () => {
 
           <div className="mt-16 pt-8 border-t border-gray-700">
             <div className="text-center">
-              <Link
-                to="https://calendly.com/samysai/clients"
+              <a
+                href="https://calendly.com/samysai/clients"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-500"
               >
                 Book a Strategy Consultation
-              </Link>
+              </a>
               <p className="text-gray-400 mt-4">
                 Let's discuss how an AI chatbot can support your business goals
               </p>
