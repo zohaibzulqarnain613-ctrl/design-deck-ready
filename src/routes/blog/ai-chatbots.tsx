@@ -4,10 +4,10 @@ import AIChatbotsBlogPost from "@/pages/blog/AIChatbotsBlogPost";
 export const Route = createFileRoute("/blog/ai-chatbots")({
   head: () => ({
     meta: [
-      { title: "AI Chatbots Guide | SamysAI" },
-      { name: "description", content: "Why AI chatbots convert more visitors and how to deploy one." },
-      { property: "og:title", content: "AI Chatbots Guide | SamysAI" },
-      { property: "og:description", content: "Why AI chatbots convert more visitors and how to deploy one." },
+      { title: "AI Chatbots for Business: A Practical Guide" },
+      { name: "description", content: "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one." },
+      { property: "og:title", content: "AI Chatbots for Business: A Practical Guide" },
+      { property: "og:description", content: "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
