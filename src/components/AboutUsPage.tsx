@@ -189,7 +189,7 @@ const AboutUsPage: React.FC = () => {
           </div>
           <div className="space-y-6">
             <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em]">Our Promise</h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight max-w-[15ch] md:max-w-none">Clear communication and work you can rely on</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight md:max-w-[20ch]">Clear communication and work you can rely on</h3>
             <ul className="space-y-5 text-gray-400 text-base leading-relaxed">
               <li className="flex items-start">
                 <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
