@@ -25,9 +25,10 @@ const CaseStudiesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4 leading-tight">
                 Operational Speed
               </div>
+
               <p className="text-gray-300 leading-relaxed text-base">
                 Engineered for faster customer response and reduced cycle times.
               </p>
@@ -36,9 +37,10 @@ const CaseStudiesSection: React.FC = () => {
 
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4 leading-tight">
                 Lead Handling
               </div>
+
               <p className="text-gray-300 leading-relaxed text-base">
                 Designed for smarter lead qualification and automated multi-channel engagement.
               </p>
@@ -47,9 +49,10 @@ const CaseStudiesSection: React.FC = () => {
 
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4 leading-tight">
                 Task Efficiency
               </div>
+
               <p className="text-gray-300 leading-relaxed text-base">
                 Architected to eliminate repetitive manual work through intelligent workflows.
               </p>
@@ -58,9 +61,10 @@ const CaseStudiesSection: React.FC = () => {
 
           <GlareCard className="flex flex-col items-center justify-center p-8">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text mb-4 leading-tight">
                 Scalable Systems
               </div>
+
               <p className="text-gray-300 leading-relaxed text-base">
                 Built to support growth with robust and flexible digital infrastructure.
               </p>
