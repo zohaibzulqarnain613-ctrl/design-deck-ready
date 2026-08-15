@@ -7,27 +7,62 @@ const ContentCreationBlogPost = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "AI Content Creation for Business: A Practical Guide to Scaling Content",
-          "description": "Learn how businesses can use AI content creation to plan, produce, optimize, and repurpose content while maintaining brand voice and human oversight.",
-          "author": {
-            "@type": "Organization",
-            "name": "SamysAI"
+        {[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "AI Content Creation for Business: Systems & Workflows Guide",
+            "description": "Learn how businesses can use AI content creation to plan, produce, optimize, and repurpose content while maintaining brand voice and human oversight.",
+            "author": {
+              "@type": "Organization",
+              "name": "SamysAI Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SamysAI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://samysai.com/logo.jpeg"
+              }
+            },
+            "url": "https://samysai.com/blog/content-creation",
+            "datePublished": "2024-10-05",
+            "dateModified": "2024-10-05",
+            "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&h=600&fit=crop",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://samysai.com/blog/content-creation"
+            }
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SamysAI"
-          },
-          "url": "https://samysai.com/blog/content-creation",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://samysai.com/blog/content-creation"
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://samysai.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://samysai.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Content Creation",
+                "item": "https://samysai.com/blog/content-creation"
+              }
+            ]
           }
-        })}
-      </script>
+        ].map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <div className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

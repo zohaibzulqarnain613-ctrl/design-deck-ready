@@ -102,7 +102,8 @@ const Blog7 = ({
                 >
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={`${post.title} - ${post.label} guide by SamysAI`}
+                    loading="lazy"
                     className="h-full w-full object-cover object-center"
                   />
                 </Link>

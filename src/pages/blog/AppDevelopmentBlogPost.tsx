@@ -7,27 +7,62 @@ const AppDevelopmentBlogPost = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "App Development for Business: A Practical Guide to Building Mobile Solutions",
-          "description": "Learn how businesses can plan, design, build, secure, and scale mobile applications with the right technology, architecture, integrations, and UX.",
-          "author": {
-            "@type": "Organization",
-            "name": "SamysAI"
+        {[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Custom App Development for Business: Scalable Mobile Solutions",
+            "description": "Learn how businesses can plan, design, build, secure, and scale mobile applications with the right technology, architecture, integrations, and UX.",
+            "author": {
+              "@type": "Organization",
+              "name": "SamysAI Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SamysAI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://samysai.com/logo.jpeg"
+              }
+            },
+            "url": "https://samysai.com/blog/app-development",
+            "datePublished": "2024-09-25",
+            "dateModified": "2024-09-25",
+            "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=600&fit=crop",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://samysai.com/blog/app-development"
+            }
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SamysAI"
-          },
-          "url": "https://samysai.com/blog/app-development",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://samysai.com/blog/app-development"
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://samysai.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://samysai.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "App Development",
+                "item": "https://samysai.com/blog/app-development"
+              }
+            ]
           }
-        })}
-      </script>
+        ].map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <div className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

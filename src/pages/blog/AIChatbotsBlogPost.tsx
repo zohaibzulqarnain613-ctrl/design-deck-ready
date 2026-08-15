@@ -7,27 +7,62 @@ const AIChatbotsBlogPost = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "AI Chatbots for Business: A Practical Guide",
-          "description": "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one.",
-          "author": {
-            "@type": "Organization",
-            "name": "SamysAI"
+        {[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "AI Chatbots for Business: Implementation & Customer Support Guide",
+            "description": "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one.",
+            "author": {
+              "@type": "Organization",
+              "name": "SamysAI Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SamysAI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://samysai.com/logo.jpeg"
+              }
+            },
+            "url": "https://samysai.com/blog/ai-chatbots",
+            "datePublished": "2024-10-15",
+            "dateModified": "2024-10-15",
+            "image": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&h=600&fit=crop",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://samysai.com/blog/ai-chatbots"
+            }
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SamysAI"
-          },
-          "url": "https://samysai.com/blog/ai-chatbots",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://samysai.com/blog/ai-chatbots"
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://samysai.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://samysai.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "AI Chatbots",
+                "item": "https://samysai.com/blog/ai-chatbots"
+              }
+            ]
           }
-        })}
-      </script>
+        ].map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <div className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
