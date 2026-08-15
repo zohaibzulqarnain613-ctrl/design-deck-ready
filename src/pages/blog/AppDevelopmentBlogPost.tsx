@@ -283,6 +283,9 @@ const AppDevelopmentBlogPost = () => {
               <p>
                 To learn more about our specific development services, visit our <Link to="/services/app-development" className="text-blue-400 hover:underline">App Development service page</Link>.
               </p>
+              <p>
+                For integrated communication solutions, see our guide on <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots</Link>.
+              </p>
 
               <h2 className="text-2xl md:text-3xl font-bold text-white pt-4">Conclusion</h2>
               <p>
