@@ -130,7 +130,7 @@ const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
       <p className="mb-2 text-center text-base sm:text-lg md:mb-4 md:text-2xl lg:text-3xl">
         {subheading}
       </p>
-      <p className="text-center text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-4xl leading-tight">{heading}</p>
+      <h1 className="text-center text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-4xl leading-tight">{heading}</h1>
     </motion.div>
   );
 };
