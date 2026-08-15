@@ -4,10 +4,10 @@ import ColdEmailDashboardsBlogPost from "@/pages/blog/ColdEmailDashboardsBlogPos
 export const Route = createFileRoute("/blog/cold-email-dashboards")({
   head: () => ({
     meta: [
-      { title: "Cold Email Dashboards Guide | SamysAI" },
-      { name: "description", content: "Measuring and scaling cold email with the right dashboard." },
-      { property: "og:title", content: "Cold Email Dashboards Guide | SamysAI" },
-      { property: "og:description", content: "Measuring and scaling cold email with the right dashboard." },
+      { title: "Cold Email Dashboards: A Practical Guide | SamysAI" },
+      { name: "description", content: "Learn how businesses use cold email dashboards to manage outreach, track deliverability, and build reliable lead generation systems." },
+      { property: "og:title", content: "Cold Email Dashboards: A Practical Guide | SamysAI" },
+      { property: "og:description", content: "Learn how businesses use cold email dashboards to manage outreach, track deliverability, and build reliable lead generation systems." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
