@@ -7,27 +7,62 @@ const ColdEmailDashboardsBlogPost = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "Cold Email Dashboards: A Practical Guide to Outreach Infrastructure",
-          "description": "Learn how cold email dashboards manage outreach infrastructure, deliverability, campaigns, prospect data, automation, and reporting.",
-          "author": {
-            "@type": "Organization",
-            "name": "SamysAI"
+        {[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Cold Email Dashboards: Outreach Infrastructure & Deliverability",
+            "description": "Learn how cold email dashboards manage outreach infrastructure, deliverability, campaigns, prospect data, automation, and reporting.",
+            "author": {
+              "@type": "Organization",
+              "name": "SamysAI Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SamysAI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://samysai.com/logo.jpeg"
+              }
+            },
+            "url": "https://samysai.com/blog/cold-email-dashboards",
+            "datePublished": "2024-10-01",
+            "dateModified": "2024-10-01",
+            "image": "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=1200&h=600&fit=crop",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://samysai.com/blog/cold-email-dashboards"
+            }
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SamysAI"
-          },
-          "url": "https://samysai.com/blog/cold-email-dashboards",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://samysai.com/blog/cold-email-dashboards"
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://samysai.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://samysai.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Cold Email Dashboards",
+                "item": "https://samysai.com/blog/cold-email-dashboards"
+              }
+            ]
           }
-        })}
-      </script>
+        ].map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <div className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

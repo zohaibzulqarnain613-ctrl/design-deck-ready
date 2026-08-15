@@ -7,27 +7,62 @@ const AIPhoneCallersBlogPost = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Article Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "AI Phone Callers for Business: A Practical Guide to AI Voice Automation",
-          "description": "Learn how AI phone callers work, where businesses can use AI voice automation, and what to consider when building reliable AI powered calling systems.",
-          "author": {
-            "@type": "Organization",
-            "name": "SamysAI"
+        {[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "AI Phone Callers for Business: A Practical Guide to Voice Automation",
+            "description": "Learn how AI phone callers work, where businesses can use AI voice automation, and what to consider when building reliable AI powered calling systems.",
+            "author": {
+              "@type": "Organization",
+              "name": "SamysAI Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SamysAI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://samysai.com/logo.jpeg"
+              }
+            },
+            "url": "https://samysai.com/blog/ai-phone-callers",
+            "datePublished": "2024-10-20",
+            "dateModified": "2024-10-20",
+            "image": "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=600&fit=crop",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://samysai.com/blog/ai-phone-callers"
+            }
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SamysAI"
-          },
-          "url": "https://samysai.com/blog/ai-phone-callers",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://samysai.com/blog/ai-phone-callers"
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://samysai.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://samysai.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "AI Phone Callers",
+                "item": "https://samysai.com/blog/ai-phone-callers"
+              }
+            ]
           }
-        })}
-      </script>
+        ].map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <div className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
