@@ -82,6 +82,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       <div className="pt-20">
+        <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
         <Blog7 {...blogData} />
       </div>
       <Footer />

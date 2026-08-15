@@ -4,12 +4,16 @@ import AIChatbotsBlogPost from "@/pages/blog/AIChatbotsBlogPost";
 export const Route = createFileRoute("/blog/ai-chatbots")({
   head: () => ({
     meta: [
-      { title: "AI Chatbots for Business: A Practical Guide" },
-      { name: "description", content: "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one." },
-      { property: "og:title", content: "AI Chatbots for Business: A Practical Guide" },
-      { property: "og:description", content: "Explain clearly what AI chatbots are, how businesses use them, and what to consider before implementing one." },
-      { property: "og:type", content: "website" },
+      { title: "AI Chatbots for Business: Implementation & Customer Support Guide" },
+      { name: "description", content: "A practical guide to implementing AI chatbots for business. Learn about customer support automation, implementation strategies, and conversational AI systems." },
+      { property: "og:title", content: "AI Chatbots for Business: Implementation & Customer Support Guide" },
+      { property: "og:description", content: "A practical guide to implementing AI chatbots for business. Learn about customer support automation and implementation strategies." },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://samysai.com/blog/ai-chatbots" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://samysai.com/blog/ai-chatbots" }
     ],
   }),
   component: AIChatbotsBlogPost,
