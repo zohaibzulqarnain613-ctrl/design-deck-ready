@@ -133,17 +133,17 @@ const AboutUsPage: React.FC = () => {
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white tracking-tight">Our Vision</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
-              We want to help build a business environment where intelligent systems work alongside people rather than around them: handling routine communication, carrying operational load, and giving teams better digital tools to work with.
+              We want to help build a business environment where intelligent systems work alongside people rather than around them, handling routine communication, carrying operational load, and giving teams better digital tools to work with.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Technology of this kind should be available to any business that needs it, not only to companies with large internal engineering teams.
+              We believe practical intelligent technology should be accessible to businesses of all sizes, not only companies with large internal engineering teams.
             </p>
           </div>
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white tracking-tight">Our Values</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { title: 'Innovation', body: 'We adopt new technology when it solves a real problem, not because it is new.' },
+                { title: 'Innovation', body: 'We adopt new technology when it solves a real problem, not simply because it is new.' },
                 { title: 'Integrity', body: 'We set realistic expectations and say clearly what a system can and cannot do.' },
                 { title: 'Excellence', body: 'We judge our work by how well it holds up in daily use, not how it looks at launch.' },
                 { title: 'Empowerment', body: 'We build tools that make people better at their work rather than replacing them.' },
@@ -165,11 +165,11 @@ const AboutUsPage: React.FC = () => {
             <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Why SamysAI</h2>
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Built around the problem, not the tool</h3>
             <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
-              <li>We define the business problem first, then decide what should be built.</li>
-              <li>AI and automation sit alongside real software development, so a system can be delivered end to end.</li>
-              <li>Usability drives the design. A system only pays off if the team actually uses it.</li>
-              <li>We plan for growth, so what we build can be extended as the business changes.</li>
-              <li>Automation, communication, digital products, and growth infrastructure are connected rather than delivered in isolation.</li>
+              <li>• We define the business problem before choosing the technology.</li>
+              <li>• We choose practical solutions based on what the business actually needs.</li>
+              <li>• We design around how people will use the system in their daily work.</li>
+              <li>• We build with future changes and growth in mind.</li>
+              <li>• We connect technology where doing so creates genuine value.</li>
             </ul>
           </div>
           <div className="space-y-6">
@@ -177,7 +177,7 @@ const AboutUsPage: React.FC = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Clear communication and work you can rely on</h3>
             <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
               <li>We explain what we are building, why, and what it will realistically do.</li>
-              <li>We propose practical solutions and tell you when something is not worth building.</li>
+              <li>• We propose practical solutions and tell you when something is not worth building.</li>
               <li>We implement carefully and test before anything goes live.</li>
               <li>We deliver on what we agree, and raise it early when something changes.</li>
               <li>We build systems that can evolve with the business instead of needing a rebuild.</li>
@@ -191,7 +191,7 @@ const AboutUsPage: React.FC = () => {
       <section ref={teamRef} className="relative py-24 bg-[#050505]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
-            <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em] mb-4">The Experts</h2>
+            
             <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
               Meet the Team
             </h3>
@@ -202,12 +202,7 @@ const AboutUsPage: React.FC = () => {
               title={teamMembers[0].name}
               subtitle={teamMembers[0].role}
               description={teamMembers[0].description}
-              features={[
-                'Strategic Vision',
-                'Business Excellence',
-                'Innovation Leader',
-                'Growth Expert'
-              ]}
+              features={teamMembers[0].expertise}
               color="#3b82f6"
               imageUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300"
               onLearnMore={() => setActiveMember(0)}
@@ -216,12 +211,7 @@ const AboutUsPage: React.FC = () => {
               title={teamMembers[1].name}
               subtitle={teamMembers[1].role}
               description={teamMembers[1].description}
-              features={[
-                'AI Architecture',
-                'Automation Expert',
-                'Machine Learning',
-                'Innovation Pioneer'
-              ]}
+              features={teamMembers[1].expertise}
               color="#8b5cf6"
               imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=300"
               onLearnMore={() => setActiveMember(1)}
@@ -230,12 +220,7 @@ const AboutUsPage: React.FC = () => {
               title={teamMembers[2].name}
               subtitle={teamMembers[2].role}
               description={teamMembers[2].description}
-              features={[
-                'Full-Stack Dev',
-                'Performance Expert',
-                'Scalable Systems',
-                'Clean Architecture'
-              ]}
+              features={teamMembers[2].expertise}
               color="#06b6d4"
               imageUrl="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300"
               onLearnMore={() => setActiveMember(2)}
@@ -244,12 +229,7 @@ const AboutUsPage: React.FC = () => {
               title={teamMembers[3].name}
               subtitle={teamMembers[3].role}
               description={teamMembers[3].description}
-              features={[
-                'Content Strategy',
-                'Brand Voice',
-                'AI-Powered Copy',
-                'Engagement Expert'
-              ]}
+              features={teamMembers[3].expertise}
               color="#ec4899"
               imageUrl="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300"
               onLearnMore={() => setActiveMember(3)}
@@ -258,12 +238,7 @@ const AboutUsPage: React.FC = () => {
               title={teamMembers[4].name}
               subtitle={teamMembers[4].role}
               description={teamMembers[4].description}
-              features={[
-                'Mobile Apps',
-                'Cross-Platform',
-                'User Experience',
-                'Scalable Solutions'
-              ]}
+              features={teamMembers[4].expertise}
               color="#10b981"
               imageUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
               onLearnMore={() => setActiveMember(4)}
@@ -289,20 +264,32 @@ const AboutUsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <p className="text-2xl md:text-4xl font-bold text-white mb-12 tracking-tighter leading-tight">
-              Together, we're building the future of automation — one intelligent system at a time.
+              Together, we build intelligent systems that solve real business problems.
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <button
-                onClick={() => {
-                  window.location.href = '/#contact';
-                }}
-                className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-white/5 border border-white/10 rounded-full shadow-2xl hover:bg-white/10 transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center space-x-2">
-                  <span>Contact Our Team</span>
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </button>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button
+                  onClick={() => {
+                    window.location.href = 'https://calendly.com/samysai/clients';
+                  }}
+                  className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-white/5 border border-white/10 rounded-full shadow-2xl hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
+                >
+                  <span className="relative z-10 flex items-center space-x-2">
+                    <span>Book a Strategy Consultation</span>
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </button>
+                <button
+                  onClick={() => {
+                    window.location.href = '/#contact';
+                  }}
+                  className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-white/5 border border-white/10 rounded-full shadow-2xl hover:bg-white/10 transition-all duration-300 w-full sm:w-auto"
+                >
+                  <span className="relative z-10 flex items-center space-x-2">
+                    <span>Contact Our Team</span>
+                  </span>
+                </button>
+              </div>
             </motion.div>
           </div>
         </div>
