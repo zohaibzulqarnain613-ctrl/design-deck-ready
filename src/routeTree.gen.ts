@@ -21,6 +21,7 @@ import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogAiChatbotsRouteImport } from './routes/blog/ai-chatbots'
 import { Route as BlogAiPhoneCallersRouteImport } from './routes/blog/ai-phone-callers'
+import { Route as BlogAppDevelopmentRouteImport } from './routes/blog/app-development'
 import { Route as BlogColdEmailDashboardsRouteImport } from './routes/blog/cold-email-dashboards'
 import { Route as BlogContentCreationRouteImport } from './routes/blog/content-creation'
 import { Route as BlogWebDevelopmentRouteImport } from './routes/blog/web-development'
@@ -92,6 +93,11 @@ const BlogAiChatbotsRoute = BlogAiChatbotsRouteImport.update({
 const BlogAiPhoneCallersRoute = BlogAiPhoneCallersRouteImport.update({
   id: '/ai-phone-callers',
   path: '/ai-phone-callers',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogAppDevelopmentRoute = BlogAppDevelopmentRouteImport.update({
+  id: '/app-development',
+  path: '/app-development',
   getParentRoute: () => BlogRoute,
 } as any)
 const BlogColdEmailDashboardsRoute = BlogColdEmailDashboardsRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/timeline': typeof TimelineRoute
   '/blog/ai-chatbots': typeof BlogAiChatbotsRoute
   '/blog/ai-phone-callers': typeof BlogAiPhoneCallersRoute
+  '/blog/app-development': typeof BlogAppDevelopmentRoute
   '/blog/cold-email-dashboards': typeof BlogColdEmailDashboardsRoute
   '/blog/content-creation': typeof BlogContentCreationRoute
   '/blog/web-development': typeof BlogWebDevelopmentRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/timeline': typeof TimelineRoute
   '/blog/ai-chatbots': typeof BlogAiChatbotsRoute
   '/blog/ai-phone-callers': typeof BlogAiPhoneCallersRoute
+  '/blog/app-development': typeof BlogAppDevelopmentRoute
   '/blog/cold-email-dashboards': typeof BlogColdEmailDashboardsRoute
   '/blog/content-creation': typeof BlogContentCreationRoute
   '/blog/web-development': typeof BlogWebDevelopmentRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/timeline': typeof TimelineRoute
   '/blog/ai-chatbots': typeof BlogAiChatbotsRoute
   '/blog/ai-phone-callers': typeof BlogAiPhoneCallersRoute
+  '/blog/app-development': typeof BlogAppDevelopmentRoute
   '/blog/cold-email-dashboards': typeof BlogColdEmailDashboardsRoute
   '/blog/content-creation': typeof BlogContentCreationRoute
   '/blog/web-development': typeof BlogWebDevelopmentRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/blog/ai-chatbots'
     | '/blog/ai-phone-callers'
+    | '/blog/app-development'
     | '/blog/cold-email-dashboards'
     | '/blog/content-creation'
     | '/blog/web-development'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/blog/ai-chatbots'
     | '/blog/ai-phone-callers'
+    | '/blog/app-development'
     | '/blog/cold-email-dashboards'
     | '/blog/content-creation'
     | '/blog/web-development'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/blog/ai-chatbots'
     | '/blog/ai-phone-callers'
+    | '/blog/app-development'
     | '/blog/cold-email-dashboards'
     | '/blog/content-creation'
     | '/blog/web-development'
@@ -422,6 +434,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogAiPhoneCallersRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/blog/app-development': {
+      id: '/blog/app-development'
+      path: '/app-development'
+      fullPath: '/blog/app-development'
+      preLoaderRoute: typeof BlogAppDevelopmentRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/blog/cold-email-dashboards': {
       id: '/blog/cold-email-dashboards'
       path: '/cold-email-dashboards'
@@ -512,6 +531,7 @@ declare module '@tanstack/react-router' {
 interface BlogRouteChildren {
   BlogAiChatbotsRoute: typeof BlogAiChatbotsRoute
   BlogAiPhoneCallersRoute: typeof BlogAiPhoneCallersRoute
+  BlogAppDevelopmentRoute: typeof BlogAppDevelopmentRoute
   BlogColdEmailDashboardsRoute: typeof BlogColdEmailDashboardsRoute
   BlogContentCreationRoute: typeof BlogContentCreationRoute
   BlogWebDevelopmentRoute: typeof BlogWebDevelopmentRoute
@@ -521,6 +541,7 @@ interface BlogRouteChildren {
 const BlogRouteChildren: BlogRouteChildren = {
   BlogAiChatbotsRoute: BlogAiChatbotsRoute,
   BlogAiPhoneCallersRoute: BlogAiPhoneCallersRoute,
+  BlogAppDevelopmentRoute: BlogAppDevelopmentRoute,
   BlogColdEmailDashboardsRoute: BlogColdEmailDashboardsRoute,
   BlogContentCreationRoute: BlogContentCreationRoute,
   BlogWebDevelopmentRoute: BlogWebDevelopmentRoute,
