@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import BlogPage from "@/pages/BlogPage";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -12,5 +11,5 @@ export const Route = createFileRoute("/blog")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: BlogPage,
+  component: () => <Outlet />,
 });
