@@ -18,6 +18,7 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogAiChatbotsRouteImport } from './routes/blog/ai-chatbots'
 import { Route as BlogAiPhoneCallersRouteImport } from './routes/blog/ai-phone-callers'
 import { Route as BlogColdEmailDashboardsRouteImport } from './routes/blog/cold-email-dashboards'
@@ -77,6 +78,11 @@ const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const BlogAiChatbotsRoute = BlogAiChatbotsRouteImport.update({
   id: '/ai-chatbots',
@@ -175,11 +181,11 @@ export interface FileRoutesByFullPath {
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/faqs': typeof FaqsRoute
@@ -200,6 +206,7 @@ export interface FileRoutesByTo {
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -226,6 +233,7 @@ export interface FileRoutesById {
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -253,11 +261,11 @@ export interface FileRouteTypes {
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/blog'
     | '/case-studies'
     | '/cookie-policy'
     | '/faqs'
@@ -278,6 +286,7 @@ export interface FileRouteTypes {
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -303,6 +312,7 @@ export interface FileRouteTypes {
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -390,6 +400,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/blog/ai-chatbots': {
       id: '/blog/ai-chatbots'
@@ -498,6 +515,7 @@ interface BlogRouteChildren {
   BlogColdEmailDashboardsRoute: typeof BlogColdEmailDashboardsRoute
   BlogContentCreationRoute: typeof BlogContentCreationRoute
   BlogWebDevelopmentRoute: typeof BlogWebDevelopmentRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
@@ -506,6 +524,7 @@ const BlogRouteChildren: BlogRouteChildren = {
   BlogColdEmailDashboardsRoute: BlogColdEmailDashboardsRoute,
   BlogContentCreationRoute: BlogContentCreationRoute,
   BlogWebDevelopmentRoute: BlogWebDevelopmentRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
