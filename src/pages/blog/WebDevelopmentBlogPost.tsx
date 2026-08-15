@@ -258,7 +258,10 @@ const WebDevelopmentBlogPost = () => {
                 Our workflow prioritizes integration planning and maintainability from the beginning. This ensures that the systems we build can evolve alongside the business. We focus on technical foundations that support both the current objectives and future growth.
               </p>
               <p>
-                If you are also exploring automation, you might find our guides on <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots</Link> and <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI Phone Callers</Link> useful.
+                To explore our development capabilities further, visit our <Link to="/services/web-development" className="text-blue-400 hover:underline">Web Development service page</Link>.
+              </p>
+              <p>
+                If your business goals include mobile expansion, see our guide on <Link to="/blog/app-development" className="text-blue-400 hover:underline">App Development</Link>.
               </p>
 
               <h2 className="text-2xl md:text-3xl font-bold text-white pt-4">Conclusion</h2>

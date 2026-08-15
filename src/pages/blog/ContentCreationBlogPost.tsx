@@ -242,10 +242,13 @@ const ContentCreationBlogPost = () => {
                 At SamysAI, we treat content creation as part of a broader growth and operations system. We focus on building practical content systems that combine strategy, AI assisted production, and brand messaging.
               </p>
               <p>
-                Our approach integrates content with other digital systems, such as <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots</Link> and <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI Phone Callers</Link>, to ensure that communication remains consistent across all business touchpoints. We select technology based on actual business requirements rather than following trends.
+                Our approach integrates content with other digital systems, such as AI Chatbots and AI Phone Callers, to ensure that communication remains consistent across all business touchpoints.
               </p>
               <p>
-                If you are looking to improve your overall digital presence, you may also find our guide on <Link to="/blog/web-development" className="text-blue-400 hover:underline">Modern Web Development</Link> useful.
+                Learn more about our strategy on the <Link to="/services/content-creation" className="text-blue-400 hover:underline">Content Creation service page</Link>.
+              </p>
+              <p>
+                If you are looking to scale your outbound reach, explore our guide on <Link to="/blog/cold-email-dashboards" className="text-blue-400 hover:underline">Cold Email Dashboards</Link>.
               </p>
 
               <h2 className="text-2xl md:text-3xl font-bold text-white pt-4">Conclusion</h2>

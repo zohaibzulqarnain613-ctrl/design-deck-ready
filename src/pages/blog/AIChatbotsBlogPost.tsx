@@ -135,7 +135,7 @@ const AIChatbotsBlogPost = () => {
 
               <h3 className="text-xl font-bold text-white pt-2">User Message and Intent</h3>
               <p>
-                When a user sends a message, the system attempts to identify the "intent"—what the user is trying to achieve—and the "context" of the conversation.
+                When a user sends a message, the system attempts to identify the intent: what the user is trying to achieve and the context of the conversation.
               </p>
 
               <h3 className="text-xl font-bold text-white pt-2">AI Model and Business Knowledge</h3>
@@ -337,17 +337,19 @@ const AIChatbotsBlogPost = () => {
                   "Defining the chatbot's role and boundaries",
                   "Connecting relevant and approved information",
                   "Designing useful workflows and integrations",
-                  "Defining clear human handoff rules",
-                  "Testing the experience and improving it based on usage"
+                  "Monitoring and optimizing based on real interactions"
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
               <p>
-                If you are also considering voice-based automation, you may want to read our guide on <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI Phone Callers</Link> or explore our <Link to="/services/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbot services</Link>.
+                For more details on our chatbot solutions, see our <Link to="/services/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots service page</Link>.
+              </p>
+              <p>
+                If your business requires more advanced digital infrastructure, you might be interested in our guide to <Link to="/blog/web-development" className="text-blue-400 hover:underline">Modern Web Development</Link>.
               </p>
             </div>
           </div>
