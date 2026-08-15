@@ -22,6 +22,7 @@ export const ServiceParallaxContent: React.FC<ServiceParallaxContentProps> = ({ 
           imgUrl={item.imgUrl}
           subheading={item.subheading}
           heading={item.heading}
+          isFirst={index === 0}
         >
           <ExampleContent
             title={item.title}
@@ -40,13 +41,15 @@ interface TextParallaxContentProps {
   subheading: string;
   heading: string;
   children: React.ReactNode;
+  isFirst?: boolean;
 }
 
 const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
   imgUrl,
   subheading,
   heading,
-  children
+  children,
+  isFirst
 }) => {
   return (
     <div
@@ -58,7 +61,7 @@ const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
     >
       <div className="relative h-[150vh] w-full">
         <StickyImage imgUrl={imgUrl} />
-        <OverlayCopy heading={heading} subheading={subheading} />
+        <OverlayCopy heading={heading} subheading={subheading} isFirst={isFirst} />
       </div>
       {children}
     </div>
@@ -106,9 +109,10 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
 interface OverlayCopyProps {
   subheading: string;
   heading: string;
+  isFirst?: boolean;
 }
 
-const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
+const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading, isFirst }) => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -130,7 +134,11 @@ const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
       <p className="mb-2 text-center text-base sm:text-lg md:mb-4 md:text-2xl lg:text-3xl">
         {subheading}
       </p>
-      <p className="text-center text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-4xl leading-tight">{heading}</p>
+      {isFirst ? (
+        <h1 className="text-center text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-4xl leading-tight">{heading}</h1>
+      ) : (
+        <h2 className="text-center text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-4xl leading-tight">{heading}</h2>
+      )}
     </motion.div>
   );
 };
