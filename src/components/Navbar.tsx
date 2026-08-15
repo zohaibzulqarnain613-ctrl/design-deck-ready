@@ -187,7 +187,7 @@ const Navbar: React.FC = () => {
             {/* About Us */}
             <Link
               to="/about"
-              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
+              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:rounded-lg"
             >
               <span className="relative z-10">About Us</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>

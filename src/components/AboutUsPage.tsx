@@ -128,8 +128,8 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Vision & Values - Grid Layout */}
-      <section className="py-24 px-6 border-t border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+      <section className="py-20 px-6 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white tracking-tight">Our Vision</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
@@ -159,28 +159,58 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Why Choose SamysAI & Our Promise */}
-      <section className="py-24 px-6 border-t border-white/5 bg-[#050505]">
+      <section className="py-20 px-6 border-t border-white/5 bg-[#050505]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
           <div className="space-y-6">
             <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Why SamysAI</h2>
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Built around the problem, not the tool</h3>
-            <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
-              <li>• We define the business problem before choosing the technology.</li>
-              <li>• We choose practical solutions based on what the business actually needs.</li>
-              <li>• We design around how people will use the system in their daily work.</li>
-              <li>• We build with future changes and growth in mind.</li>
-              <li>• We connect technology where doing so creates genuine value.</li>
+            <ul className="space-y-5 text-gray-400 text-base leading-relaxed">
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We define the business problem before choosing the technology.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We choose practical solutions based on what the business actually needs.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We design around how people will use the system in their daily work.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We build with future changes and growth in mind.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We connect technology where doing so creates genuine value.</span>
+              </li>
             </ul>
           </div>
           <div className="space-y-6">
             <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em]">Our Promise</h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Clear communication and work you can rely on</h3>
-            <ul className="space-y-4 text-gray-400 text-base leading-relaxed">
-              <li>We explain what we are building, why, and what it will realistically do.</li>
-              <li>• We propose practical solutions and tell you when something is not worth building.</li>
-              <li>We implement carefully and test before anything goes live.</li>
-              <li>We deliver on what we agree, and raise it early when something changes.</li>
-              <li>We build systems that can evolve with the business instead of needing a rebuild.</li>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight md:max-w-[20ch]">Clear communication and work you can rely on</h3>
+            <ul className="space-y-5 text-gray-400 text-base leading-relaxed">
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We explain what we are building, why, and what it will realistically do.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We propose practical solutions and tell you when something is not worth building.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We implement carefully and test before anything goes live.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We deliver on what we agree, and raise it early when something changes.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We build systems that can evolve with the business instead of needing a rebuild.</span>
+              </li>
             </ul>
           </div>
         </div>
