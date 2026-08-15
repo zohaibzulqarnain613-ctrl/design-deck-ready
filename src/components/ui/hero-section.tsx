@@ -170,27 +170,26 @@ export function Component() {
               SamysAI
             </span>
             <span className="word" data-delay="200">
-              —
+              |
             </span>
             <span className="word" data-delay="400">
-              <b>AI</b>
+              AI
             </span>
             <span className="word" data-delay="600">
-              systems,
+              Systems,
             </span>
             <span className="word" data-delay="800">
-              digital
+              Digital
             </span>
             <span className="word" data-delay="1000">
-              products,
+              Products,
             </span>
             <span className="word" data-delay="1200">
-              growth
+              Growth
             </span>
             <span className="word" data-delay="1400">
-              infrastructure.
+              Infrastructure
             </span>
-
           </h2>
           <div
             className="mt-3 md:mt-4 mx-auto w-12 md:w-16 h-px opacity-30 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
@@ -203,12 +202,8 @@ export function Component() {
               SamysAI builds intelligent systems and digital products that help businesses operate, communicate, and grow more effectively.
             </p>
             <p className="word" data-delay="2000">
-              We combine AI and automation, web and app development, and growth infrastructure — AI phone callers, chatbots, digital products, cold email dashboards, and content systems — into one connected technology stack.
+              We combine AI and automation, digital development, and growth infrastructure to build connected systems across communication, operations, and growth.
             </p>
-            <p className="word" data-delay="2400">
-              Our focus is practical: build technology around the actual business problem, then make it reliable enough to run every day.
-            </p>
-
           </div>
         </div>
 
@@ -235,27 +230,23 @@ export function Component() {
               business
             </span>
             <span className="word" data-delay="5950">
-              problems
+              problems,
             </span>
             <span className="word" data-delay="6100">
-              —
-            </span>
-            <span className="word" data-delay="6250">
               designed
             </span>
-            <span className="word" data-delay="6400">
+            <span className="word" data-delay="6250">
               to
             </span>
-            <span className="word" data-delay="6550">
+            <span className="word" data-delay="6400">
               run
             </span>
-            <span className="word" data-delay="6700">
+            <span className="word" data-delay="6550">
               every
             </span>
-            <span className="word" data-delay="6850">
+            <span className="word" data-delay="6700">
               day.
             </span>
-
           </h2>
 
           <div
