@@ -351,18 +351,6 @@ const AIChatbotsBlogPost = () => {
               <p>
                 If your business requires more advanced digital infrastructure, you might be interested in our guide to <Link to="/blog/web-development" className="text-blue-400 hover:underline">Modern Web Development</Link>.
               </p>
-                  "Defining clear human handoff rules",
-                  "Testing the experience and improving it based on usage"
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p>
-                If you are also considering voice-based automation, you may want to read our guide on <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI Phone Callers</Link> or explore our <Link to="/services/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbot services</Link>.
-              </p>
             </div>
           </div>
 

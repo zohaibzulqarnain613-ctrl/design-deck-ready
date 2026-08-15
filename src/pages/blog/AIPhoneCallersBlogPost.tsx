@@ -343,21 +343,6 @@ const AIPhoneCallersBlogPost = () => {
               <p>
                 If you are also exploring other automation channels, you may find our guide on <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots</Link> useful.
               </p>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p>
-                It may not be the right solution when conversations are highly specialized, unpredictable, sensitive, or dependent on complex human judgment.
-              </p>
-              <p>
-                The best question is not: "Can AI make this call?" The better question is: "Should this part of the process be automated?"
-              </p>
-
-              <h2 className="text-2xl md:text-3xl font-bold text-white pt-4">How to Evaluate an AI Phone Caller</h2>
-              <p>
-                Before implementing a system, consider:
-              </p>
               <h3 className="text-xl font-bold text-white pt-2">Conversation Quality</h3>
               <p>Can the system understand callers accurately and respond naturally enough for the intended use case?</p>
               <h3 className="text-xl font-bold text-white pt-2">Workflow Reliability</h3>
