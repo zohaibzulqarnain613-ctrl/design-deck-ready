@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -85,19 +86,18 @@ const Blog7 = ({
             {description}
           </p>
           <Button variant="link" className="w-full sm:w-auto" asChild>
-            <a href={buttonUrl} target="_blank">
+            <Link to={buttonUrl}>
               {buttonText}
               <ArrowRight className="ml-2 size-4" />
-            </a>
+            </Link>
           </Button>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {posts.map((post) => (
             <Card key={post.id} className="grid grid-rows-[auto_auto_1fr_auto] rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/10">
               <div className="aspect-[16/9] w-full">
-                <a
-                  href={post.url}
-                  target="_blank"
+                <Link
+                  to={post.url}
                   className="transition-opacity duration-200 fade-in hover:opacity-70"
                 >
                   <img
@@ -105,27 +105,26 @@ const Blog7 = ({
                     alt={post.title}
                     className="h-full w-full object-cover object-center"
                   />
-                </a>
+                </Link>
               </div>
               <CardHeader>
                 <h3 className="text-lg font-semibold hover:underline md:text-xl">
-                  <a href={post.url} target="_blank">
+                  <Link to={post.url}>
                     {post.title}
-                  </a>
+                  </Link>
                 </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{post.summary}</p>
               </CardContent>
               <CardFooter>
-                <a
-                  href={post.url}
-                  target="_blank"
+                <Link
+                  to={post.url}
                   className="flex items-center text-foreground hover:underline"
                 >
                   Read more
                   <ArrowRight className="ml-2 size-4" />
-                </a>
+                </Link>
               </CardFooter>
             </Card>
           ))}
