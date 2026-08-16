@@ -232,18 +232,20 @@ export function SterlingGateKineticNavigation() {
         <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto overflow-y-auto overflow-x-hidden">
           {/* Close Button Inside Menu */}
           <button 
-            onClick={closeMenu}
-            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs"
+            onClick={() => {
+              if (!isAnimating) setIsMenuOpen(false);
+            }}
+            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs z-[101]"
           >
-            <div className="relative flex flex-col transition-transform duration-300">
+            <div className="relative flex flex-col transition-transform duration-300 pointer-events-none">
               <p className="h-6">Menu</p>
               <p className="h-6 text-blue-400">Close</p>
             </div>
             <div className="menu-button-icon absolute -right-6 top-0 text-white pointer-events-none">
               <svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
             </div>
-
           </button>
+
 
           {/* Abstract background shapes */}
           <div className="ambient-background-shapes absolute inset-0 pointer-events-none overflow-hidden opacity-20">
