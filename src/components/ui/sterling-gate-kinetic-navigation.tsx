@@ -33,51 +33,56 @@ export function SterlingGateKineticNavigation() {
       const menuItems = containerRef.current!.querySelectorAll(".menu-list-item[data-shape]");
       const shapesContainer = containerRef.current!.querySelector(".ambient-background-shapes");
       
-      menuItems.forEach((item) => {
-        const shapeIndex = item.getAttribute("data-shape");
-        const shape = shapesContainer ? shapesContainer.querySelector(`.bg-shape-${shapeIndex}`) : null;
+      const addEventListeners = () => {
+        const menuItems = containerRef.current?.querySelectorAll(".menu-list-item[data-shape]");
+        const shapesContainer = containerRef.current?.querySelector(".ambient-background-shapes");
         
-        if (!shape) return;
+        menuItems?.forEach((item) => {
+          const shapeIndex = item.getAttribute("data-shape");
+          const shape = shapesContainer ? shapesContainer.querySelector(`.bg-shape-${shapeIndex}`) : null;
+          
+          if (!shape) return;
 
-        const shapeEls = shape.querySelectorAll(".shape-element");
+          const shapeEls = shape.querySelectorAll(".shape-element");
 
-        const onEnter = () => {
-             if (shapesContainer) {
-                 shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
-             }
-             shape.classList.add("active");
-             
-             gsap.fromTo(shapeEls, 
-                { scale: 0.5, opacity: 0, rotation: -10 },
-                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.7)", overwrite: "auto" }
-             );
-        };
-        
-        const onLeave = () => {
-            gsap.to(shapeEls, {
-                scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in",
-                onComplete: () => shape.classList.remove("active"),
-                overwrite: "auto"
-            });
-        };
+          const onEnter = () => {
+               if (shapesContainer) {
+                   shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
+               }
+               shape.classList.add("active");
+               
+               gsap.fromTo(shapeEls, 
+                  { scale: 0.5, opacity: 0, rotation: -10 },
+                  { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.7)", overwrite: "auto" }
+               );
+          };
+          
+          const onLeave = () => {
+              gsap.to(shapeEls, {
+                  scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in",
+                  onComplete: () => shape.classList.remove("active"),
+                  overwrite: "auto"
+              });
+          };
 
-        item.addEventListener("mouseenter", onEnter);
-        item.addEventListener("mouseleave", onLeave);
-        
-        (item as any)._cleanup = () => {
-            item.removeEventListener("mouseenter", onEnter);
-            item.removeEventListener("mouseleave", onLeave);
-        };
-      });
+          item.addEventListener("mouseenter", onEnter);
+          item.addEventListener("mouseleave", onLeave);
+          
+          (item as any)._cleanup = () => {
+              item.removeEventListener("mouseenter", onEnter);
+              item.removeEventListener("mouseleave", onLeave);
+          };
+        });
+      };
+
+      // Set up listeners immediately and also when the menu opens
+      addEventListeners();
+      (containerRef.current as any)._refreshListeners = addEventListeners;
       
     }, containerRef);
 
     return () => {
         ctx.revert();
-        if (containerRef.current) {
-            const items = containerRef.current.querySelectorAll(".menu-list-item[data-shape]");
-            items.forEach((item: any) => item._cleanup && item._cleanup());
-        }
     };
   }, []);
 
