@@ -239,9 +239,10 @@ export function SterlingGateKineticNavigation() {
               <p className="h-6">Menu</p>
               <p className="h-6 text-blue-400">Close</p>
             </div>
-            <div className="menu-button-icon absolute -right-6 top-0 text-white">
+            <div className="menu-button-icon absolute -right-6 top-0 text-white pointer-events-none">
               <svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
             </div>
+
           </button>
 
           {/* Abstract background shapes */}
@@ -279,11 +280,11 @@ export function SterlingGateKineticNavigation() {
           <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6 pt-24 pb-12">
             {[
               { label: "About us", path: "/about", shape: "1" },
-              { label: "Our work", path: "/cases", shape: "2" },
               { label: "Services", path: "/#services", shape: "3" },
               { label: "Blog", path: "/blog", shape: "4" },
               { label: "Contact us", path: "#contact", shape: "5", isScroll: true }
             ].map((link, idx) => (
+
               <div key={idx} className="menu-list-item overflow-hidden" data-shape={link.shape}>
                 {link.isScroll ? (
                   <a
