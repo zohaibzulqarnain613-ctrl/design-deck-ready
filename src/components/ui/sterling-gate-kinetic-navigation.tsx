@@ -8,17 +8,18 @@ export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const toggleMenu = useCallback((e?: React.MouseEvent | MouseEvent) => {
+  const toggleMenu = (e?: React.MouseEvent | MouseEvent) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    setIsMenuOpen(prev => !prev);
-  }, []);
+    console.log("STERLING CLICK: Current state", isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
+  };
   
-  const closeMenu = useCallback(() => {
+  const closeMenu = () => {
     setIsMenuOpen(false);
-  }, []);
+  };
 
   // Initial Setup & Hover Effects
   useEffect(() => {
