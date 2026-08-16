@@ -122,7 +122,7 @@ const AIPhoneCallersBlogPost = () => {
                 An AI phone caller is an automated voice system designed to conduct conversations over the telephone.
               </p>
               <p>
-                Depending on how it is configured, an AI phone caller can:
+                Depending on how it is configured, an <Link to="/services/ai-phone-callers" className="text-blue-400 hover:underline">AI phone caller</Link> can:
               </p>
               <ul className="space-y-3 list-none pl-0">
                 {[

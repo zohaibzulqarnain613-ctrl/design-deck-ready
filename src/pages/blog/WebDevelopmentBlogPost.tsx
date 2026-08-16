@@ -258,7 +258,7 @@ const WebDevelopmentBlogPost = () => {
                 Our workflow prioritizes integration planning and maintainability from the beginning. This ensures that the systems we build can evolve alongside the business. We focus on technical foundations that support both the current objectives and future growth.
               </p>
               <p>
-                To explore our development capabilities further, visit our <Link to="/services/web-development" className="text-blue-400 hover:underline">Web Development service page</Link>.
+                To explore our development capabilities further, visit our <Link to="/services/web-development" className="text-blue-400 hover:underline">Web Development services</Link>.
               </p>
               <p>
                 If your business goals include mobile expansion, see our guide on <Link to="/blog/app-development" className="text-blue-400 hover:underline">App Development</Link>.

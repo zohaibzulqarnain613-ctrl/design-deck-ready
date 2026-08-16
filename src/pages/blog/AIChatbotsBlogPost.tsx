@@ -107,7 +107,7 @@ const AIChatbotsBlogPost = () => {
 
               <h2 className="text-2xl md:text-3xl font-bold text-white pt-4">What Are AI Chatbots?</h2>
               <p>
-                An AI chatbot is a software application designed to simulate human conversation through text or voice interactions. Unlike traditional systems, modern AI chatbots can interpret natural language and use business-specific information, instructions, and workflows depending on how they are designed.
+                An <Link to="/services/ai-chatbots" className="text-blue-400 hover:underline">AI chatbot</Link> is a software application designed to simulate human conversation through text or voice interactions. Unlike traditional systems, modern AI chatbots can interpret natural language and use business-specific information, instructions, and workflows depending on how they are designed.
               </p>
               
               <p>

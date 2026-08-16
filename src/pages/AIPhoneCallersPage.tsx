@@ -15,7 +15,7 @@ const AIPhoneCallersPage: React.FC = () => {
       title: "24/7 Availability",
       description: (
         <>
-          AI phone callers help businesses handle routine conversations, qualify inbound opportunities, answer common questions, and support appointment scheduling through automated voice interactions. These AI phone agents work around the clock, ensuring you never miss a lead. For more on voice automation, see our <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI phone callers guide</Link>.
+          AI phone callers help businesses handle routine conversations, qualify inbound opportunities, answer common questions, and support appointment scheduling through automated voice interactions. These AI phone agents work around the clock, ensuring you never miss a lead. For more on voice automation, see our <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI phone callers guide for business</Link>.
         </>
       ) as any
     },
