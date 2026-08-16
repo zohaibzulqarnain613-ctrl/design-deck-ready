@@ -1,43 +1,41 @@
 # Performance Optimization Plan (P0 & P1)
 
-This plan implements high-priority performance optimizations identified in the latest audit. It focuses on reducing the initial payload (currently ~22MB) and optimizing the initialization of heavy 3D assets, without changing the visual design.
+This plan implements high-priority performance optimizations (P0 and P1) to reduce page weight and main-thread blocking without changing the visual design.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> I will be using Unsplash's dynamic image API to serve optimized resolutions based on the device. No visual design changes will occur.
+> **Image Optimization Approach**: We will optimize image delivery based on the actual image source. Unsplash images will use Unsplash's dynamic image parameters to request the appropriate resolution and format for each device. Pexels and local assets will be optimized using their respective responsive delivery methods. Images will maintain their existing appearance, aspect ratio, and visual quality. No design, layout, or visual elements will be changed.
 
 ## Proposed Changes
 
 ### P0: Responsive Image Optimization
 Optimize approximately 12MB of high-resolution imagery by implementing `srcSet` and resolution capping.
 
-- **Global Image Optimization Helper**: Create a utility to generate optimized Unsplash/Pexels URLs with specific widths and formats (WebP).
-- **Hero Accordion**: Refactor `LandingAccordionItem` to use calculated `srcSet` based on active/inactive states.
-- **Team Section**: Update `CardFlip` to load smaller team portraits (300px-400px) instead of full-size originals.
-- **Service Pages**: Update `ServiceParallaxContent` to use responsive backgrounds.
-- **LCP Optimization**: Ensure above-the-fold images (first hero accordion item) are preloaded/eager-loaded without lazy-loading.
+- **Global Image Utility**: Create `src/utils/image-optimization.ts` to generate optimized URLs for Unsplash and Pexels with width, quality, and WebP parameters.
+- **Hero Accordion**: Update `LandingAccordionItem` to use the new utility, providing 400px/800px/1200px variants based on screen size.
+- **Team Section**: Update `CardFlip` in `AboutUsPage.tsx` to load portraits capped at 600px width (retina 2x).
+- **Service Pages**: Update `ServiceParallaxContent` in `src/components/ui/text-parallax-content-scroll.tsx` to use responsive backgrounds.
+- **LCP Preservation**: Ensure the first visible hero image is loaded with `fetchpriority="high"` and `loading="eager"`.
 
 ### P1: Spline Viewport-Based Loading
-Optimize the 4MB Spline runtime and heavy main-thread work by deferring initialization until the user is near the scene.
+Optimize the 4MB Spline runtime by deferring initialization until the user is near the scene.
 
-- **IntersectionObserver Implementation**: Replace the current timer-based (1s-3s) loading in `SplineScene.tsx` with a viewport trigger.
-- **Optimized Margin**: Use a `rootMargin` of `400px` to start loading Spline slightly before it enters the viewport.
-- **Placeholder Management**: Maintain the existing background gradient/blur placeholder to prevent layout shifts.
-- **Single Initialization**: Ensure the scene loads exactly once and persists to avoid flicker on scroll.
+- **Intersection Trigger**: Replace the timer-based loading in `SplineScene.tsx` with a robust `IntersectionObserver`.
+- **Pre-emptive Loading**: Use a `rootMargin` of `400px` to begin initialization before the user scrolls the scene into view.
+- **Placeholder Sync**: Match the existing background blur/gradient during loading to eliminate Layout Shift (CLS).
 
 ## Technical Details
 
-- **Responsive Breakpoints**:
-  - Mobile: 400px-600px
-  - Tablet: 768px-900px
-  - Desktop: 1200px-1440px
-- **Lazy Loading**: Native `loading="lazy"` and `decoding="async"` for all below-the-fold assets.
-- **IntersectionObserver**: Use React `useEffect` and `useRef` for robust intersection detection.
+- **Target Resolutions**:
+  - Mobile: 400px - 600px
+  - Tablet: 768px - 900px
+  - Desktop: 1200px - 1440px
+- **Format**: Force `format=webp` for all external Unsplash/Pexels requests.
+- **Safety**: Fallback to original URLs if optimization parameters are unsupported.
 
 ## Verification Plan
 
-- **Bundle Analysis**: Compare total transferred bytes before and after.
-- **LCP/FCP Check**: Verify that initial paint metrics remain stable or improve.
-- **Visual Regression**: Manual check of all 6 service pages, home, and about pages to ensure design parity.
-- **Console Audit**: Check for hydration or Spline initialization errors.
+- **Network Audit**: Verify mobile device downloads do not exceed 800px width for standard assets.
+- **Metric Tracking**: Run a production build and compare Total Transferred Bytes.
+- **Visual Check**: Cross-browser verification (Chrome/Safari/Mobile) to ensure zero design regressions.
