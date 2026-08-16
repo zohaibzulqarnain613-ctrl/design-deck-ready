@@ -16,16 +16,8 @@ export function SterlingGateKineticNavigation() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Create custom easing
-    try {
-      if (!gsap.parseEase("main")) {
-        CustomEase.create("main", "0.65, 0.01, 0.05, 0.99");
-        gsap.defaults({ ease: "main", duration: 0.7 });
-      }
-    } catch (e) {
-      console.warn("CustomEase failed to load, falling back to default.", e);
-      gsap.defaults({ ease: "power2.out", duration: 0.7 });
-    }
+    // Set defaults
+    gsap.defaults({ ease: "power2.out", duration: 0.7 });
 
     const ctx = gsap.context(() => {
       // Shape Hover
