@@ -245,7 +245,7 @@ const ContentCreationBlogPost = () => {
                 Our approach integrates content with other digital systems, such as AI Chatbots and AI Phone Callers, to ensure that communication remains consistent across all business touchpoints.
               </p>
               <p>
-                Learn more about our strategy on the <Link to="/services/content-creation" className="text-blue-400 hover:underline">Content Creation service page</Link>.
+                Learn more about our strategy on the <Link to="/services/content-creation" className="text-blue-400 hover:underline">Content Creation services</Link>.
               </p>
               <p>
                 If you are looking to scale your outbound reach, explore our guide on <Link to="/blog/cold-email-dashboards" className="text-blue-400 hover:underline">Cold Email Dashboards</Link>.
