@@ -140,7 +140,10 @@ export function SterlingGateKineticNavigation() {
     <div ref={containerRef} className="sterling-kinetic-nav">
       {/* Trigger Button */}
       <button 
-        onClick={toggleMenu}
+        onClick={(e) => {
+          console.log("Services clicked!");
+          toggleMenu(e);
+        }}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
         style={{ pointerEvents: 'auto' }}
       >
