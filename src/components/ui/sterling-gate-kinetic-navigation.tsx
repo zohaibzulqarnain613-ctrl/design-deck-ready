@@ -107,7 +107,9 @@ export function SterlingGateKineticNavigation() {
         if (isMenuOpen) {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
-            tl.set(overlay, { pointerEvents: "auto" }, "<")
+            tl.set(navWrap, { visibility: "visible" })
+              .set(menu, { xPercent: 0 }, "<")
+              .set(overlay, { pointerEvents: "auto" }, "<")
               .set(document.body, { overflow: "hidden" }, "<");
             
             if (menuButtonTexts) {
@@ -142,7 +144,8 @@ export function SterlingGateKineticNavigation() {
               tl.to(menuButtonIcon, { rotate: 0 }, "<");
             }
 
-            tl.set(document.body, { overflow: "unset" }, "<");
+            tl.set(document.body, { overflow: "unset" }, "<")
+              .set(navWrap, { visibility: "hidden" });
         }
 
       }, containerRef.current || undefined);
@@ -165,14 +168,9 @@ export function SterlingGateKineticNavigation() {
     <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log("Services clicked, setting true");
-          setIsMenuOpen(true);
-        }}
+        onClick={toggleMenu}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
-        style={{ pointerEvents: 'all' }}
+        style={{ pointerEvents: 'auto' }}
       >
         <span className="pointer-events-none">Services</span>
         <div className="relative w-4 h-4 flex flex-col justify-center gap-1 overflow-hidden pointer-events-none">
@@ -183,7 +181,7 @@ export function SterlingGateKineticNavigation() {
       </button>
 
       {/* Navigation Overlay Wrapper */}
-      <div className={`nav-overlay-wrapper fixed inset-0 ${isMenuOpen ? 'block' : 'hidden'} pointer-events-none`} data-nav={isMenuOpen ? "open" : "closed"} style={{ zIndex: 99999 }}>
+      <div className={`nav-overlay-wrapper fixed inset-0 pointer-events-none ${isMenuOpen ? 'visible' : 'invisible'}`} data-nav={isMenuOpen ? "open" : "closed"} style={{ zIndex: 99999 }}>
         {/* Semi-transparent Overlay Background */}
         <div 
             className="overlay absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-auto"
