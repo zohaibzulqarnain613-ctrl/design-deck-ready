@@ -1,3 +1,4 @@
+/* VERSION: 2 */
 import React, { useEffect, useRef, useState, useLayoutEffect, useCallback } from "react";
 import gsap from "gsap";
 import { Link } from "@tanstack/react-router";
