@@ -238,56 +238,61 @@ export function SterlingGateKineticNavigation() {
                 <X className="menu-button-icon w-5 h-5" />
             </button>
 
-            {/* Navigation Links List */}
+            {/* Navigation Links List - Specialized for Services */}
             <div className="flex-1 flex items-center justify-center px-8 md:px-24">
                 <nav className="w-full max-w-4xl">
-                    <ul className="flex flex-col gap-4 md:gap-6">
-                        <li className="menu-list-item overflow-hidden" data-shape="1">
-                            <Link 
-                                to="/" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Home
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="2">
-                            <Link 
-                                to="/about" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                About
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="3">
-                            <Link 
-                                to="/services/ai-phone-callers" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Services
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="4">
-                            <Link 
-                                to="/blog" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Blog
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="5">
-                            <Link 
-                                to="/case-studies" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Cases
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+                        {/* AI & Automation */}
+                        <div data-menu-fade>
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">AI & Automation</h3>
+                            <ul className="flex flex-col gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="1">
+                                    <Link to="/services/ai-phone-callers" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        AI Phone Callers
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="2">
+                                    <Link to="/services/ai-chatbots" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        AI Chatbots
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Digital Development */}
+                        <div data-menu-fade>
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">Digital Development</h3>
+                            <ul className="flex flex-col gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="3">
+                                    <Link to="/services/web-development" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Web Development
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="4">
+                                    <Link to="/services/app-development" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        App Development
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Growth & Operations */}
+                        <div data-menu-fade className="md:col-span-2">
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">Growth & Operations</h3>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="5">
+                                    <Link to="/services/cold-email-dashboard" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Email Dashboards
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="1">
+                                    <Link to="/services/content-creation" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Content Creation
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </div>
 
