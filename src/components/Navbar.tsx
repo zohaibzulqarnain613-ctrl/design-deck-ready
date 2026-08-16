@@ -292,7 +292,7 @@ const Navbar: React.FC = () => {
               onClick={handleContactClick}
               className="px-8 py-3 rounded-full bg-blue-600 text-white text-lg font-bold shadow-[0_0_20px_rgba(59,130,246,0.4)]"
             >
-              Get Started
+              Contact
             </a>
           </div>
         </div>
