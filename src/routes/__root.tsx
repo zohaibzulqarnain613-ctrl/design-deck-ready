@@ -157,7 +157,9 @@ function RootComponent() {
         <Navbar />
         <main className="w-full">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+          <Suspense fallback={<div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-gray-800" />}>
+            <Outlet />
+          </Suspense>
         </main>
         <Suspense fallback={null}>
           <ChatBot />
