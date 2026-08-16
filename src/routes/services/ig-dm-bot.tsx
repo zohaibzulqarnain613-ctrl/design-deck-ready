@@ -1,3 +1,4 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 const IGDMBotPage = React.lazy(() => import("@/pages/IGDMBotPage"));
 

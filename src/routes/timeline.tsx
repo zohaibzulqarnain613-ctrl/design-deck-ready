@@ -1,3 +1,4 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 const TimelinePage = React.lazy(() => import("@/pages/TimelinePage"));
 
