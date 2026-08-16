@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from '@tanstack/react-router';
-import { Cpu, ChevronDown, Menu, X } from 'lucide-react';
-import logo from '../assets/logo 2.jpeg';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { SterlingGateKineticNavigation } from './ui/sterling-gate-kinetic-navigation';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
