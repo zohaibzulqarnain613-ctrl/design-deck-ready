@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect, useCallback } from "react";
 import gsap from "gsap";
 import { Link } from "@tanstack/react-router";
 import { X } from "lucide-react";
@@ -8,17 +8,17 @@ export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const toggleMenu = (e?: React.MouseEvent) => {
+  const toggleMenu = useCallback((e?: React.MouseEvent | MouseEvent) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
     setIsMenuOpen(prev => !prev);
-  };
+  }, []);
   
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
+  }, []);
 
   // Initial Setup & Hover Effects
   useEffect(() => {
@@ -167,11 +167,9 @@ export function SterlingGateKineticNavigation() {
     <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsMenuOpen(true);
-        }}
+        onClick={toggleMenu}
+        onPointerDown={(e) => e.stopPropagation()}
+        onMouseDown={(e) => e.stopPropagation()}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
         style={{ pointerEvents: 'auto' }}
       >
