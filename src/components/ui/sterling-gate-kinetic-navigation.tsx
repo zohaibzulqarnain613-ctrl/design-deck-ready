@@ -176,11 +176,15 @@ export function SterlingGateKineticNavigation() {
     <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
-        onClick={toggleMenu}
-        className="group relative flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
+        onClick={(e) => {
+          console.log("Button clicked!");
+          toggleMenu();
+        }}
+        className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
+        style={{ pointerEvents: 'auto' }}
       >
-        <span>Services</span>
-        <div className="relative w-4 h-4 flex flex-col justify-center gap-1 overflow-hidden">
+        <span className="pointer-events-none">Services</span>
+        <div className="relative w-4 h-4 flex flex-col justify-center gap-1 overflow-hidden pointer-events-none">
           <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full translate-y-[2.5px] rotate-45' : 'w-4'}`}></span>
           <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-3 group-hover:w-4'}`}></span>
           <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full -translate-y-[2.5px] -rotate-45' : 'w-4'}`}></span>
