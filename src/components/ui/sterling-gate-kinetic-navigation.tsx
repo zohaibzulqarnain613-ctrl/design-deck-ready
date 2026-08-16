@@ -167,7 +167,10 @@ export function SterlingGateKineticNavigation() {
     <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
-        onClick={toggleMenu}
+        onClick={() => {
+          console.log("Services clicked");
+          setIsMenuOpen(true);
+        }}
         onPointerDown={(e) => e.stopPropagation()}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
         style={{ pointerEvents: 'auto' }}
