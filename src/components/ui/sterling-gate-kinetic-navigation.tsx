@@ -163,9 +163,9 @@ export function SterlingGateKineticNavigation() {
       >
         <span className="text-sm font-medium tracking-wider uppercase">Menu</span>
         <div className="relative w-5 h-5 flex flex-col justify-center gap-1.5 overflow-hidden">
-          <span className="w-full h-0.5 bg-white transform transition-transform group-hover:translate-x-1"></span>
-          <span className="w-full h-0.5 bg-white transform transition-transform delay-75 group-hover:translate-x-0.5"></span>
-          <span className="w-full h-0.5 bg-white transform transition-transform delay-150 group-hover:translate-x-0"></span>
+          <span className="w-full h-[2px] bg-white transform transition-transform group-hover:translate-x-1"></span>
+          <span className="w-full h-[2px] bg-white transform transition-transform delay-75 group-hover:translate-x-0.5"></span>
+          <span className="w-full h-[2px] bg-white transform transition-transform delay-150 group-hover:translate-x-0"></span>
         </div>
       </button>
 
