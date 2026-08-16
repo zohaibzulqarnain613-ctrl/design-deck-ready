@@ -7,10 +7,20 @@ import { Menu, X } from "lucide-react";
 export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    console.log("STERLING: isMenuOpen changed to", isMenuOpen);
-  }, [isMenuOpen]);
+  
+  const toggleMenu = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    console.log("STERLING: Toggling menu from", isMenuOpen);
+    setIsMenuOpen(prev => !prev);
+  };
+  
+  const closeMenu = () => {
+    console.log("STERLING: Closing menu");
+    setIsMenuOpen(false);
+  };
 
   // Initial Setup & Hover Effects
   useEffect(() => {
