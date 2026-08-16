@@ -110,8 +110,8 @@ export function SterlingGateKineticNavigation() {
               .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
               .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
               .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
-              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.1, duration: 0.45, ease: "power3.out" }, "<")
+              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05, duration: 0.5 }, "<+=0.2");
               
             if (fadeTargets.length) {
                 tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
@@ -120,14 +120,16 @@ export function SterlingGateKineticNavigation() {
         } else {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
-            tl.to(overlay, { autoAlpha: 0 })
+            tl.to(menuLinks, { yPercent: 100, rotate: -5, stagger: 0.02, duration: 0.3, ease: "power2.in" })
+              .to(overlay, { autoAlpha: 0, duration: 0.3 }, "<")
+              .to(bgPanels, { xPercent: 101, stagger: 0.05, duration: 0.4, ease: "power2.in" }, "<")
               .to(menu, { 
-                xPercent: 120,
-                duration: 0.6,
-                ease: "power3.in"
+                xPercent: 101,
+                duration: 0.4,
+                ease: "power2.in"
               }, "<")
-              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.4 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<")
+              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.3 }, "<")
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.3 }, "<")
               .set(navWrap, { display: "none" });
             document.body.style.overflow = "unset";
         }
@@ -195,7 +197,7 @@ export function SterlingGateKineticNavigation() {
       {/* Navigation Overlay Wrapper */}
       <div 
         className="nav-overlay-wrapper fixed inset-0 pointer-events-none hidden" 
-        style={{ zIndex: 99999 }}
+        style={{ zIndex: 99999, overflow: 'hidden' }}
       >
         {/* Semi-transparent Backdrop Overlay */}
         <div 
@@ -210,7 +212,7 @@ export function SterlingGateKineticNavigation() {
         </div>
 
         {/* Menu Content Container */}
-        <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto">
+        <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto overflow-y-auto overflow-x-hidden">
           {/* Close Button Inside Menu */}
           <button 
             onClick={closeMenu}
@@ -248,7 +250,7 @@ export function SterlingGateKineticNavigation() {
           </div>
 
           {/* Link List */}
-          <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6">
+          <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6 pt-24 pb-12">
             {[
               { label: "Home", path: "/", shape: "1" },
               { label: "About", path: "/about", shape: "2" },
@@ -279,7 +281,7 @@ export function SterlingGateKineticNavigation() {
           </nav>
 
           {/* Footer content inside menu */}
-          <div className="mt-12 md:mt-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/10 pt-8" data-menu-fade>
+          <div className="mt-auto mb-8 md:mt-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/10 pt-8" data-menu-fade>
             <div>
               <p className="text-gray-500 text-xs uppercase tracking-widest mb-2">Socials</p>
               <div className="flex gap-6 text-sm font-bold text-white uppercase italic">
