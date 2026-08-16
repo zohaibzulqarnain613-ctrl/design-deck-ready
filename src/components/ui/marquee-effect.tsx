@@ -20,7 +20,7 @@ type MarqueeAnimationProps = {
   baseVelocity: number;
 };
 
-function MarqueeAnimation({
+const MarqueeAnimation = React.memo(({
   children,
   className,
   direction = "left",
@@ -70,6 +70,6 @@ function MarqueeAnimation({
       </motion.div>
     </div>
   );
-}
+});
 
 export { MarqueeAnimation };

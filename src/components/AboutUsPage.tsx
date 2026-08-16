@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Component as HeroSection } from './ui/hero-section';
@@ -328,4 +328,4 @@ const AboutUsPage: React.FC = () => {
   );
 };
 
-export default AboutUsPage;
+export default memo(AboutUsPage);
