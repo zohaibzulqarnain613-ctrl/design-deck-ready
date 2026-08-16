@@ -232,17 +232,20 @@ export function SterlingGateKineticNavigation() {
         <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto overflow-y-auto overflow-x-hidden">
           {/* Close Button Inside Menu */}
           <button 
-            onClick={closeMenu}
-            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs"
+            onClick={() => {
+              if (!isAnimating) setIsMenuOpen(false);
+            }}
+            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs z-[101]"
           >
-            <div className="relative flex flex-col transition-transform duration-300">
+            <div className="relative flex flex-col transition-transform duration-300 pointer-events-none">
               <p className="h-6">Menu</p>
               <p className="h-6 text-blue-400">Close</p>
             </div>
-            <div className="menu-button-icon absolute -right-6 top-0 text-white">
+            <div className="menu-button-icon absolute -right-6 top-0 text-white pointer-events-none">
               <svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
             </div>
           </button>
+
 
           {/* Abstract background shapes */}
           <div className="ambient-background-shapes absolute inset-0 pointer-events-none overflow-hidden opacity-20">
@@ -279,11 +282,11 @@ export function SterlingGateKineticNavigation() {
           <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6 pt-24 pb-12">
             {[
               { label: "About us", path: "/about", shape: "1" },
-              { label: "Our work", path: "/cases", shape: "2" },
               { label: "Services", path: "/#services", shape: "3" },
               { label: "Blog", path: "/blog", shape: "4" },
               { label: "Contact us", path: "#contact", shape: "5", isScroll: true }
             ].map((link, idx) => (
+
               <div key={idx} className="menu-list-item overflow-hidden" data-shape={link.shape}>
                 {link.isScroll ? (
                   <a
