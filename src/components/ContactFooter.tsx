@@ -342,11 +342,13 @@ const ContactFooter = () => {
           <div>
             <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">Services</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">AI Phone Callers</Link></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">AI Chatbots</Link></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Web Development</Link></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">App Development</Link></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Content Creation</Link></li>
+              <li><Link to="/services/ai-phone-callers" preload="intent" className="hover:text-blue-400 transition-colors">AI Phone Callers</Link></li>
+              <li><Link to="/services/ai-chatbots" preload="intent" className="hover:text-blue-400 transition-colors">AI Chatbots</Link></li>
+              <li><Link to="/services/web-development" preload="intent" className="hover:text-blue-400 transition-colors">Web Development</Link></li>
+              <li><Link to="/services/app-development" preload="intent" className="hover:text-blue-400 transition-colors">App Development</Link></li>
+              <li><Link to="/services/cold-email-dashboard" preload="intent" className="hover:text-blue-400 transition-colors">Cold Email Dashboards</Link></li>
+              <li><Link to="/services/content-creation" preload="intent" className="hover:text-blue-400 transition-colors">Content Creation</Link></li>
+
             </ul>
           </div>
           <div>
