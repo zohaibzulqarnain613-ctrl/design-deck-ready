@@ -354,8 +354,8 @@ const ContactFooter = () => {
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
               <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           <div className="space-y-4">
