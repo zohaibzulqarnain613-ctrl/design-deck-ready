@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 // We will use standard GSAP eases to avoid CustomEase registration issues in the preview environment
 export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true); // Start open to test visibility
   
   const toggleMenu = useCallback((e?: React.MouseEvent | MouseEvent) => {
     if (e) {
