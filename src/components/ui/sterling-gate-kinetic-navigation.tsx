@@ -103,10 +103,16 @@ export function SterlingGateKineticNavigation() {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
             tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<")
-              .fromTo(menuButtonTexts, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
-              .fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315 }, "<")
-              .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+              .set(menu, { xPercent: 0 }, "<");
+            
+            if (menuButtonTexts) {
+              tl.fromTo(menuButtonTexts, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 }, "<");
+            }
+            if (menuButtonIcon) {
+              tl.fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315 }, "<");
+            }
+              
+            tl.fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
               .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
               .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
               
@@ -118,10 +124,16 @@ export function SterlingGateKineticNavigation() {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
             tl.to(overlay, { autoAlpha: 0 })
-              .to(menu, { xPercent: 120 }, "<")
-              .to(menuButtonTexts, { yPercent: 0 }, "<")
-              .to(menuButtonIcon, { rotate: 0 }, "<")
-              .set(navWrap, { display: "none" });
+              .to(menu, { xPercent: 120 }, "<");
+            
+            if (menuButtonTexts) {
+              tl.to(menuButtonTexts, { yPercent: 0 }, "<");
+            }
+            if (menuButtonIcon) {
+              tl.to(menuButtonIcon, { rotate: 0 }, "<");
+            }
+
+            tl.set(navWrap, { display: "none" });
         }
 
       }, containerRef);
