@@ -1,47 +1,47 @@
-# AI Phone Callers Service Page Refinement
+# Navigation Performance and Page Load Optimization Plan
 
-Refine the /services/ai-phone-callers page with professional messaging, optimized SEO, and structured data while preserving the existing parallax visual design.
+Implement route-level code splitting, asset prioritization, and intelligent prefetching to ensure fast navigation while preserving the existing design.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> - I will use `https://samysai.com` as the base for canonical URLs.
-> - The existing "ServiceParallaxContent" component will be preserved for the core feature sections.
-> - New content (Use Cases, How It Works, Handoff) will be added as clean, semantic sections below or integrated into the existing flow to avoid layout disruption.
+> This plan uses route-level lazy loading which may cause a brief flash of a loading state (skeleton) during the very first transition to a new page while the code is downloaded. Subsequent transitions will be immediate.
 
-- [ ] Confirm `https://samysai.com` is the correct production domain.
-- [ ] Approve the addition of educational sections (How It Works, Use Cases) which might add scroll depth to the page.
+- **Design Preservation**: All Spline 3D scenes, parallax effects, and animations will be kept.
+- **Loading Experience**: We will use minimal skeletons only where necessary to prevent layout shifts.
 
 ## Proposed Changes
 
-### SEO and Metadata
-- Update `src/routes/services/ai-phone-callers.tsx` with:
-    - SEO Title: AI Phone Callers for Business | SamysAI
-    - Meta Description: Explore AI phone callers for business communication, lead qualification, appointment scheduling, routine calls, and voice automation.
-    - Canonical URL: `https://samysai.com/services/ai-phone-callers`
-    - Full Open Graph and Twitter metadata.
-    - BreadcrumbList JSON-LD (Home > Services > AI Phone Callers).
-    - Service JSON-LD.
+### 1. Route-Level Code Splitting
+- Convert all content routes to use lazy loading for their page components.
+- Move heavy page-specific imports from the route definition files to the components themselves or use dynamic `lazy()` imports.
 
-### Page Content Refinement
-- Update `src/pages/AIPhoneCallersPage.tsx`:
-    - **Hero Integration**: Add a dedicated Hero component at the top (if missing or inadequate) matching the requested H1 and copy.
-    - **Feature Refinement**: Update the `parallaxItems` array with the new eyebrows, headings, and descriptions (24/7 Availability, Natural Conversations, Call Analytics).
-    - **Educational Sections**: Add semantic HTML sections for:
-        - "What Can AI Phone Callers Handle?" (Use cases).
-        - "How AI Phone Callers Work" (Step-by-step).
-        - "AI That Works With Your Team" (Human handoff).
-        - "Connect Voice Automation to Your Workflow" (Integrations).
-    - **Internal Linking**: Natural links to `/services/ai-chatbots`, `/services/web-development`, and `/blog/ai-phone-callers`.
+### 2. Navigation & Prefetching
+- Update `Navbar.tsx` to use TanStack Router's `preload` capabilities.
+- Implement `preload: 'intent'` for all main navigation links (preloads when user hovers).
 
-### Technical Compliance
-- Remove all em-dashes and en-dashes from the new copy.
-- Ensure exactly one H1 exists.
-- Verify accessibility (alt text, heading hierarchy).
-- Verify responsive integrity across mobile and desktop.
+### 3. Global Component Optimization
+- **ChatBot**: Defer initialization until the main thread is idle or after initial page render to prevent blocking the main bundle.
+- **Spline Scenes**: Further optimize `SplineScene.tsx` to ensure it never blocks the primary navigation transition.
+
+### 4. Image & Asset Priority
+- Implement `loading="lazy"` for all below-the-fold images in `AboutUsPage.tsx` and service pages.
+- Ensure critical hero images are loaded with higher priority.
 
 ## Technical Details
-- Component: `AIPhoneCallersPage` in `src/pages/AIPhoneCallersPage.tsx`.
-- Layout: `ServiceParallaxContent` will remain the centerpiece.
-- Routing: `@tanstack/react-router` for all internal links.
-- Styling: Tailwind CSS v4.
+
+### Route Optimization
+- Modify files in `src/routes/` to use lazy imports for components in `src/pages/` and `src/components/`.
+- This reduces the `main.js` bundle size significantly as each page gets its own small JS chunk.
+
+### Prefetching Strategy
+- Navbar links will be updated: `<Link to="/about" preload="intent">`.
+- This fetches the JS chunk for the next page as soon as the user hovers over the link, making the actual click feel instantaneous.
+
+### Deferred ChatBot
+- Wrap the `ChatBot` component in `src/routes/__root.tsx` with a `Suspense` boundary and potentially a custom `Deferred` wrapper to ensure it doesn't execute its logic during the critical initial render path.
+
+## Performance Verification
+- Measure bundle size reduction.
+- Verify "instant" feel of navigation in the preview.
+- Ensure no broken animations or parallax effects.
