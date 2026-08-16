@@ -17,6 +17,10 @@ export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    console.log("STERLING: isMenuOpen changed to", isMenuOpen);
+  }, [isMenuOpen]);
+
   // Initial Setup & Hover Effects
   useEffect(() => {
     if (!containerRef.current) return;
