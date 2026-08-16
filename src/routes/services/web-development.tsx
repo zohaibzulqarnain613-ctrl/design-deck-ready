@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import WebDevelopmentPage from "@/pages/WebDevelopmentPage";
+const WebDevelopmentPage = React.lazy(() => import("@/pages/WebDevelopmentPage"));
 
 const TITLE = "Web Development Services for Business | SamysAI";
 const DESCRIPTION =

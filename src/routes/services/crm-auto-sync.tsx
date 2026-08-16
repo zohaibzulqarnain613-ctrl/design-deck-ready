@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import CRMAutoSyncPage from "@/pages/CRMAutoSyncPage";
+const CRMAutoSyncPage = React.lazy(() => import("@/pages/CRMAutoSyncPage"));
 
 export const Route = createFileRoute("/services/crm-auto-sync")({
   head: () => ({

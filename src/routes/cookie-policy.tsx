@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import CookiePolicyPage from "@/pages/CookiePolicyPage";
+const CookiePolicyPage = React.lazy(() => import("@/pages/CookiePolicyPage"));
 
 export const Route = createFileRoute("/cookie-policy")({
   head: () => ({
