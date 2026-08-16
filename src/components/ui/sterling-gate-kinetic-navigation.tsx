@@ -103,17 +103,21 @@ export function SterlingGateKineticNavigation() {
       });
       
       if (isMenuOpen) {
+          // OPEN
           if (navWrap) navWrap.setAttribute("data-nav", "open");
           
           tl.set(navWrap, { display: "block" })
             .set(menu, { xPercent: 0 }, "<")
+            // Animate Button Text Swapping if it exists
             .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
             .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
+            
             .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
             .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
             .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
             
           if (fadeTargets.length) {
+              // Keep clearProps: "all" for blog entry fix
               tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
           }
           document.body.style.overflow = "hidden";
