@@ -83,63 +83,64 @@ export function SterlingGateKineticNavigation() {
 
   // Menu Open/Close Animation Effect
   useEffect(() => {
-      if (!containerRef.current) return;
+    if (!containerRef.current) return;
+    
+    const ctx = gsap.context(() => {
+      const navWrap = containerRef.current!.querySelector(".nav-overlay-wrapper");
+      const menu = containerRef.current!.querySelector(".menu-content");
+      const overlay = containerRef.current!.querySelector(".overlay");
+      const bgPanels = containerRef.current!.querySelectorAll(".backdrop-layer");
+      const menuLinks = containerRef.current!.querySelectorAll(".nav-link");
+      const fadeTargets = containerRef.current!.querySelectorAll("[data-menu-fade]");
       
-      const ctx = gsap.context(() => {
-        const navWrap = containerRef.current!.querySelector(".nav-overlay-wrapper");
-        const menu = containerRef.current!.querySelector(".menu-content");
-        const overlay = containerRef.current!.querySelector(".overlay");
-        const bgPanels = containerRef.current!.querySelectorAll(".backdrop-layer");
-        const menuLinks = containerRef.current!.querySelectorAll(".nav-link");
-        const fadeTargets = containerRef.current!.querySelectorAll("[data-menu-fade]");
-        
-        const menuButton = containerRef.current!.querySelector(".nav-close-btn");
-        const menuButtonTexts = menuButton?.querySelectorAll("p");
-        const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
+      const menuButton = containerRef.current!.querySelector(".nav-close-btn");
+      const menuButtonTexts = menuButton?.querySelectorAll("p");
+      const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
-        const tl = gsap.timeline({
-          onStart: () => setIsAnimating(true),
-          onComplete: () => setIsAnimating(false)
-        });
-        
-        if (isMenuOpen) {
-            if (navWrap) navWrap.setAttribute("data-nav", "open");
+      const tl = gsap.timeline({
+        onStart: () => setIsAnimating(true),
+        onComplete: () => setIsAnimating(false)
+      });
+      
+      if (isMenuOpen) {
+          // OPEN
+          if (navWrap) navWrap.setAttribute("data-nav", "open");
+          
+          tl.set(navWrap, { display: "block" })
+            .set(menu, { xPercent: 0 }, "<")
+            // Animate Button Text Swapping if it exists
+            .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
+            .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
             
-            tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<")
-              .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
-              .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
-              .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.1, duration: 0.45, ease: "power3.out" }, "<")
-              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05, duration: 0.5 }, "<+=0.2");
-              
-            if (fadeTargets.length) {
-                tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
-            }
-            document.body.style.overflow = "hidden";
-        } else {
-            if (navWrap) navWrap.setAttribute("data-nav", "closed");
+            .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+            .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
+            .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+            
+          if (fadeTargets.length) {
+              // Keep clearProps: "all" for blog entry fix
+              tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
+          }
+          document.body.style.overflow = "hidden";
+      } else {
+          // CLOSE
+          if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
-            tl.to(menuLinks, { yPercent: 100, rotate: -5, stagger: 0.02, duration: 0.3, ease: "power2.in" })
-              .to(overlay, { autoAlpha: 0, duration: 0.3 }, "<")
-              .to(bgPanels, { xPercent: 101, stagger: 0.05, duration: 0.4, ease: "power2.in" }, "<")
-              .to(menu, { 
-                xPercent: 101,
-                duration: 0.4,
-                ease: "power2.in"
-              }, "<")
-              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.3 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0, duration: 0.3 }, "<")
-              .set(navWrap, { display: "none" });
-            document.body.style.overflow = "unset";
-        }
+          tl.to(overlay, { autoAlpha: 0 })
+            .to(menu, { xPercent: 120 }, "<")
+            // Animate Button Text and Icon Back
+            .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
+            .to(menuButtonIcon || [], { rotate: 0 }, "<")
 
-      }, containerRef);
-      
-      return () => {
-        ctx.revert();
-        document.body.style.overflow = "unset";
-      };
+            .set(navWrap, { display: "none" });
+          document.body.style.overflow = "unset";
+      }
+
+    }, containerRef);
+    
+    return () => {
+      ctx.revert();
+      document.body.style.overflow = "unset";
+    };
   }, [isMenuOpen]);
 
   useEffect(() => {
