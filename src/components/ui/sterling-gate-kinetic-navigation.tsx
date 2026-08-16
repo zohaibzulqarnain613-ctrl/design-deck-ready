@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { CustomEase } from "gsap/CustomEase";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
