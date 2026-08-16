@@ -189,9 +189,46 @@ const Navbar: React.FC = () => {
               About
             </Link>
 
-            {/* Kinetic Menu Trigger for Services */}
-            <div className="relative">
-              <SterlingGateKineticNavigation />
+            {/* Dropdown Menu for Services */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button
+                className={`flex items-center space-x-1 text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                  location.pathname.startsWith('/services') ? 'text-blue-400' : 'text-gray-300'
+                }`}
+              >
+                <span>Services</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Services Dropdown */}
+              <div className={`absolute top-full left-0 mt-2 w-64 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-top-left ${
+                isServicesOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+              }`}>
+                <div className="p-4 space-y-4">
+                  {serviceCategories.map((category) => (
+                    <div key={category.label} className="space-y-2">
+                      <div className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-2">
+                        {category.label}
+                      </div>
+                      <div className="space-y-1">
+                        {category.items.map((item) => (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className="block px-2 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <Link
@@ -202,20 +239,12 @@ const Navbar: React.FC = () => {
             >
               Blog
             </Link>
-            <Link
-              to="/case-studies"
-              className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
-                location.pathname === '/case-studies' ? 'text-blue-400' : 'text-gray-300'
-              }`}
-            >
-              Cases
-            </Link>
             <a
               href="#contact"
               onClick={handleContactClick}
               className="px-5 py-2 rounded-full bg-blue-600/20 border border-blue-500/50 text-blue-400 text-sm font-bold hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
             >
-              Let's Talk
+              Contact
             </a>
           </div>
 
