@@ -109,7 +109,8 @@ export function SterlingGateKineticNavigation() {
             
             tl.set(navWrap, { display: "block" })
               .set(menu, { xPercent: 0 }, "<")
-              .set(overlay, { pointerEvents: "auto" }, "<");
+              .set(overlay, { pointerEvents: "auto" }, "<")
+              .set(document.body, { overflow: "hidden" }, "<");
             
             if (menuButtonTexts) {
               tl.fromTo(menuButtonTexts, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 }, "<");
