@@ -15,7 +15,7 @@ const AIChatbotsPage: React.FC = () => {
       title: "24/7 Customer Service",
       description: (
         <>
-          Deploy intelligent AI chatbots that handle customer inquiries instantly. These conversational AI systems support customer service by providing immediate responses to common questions, helping businesses manage volume and maintain communication around the clock. Learn more in our <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI chatbots guide</Link>.
+          Deploy intelligent AI chatbots that handle customer inquiries instantly. These conversational AI systems support customer service by providing immediate responses to common questions, helping businesses manage volume and maintain communication around the clock. Learn more in our <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI chatbots business guide</Link>.
         </>
       ) as any
     },

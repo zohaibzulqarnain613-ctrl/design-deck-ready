@@ -161,7 +161,7 @@ const ColdEmailDashboardPage: React.FC = () => {
           <div className="text-center pt-12">
             <h2 className="text-3xl font-bold text-white mb-6">How SamysAI Approaches Outreach Infrastructure</h2>
             <p className="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed mb-12">
-              We approach cold email as a combination of technical infrastructure, deliverability, data quality, and sales workflow integration. The objective is to create a structured and maintainable system rather than simply increase email volume. Learn more in our <Link to="/blog/cold-email-dashboards" className="text-blue-400 hover:text-blue-300 transition-colors">cold email dashboard guide</Link>.
+              We approach cold email as a combination of technical infrastructure, deliverability, data quality, and sales workflow integration. The objective is to create a structured and maintainable system rather than simply increase email volume. Learn more in our <Link to="/blog/cold-email-dashboards" className="text-blue-400 hover:text-blue-300 transition-colors">cold email outreach dashboard guide</Link>.
             </p>
             
             <div className="space-y-6">

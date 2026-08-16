@@ -15,7 +15,7 @@ const WebDevelopmentPage: React.FC = () => {
       title: "User-Centric Design",
       description: (
         <>
-          We design clear, accessible interfaces that help visitors understand your offer and take the next step. Layouts, navigation, and content structure are planned around how people actually use your site, then implemented with responsive design across mobile, tablet, and desktop screens. Read our practical <Link to="/blog/web-development" className="text-blue-400 hover:underline">guide to modern web development</Link>.
+          We design clear, accessible interfaces that help visitors understand your offer and take the next step. Layouts, navigation, and content structure are planned around how people actually use your site, then implemented with responsive design across mobile, tablet, and desktop screens. Read our practical <Link to="/blog/web-development" className="text-blue-400 hover:underline">guide to modern web development for business</Link>.
         </>
       ) as any
     },

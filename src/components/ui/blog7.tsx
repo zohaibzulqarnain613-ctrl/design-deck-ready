@@ -123,7 +123,7 @@ const Blog7 = ({
                   to={post.url}
                   className="flex items-center text-foreground hover:underline"
                 >
-                  Read more
+                  Read the full article
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </CardFooter>

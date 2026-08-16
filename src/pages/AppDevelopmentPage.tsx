@@ -124,7 +124,7 @@ const AppDevelopmentPage: React.FC = () => {
                 Scalability is about more than just handling user traffic; it is about maintainable growth. Our modular architecture and reusable components allow you to introduce new features without rewriting your entire application. By using scalable APIs and clean cloud infrastructure, we ensure your app can evolve alongside your business.
               </p>
               <p className="text-lg leading-relaxed">
-                We avoid unnecessary complexity by matching technical architecture to your actual requirements. This approach ensures your mobile application remains manageable and cost-effective as it grows, as detailed in our <Link to="/blog/app-development" className="text-blue-400 hover:underline">app development guide</Link>.
+                We avoid unnecessary complexity by matching technical architecture to your actual requirements. This approach ensures your mobile application remains manageable and cost-effective as it grows, as detailed in our <Link to="/blog/app-development" className="text-blue-400 hover:underline">app development business guide</Link>.
               </p>
             </div>
           </section>
