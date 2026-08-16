@@ -1,6 +1,7 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-const PrivacyPolicyPage = React.lazy(() => import("@/pages/PrivacyPolicyPage"));
+import { lazy } from "@tanstack/react-router";
+const PrivacyPolicyPage = lazy(() => import("@/pages/PrivacyPolicyPage"));
 
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({

@@ -1,6 +1,7 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-const AppDevelopmentPage = React.lazy(() => import("@/pages/AppDevelopmentPage"));
+import { lazy } from "@tanstack/react-router";
+const AppDevelopmentPage = lazy(() => import("@/pages/AppDevelopmentPage"));
 
 export const Route = createFileRoute("/services/app-development")({
   head: () => ({
