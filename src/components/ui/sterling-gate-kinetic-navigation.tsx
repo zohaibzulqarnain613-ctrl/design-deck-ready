@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 
 // We will use standard GSAP eases to avoid CustomEase registration issues in the preview environment
 export function SterlingGateKineticNavigation() {
@@ -78,7 +78,7 @@ export function SterlingGateKineticNavigation() {
       addEventListeners();
       (containerRef.current as any)._refreshListeners = addEventListeners;
       
-    }, containerRef);
+    }, containerRef.current || undefined);
 
     return () => {
         ctx.revert();
@@ -147,7 +147,7 @@ export function SterlingGateKineticNavigation() {
               .set(navWrap, { display: "none" });
         }
 
-      }, containerRef);
+      }, containerRef.current || undefined);
       
       return () => ctx.revert();
   }, [isMenuOpen]);
