@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 // We will use standard GSAP eases to avoid CustomEase registration issues in the preview environment
 export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(true); // Start open to test visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const toggleMenu = useCallback((e?: React.MouseEvent | MouseEvent) => {
     if (e) {
@@ -185,7 +185,7 @@ export function SterlingGateKineticNavigation() {
       </button>
 
       {/* Navigation Overlay Wrapper */}
-      <div className="nav-overlay-wrapper fixed inset-0 hidden pointer-events-none" data-nav="closed" style={{ zIndex: 99999 }}>
+      <div className={`nav-overlay-wrapper fixed inset-0 ${isMenuOpen ? 'block' : 'hidden'} pointer-events-none`} data-nav={isMenuOpen ? "open" : "closed"} style={{ zIndex: 99999 }}>
         {/* Semi-transparent Overlay Background */}
         <div 
             className="overlay absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-auto"
