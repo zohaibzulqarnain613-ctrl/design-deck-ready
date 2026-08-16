@@ -55,7 +55,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
         key={item.imageUrl}
         alt={item.title}
         loading={index === 0 ? "eager" : "lazy"}
-        fetchpriority={index === 0 ? "high" : "auto"}
+        fetchPriority={index === 0 ? "high" : "auto"}
         decoding={index === 0 ? "sync" : "async"}
         className="absolute inset-0 w-full h-full object-cover"
         onError={(e) => { 
