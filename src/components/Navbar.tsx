@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from '@tanstack/react-router';
-import { Cpu, ChevronDown, Menu, X } from 'lucide-react';
-import logo from '../assets/logo 2.jpeg';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { SterlingGateKineticNavigation } from './ui/sterling-gate-kinetic-navigation';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -170,192 +170,19 @@ const Navbar: React.FC = () => {
             </span>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Kinetic Menu Trigger (Desktop & Mobile replacement) */}
+          <div className="flex items-center">
+            <SterlingGateKineticNavigation />
+          </div>
 
-          {/* Desktop Navigation Links */}
-          <div className={`hidden lg:flex items-center space-x-6 xl:space-x-8 transition-all duration-700 ease-out delay-200 ${
-            isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-          }`}>
-            {/* Home */}
-            <Link
-              to="/"
-              preload={isMobile ? false : "intent"}
-              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
-            >
-              <span className="relative z-10">Home</span>
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>
-              <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </Link>
-
-            {/* About Us */}
-            <Link
-              to="/about"
-              preload={isMobile ? false : "intent"}
-              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:rounded-lg"
-            >
-              <span className="relative z-10">About Us</span>
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>
-              <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </Link>
-
-            {/* Blog */}
-            <Link
-              to="/blog"
-              preload={isMobile ? false : "intent"}
-              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
-            >
-              <span className="relative z-10">Blog</span>
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>
-              <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </Link>
-
-            {/* Services Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button className="relative flex items-center space-x-1 text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group">
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>
-                <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-                <span className="relative z-10">Services</span>
-                <ChevronDown className={`relative z-10 w-4 h-4 transition-transform duration-300 ${
-                  isServicesOpen ? 'rotate-180' : ''
-                }`} />
-              </button>
-
-              {/* Dropdown Menu */}
-              <div className={`absolute top-full left-0 mt-2 w-56 bg-black/80 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl transition-all duration-500 origin-top ${
-                isServicesOpen 
-                  ? 'opacity-100 scale-100 translate-y-0 rotate-0' 
-                  : 'opacity-0 scale-95 -translate-y-4 rotate-1 pointer-events-none'
-              }`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl"></div>
-                <div className="py-2 px-1">
-                  {serviceCategories.map((category, catIndex) => (
-                    <div key={category.label} className="mb-2 last:mb-0">
-                      <div className="px-4 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400/60 font-semibold">
-                        {category.label}
-                      </div>
-                      {category.items.map((service, index) => (
-                        <Link
-                          key={service.name}
-                          to={service.path}
-                          preload={isMobile ? false : "intent"}
-                          onClick={() => setIsServicesOpen(false)}
-                          className={`relative block px-4 py-2.5 text-sm text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(147,197,253,0.5)] transform hover:translate-x-1 rounded-lg ${
-                            isServicesOpen ? 'animate-fade-in' : ''
-                          }`}
-                          style={{ animationDelay: `${(catIndex * 2 + index) * 40}ms` }}
-                        >
-                          <span className="relative z-10">{service.name}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Contact */}
-            <a
-              href="#contact"
-              onClick={handleContactClick}
-              className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
-            >
-              <span className="relative z-10">Contact</span>
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></div>
-              <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </a>
+          {/* Desktop Navigation Links - Hidden since we now use the Kinetic Menu */}
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            {/* The kinetic menu handles navigation now */}
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-x-0 top-16 bg-gray-900/95 backdrop-blur-xl border-b border-white/20 transition-all duration-300 z-40 overflow-y-auto shadow-2xl ${
-        isMobileMenuOpen ? 'max-h-[calc(100dvh-4rem)] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-      }`}>
-        <div className="px-4 py-6 space-y-4 pb-safe">
-          {/* Home */}
-          <Link
-            to="/"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-white font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-all"
-          >
-            Home
-          </Link>
-
-          {/* About Us */}
-          <Link
-            to="/about"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-white font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-all"
-          >
-            About Us
-          </Link>
-
-          {/* Blog */}
-          <Link
-            to="/blog"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-white font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-all"
-          >
-            Blog
-          </Link>
-
-          {/* Services */}
-          <div>
-            <button
-              onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-              className="flex items-center justify-between w-full text-white font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-all"
-            >
-              <span>Services</span>
-              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                isMobileServicesOpen ? 'rotate-180' : ''
-              }`} />
-            </button>
-            <div className={`mt-2 ml-4 space-y-2 overflow-hidden transition-all duration-300 ${
-              isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-            }`}>
-              {serviceCategories.map((category) => (
-                <div key={category.label} className="mb-4 last:mb-0">
-                  <div className="px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400/60 font-semibold">
-                    {category.label}
-                  </div>
-                  {category.items.map((service) => (
-                    <Link
-                      key={service.name}
-                      to={service.path}
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setIsMobileServicesOpen(false);
-                      }}
-                      className="block text-gray-300 py-2.5 px-4 hover:bg-white/10 hover:text-white rounded-lg transition-all"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact */}
-          <a
-            href="#contact"
-            onClick={handleContactClick}
-            className="block text-white font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-all"
-          >
-            Contact
-          </a>
-        </div>
-      </div>
+      {/* Mobile Menu - Replaced by Kinetic Navigation Overlay */}
     </nav>
   );
 };
