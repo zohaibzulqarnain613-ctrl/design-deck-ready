@@ -45,6 +45,21 @@ const ChatBot: React.FC = () => {
     }
   }, [isOpen, messages.length]);
 
+  // Defer initialization for better performance
+  const [shouldRender, setShouldRender] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => setShouldRender(true));
+      } else {
+        setShouldRender(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldRender && !isOpen) return null;
+
   const sendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 

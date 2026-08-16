@@ -85,9 +85,6 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
   return (
     <motion.div
       style={{
-        backgroundImage: `url(${imgUrl})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         height: `calc(100vh - ${IMG_PADDING * 2}px)`,
         minHeight: "500px",
         top: IMG_PADDING,
@@ -96,6 +93,13 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
       ref={targetRef}
       className="sticky z-0 overflow-hidden rounded-3xl w-full"
     >
+      <img
+        src={imgUrl}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
       <motion.div
         className="absolute inset-0 bg-neutral-950/70"
         style={{

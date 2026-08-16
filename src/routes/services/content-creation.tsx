@@ -1,5 +1,6 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import ContentCreationPage from "@/pages/ContentCreationPage";
+const ContentCreationPage = React.lazy(() => import("@/pages/ContentCreationPage"));
 
 export const Route = createFileRoute("/services/content-creation")({
   head: () => ({

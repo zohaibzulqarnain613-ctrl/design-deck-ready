@@ -1,5 +1,6 @@
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import ColdEmailDashboardPage from "@/pages/ColdEmailDashboardPage";
+const ColdEmailDashboardPage = React.lazy(() => import("@/pages/ColdEmailDashboardPage"));
 
 export const Route = createFileRoute("/services/cold-email-dashboard")({
   head: () => ({
