@@ -106,9 +106,7 @@ export function SterlingGateKineticNavigation() {
         if (isMenuOpen) {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
-            tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<")
-              .set(overlay, { pointerEvents: "auto" }, "<")
+            tl.set(overlay, { pointerEvents: "auto" }, "<")
               .set(document.body, { overflow: "hidden" }, "<");
             
             if (menuButtonTexts) {
