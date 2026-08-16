@@ -11,6 +11,7 @@ if (typeof window !== "undefined") {
 export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -96,7 +97,10 @@ export function SterlingGateKineticNavigation() {
         const menuButtonTexts = menuButton?.querySelectorAll("p");
         const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({
+          onStart: () => setIsAnimating(true),
+          onComplete: () => setIsAnimating(false)
+        });
         
         if (isMenuOpen) {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
@@ -138,16 +142,22 @@ export function SterlingGateKineticNavigation() {
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-        if (e.key === "Escape" && isMenuOpen) {
+        if (e.key === "Escape" && isMenuOpen && !isAnimating) {
             setIsMenuOpen(false);
         }
     };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isAnimating]);
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
-  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => {
+    if (isAnimating) return;
+    setIsMenuOpen(prev => !prev);
+  };
+  const closeMenu = () => {
+    if (isAnimating || !isMenuOpen) return;
+    setIsMenuOpen(false);
+  };
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
