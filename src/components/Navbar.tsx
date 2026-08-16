@@ -170,13 +170,10 @@ const Navbar: React.FC = () => {
             </span>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Kinetic Menu Trigger (Desktop & Mobile replacement) */}
+          <div className="flex items-center">
+            <SterlingGateKineticNavigation />
+          </div>
 
           {/* Desktop Navigation Links */}
           <div className={`hidden lg:flex items-center space-x-6 xl:space-x-8 transition-all duration-700 ease-out delay-200 ${
