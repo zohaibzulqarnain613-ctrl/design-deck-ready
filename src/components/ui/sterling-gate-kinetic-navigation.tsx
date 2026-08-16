@@ -168,7 +168,7 @@ export function SterlingGateKineticNavigation() {
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          console.log("Services explicitly clicking open");
+          console.log("Services clicked, setting true");
           setIsMenuOpen(true);
         }}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
