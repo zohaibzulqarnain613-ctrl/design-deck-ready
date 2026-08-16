@@ -93,7 +93,7 @@ const AppDevelopmentPage: React.FC = () => {
                 Modern business applications rarely exist in isolation. We ensure your mobile app communicates effectively with your existing infrastructure, including CRM systems, payment platforms, and custom databases. Through secure API communication, your app becomes a seamless extension of your business workflows.
               </p>
               <p className="text-lg leading-relaxed">
-                Whether you are looking to integrate AI services or automate internal processes, our team coordinates these connections early in the development cycle. This includes linking to your <Link href="/services/web-development" className="text-blue-400 hover:underline">web development services</Link> and <Link href="/services/ai-chatbots" className="text-blue-400 hover:underline">AI chatbot solutions</Link> for a unified digital ecosystem.
+                Whether you are looking to integrate AI services or automate internal processes, our team coordinates these connections early in the development cycle. This includes linking to your <Link to="/services/web-development" className="text-blue-400 hover:underline">web development services</Link> and <Link to="/services/ai-chatbots" className="text-blue-400 hover:underline">AI chatbot solutions</Link> for a unified digital ecosystem.
               </p>
             </div>
           </section>
@@ -124,7 +124,7 @@ const AppDevelopmentPage: React.FC = () => {
                 Scalability is about more than just handling user traffic; it is about maintainable growth. Our modular architecture and reusable components allow you to introduce new features without rewriting your entire application. By using scalable APIs and clean cloud infrastructure, we ensure your app can evolve alongside your business.
               </p>
               <p className="text-lg leading-relaxed">
-                We avoid unnecessary complexity by matching technical architecture to your actual requirements. This approach ensures your mobile application remains manageable and cost-effective as it grows, as detailed in our <Link href="/blog/app-development" className="text-blue-400 hover:underline">app development guide</Link>.
+                We avoid unnecessary complexity by matching technical architecture to your actual requirements. This approach ensures your mobile application remains manageable and cost-effective as it grows, as detailed in our <Link to="/blog/app-development" className="text-blue-400 hover:underline">app development guide</Link>.
               </p>
             </div>
           </section>
@@ -157,7 +157,7 @@ const AppDevelopmentPage: React.FC = () => {
                 At SamysAI, we approach app development as a business engineering challenge. We start with the business problem and evaluate technical requirements before selecting the technology stack. This ensures we design around real users and plan critical integrations early in the process.
               </p>
               <p>
-                Our philosophy prioritizes maintainability and security throughout the development lifecycle. By building architecture that can evolve, we provide your business with a digital asset that continues to deliver value long after the initial launch. We coordinate our mobile efforts with <Link href="/blog/web-development" className="text-blue-400 hover:underline">modern web development</Link> standards to ensure consistency across your digital presence.
+                Our philosophy prioritizes maintainability and security throughout the development lifecycle. By building architecture that can evolve, we provide your business with a digital asset that continues to deliver value long after the initial launch. We coordinate our mobile efforts with <Link to="/blog/web-development" className="text-blue-400 hover:underline">modern web development</Link> standards to ensure consistency across your digital presence.
               </p>
             </div>
           </section>
