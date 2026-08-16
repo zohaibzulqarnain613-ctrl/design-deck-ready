@@ -139,29 +139,56 @@ export function SterlingGateKineticNavigation({ variant = "services" }: { varian
     }
   ];
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    closeMenu();
+    if (location.pathname !== '/') {
+      navigate({ to: '/' });
+      setTimeout(() => {
+        const element = document.getElementById('contact');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById('contact');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <div ref={containerRef} className="sterling-kinetic-nav">
       {/* Trigger Button */}
-      <button 
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log("STERLING: Button clicked handler");
-          toggleMenu();
-        }}
-        className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer pointer-events-auto"
-      >
-        <div className="relative h-5 overflow-hidden flex items-center">
-          <div className="services-text-container relative h-full">
-            <span className="services-text block transition-transform duration-500">Services</span>
-            <span className="services-text block absolute top-full left-0 transition-transform duration-500 text-blue-400">Explore</span>
+      {variant === "services" ? (
+        <button 
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+          }}
+          className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer pointer-events-auto"
+        >
+          <div className="relative h-5 overflow-hidden flex items-center">
+            <div className="services-text-container relative h-full">
+              <span className="services-text block transition-transform duration-500">Services</span>
+              <span className="services-text block absolute top-full left-0 transition-transform duration-500 text-blue-400">Explore</span>
+            </div>
           </div>
-        </div>
-        <div className="services-icon transition-transform duration-500">
-          <ChevronDown size={14} className="group-hover:text-blue-400" />
-        </div>
-      </button>
+          <div className="services-icon transition-transform duration-500">
+            <ChevronDown size={14} className="group-hover:text-blue-400" />
+          </div>
+        </button>
+      ) : (
+        <button
+          onClick={toggleMenu}
+          className="p-2 text-gray-400 hover:text-white transition-colors"
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      )}
 
       {/* Navigation Overlay */}
       <div className={`nav-overlay-wrapper fixed inset-0 pointer-events-none ${isMenuOpen ? 'visible' : 'invisible'}`} data-nav={isMenuOpen ? "open" : "closed"} style={{ zIndex: 99999 }}>
@@ -180,62 +207,88 @@ export function SterlingGateKineticNavigation({ variant = "services" }: { varian
             <X size={24} />
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {serviceCategories.map((category, idx) => (
-              <div key={idx} className="nav-category-stagger">
-                <h3 className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-6">
-                  {category.label}
-                </h3>
-                <div className="flex flex-col space-y-4">
-                  {category.items.map((item, itemIdx) => (
-                    <Link
-                      key={itemIdx}
-                      to={item.path}
-                      onClick={closeMenu}
-                      className="nav-item-stagger group flex items-center text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
-                    >
-                      <span className="mr-4 text-blue-500/0 group-hover:text-blue-500 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0">
-                        →
-                      </span>
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
+          <div className="flex flex-col space-y-8">
+            {/* Standard Links for Mobile Menu */}
+            {variant === "mobile" && (
+              <div className="grid grid-cols-1 gap-6 mb-12">
+                <Link
+                  to="/"
+                  onClick={closeMenu}
+                  className="nav-category-stagger text-3xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={closeMenu}
+                  className="nav-category-stagger text-3xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                >
+                  About
+                </Link>
+                <Link
+                  to="/blog"
+                  onClick={closeMenu}
+                  className="nav-category-stagger text-3xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                >
+                  Blog
+                </Link>
+                <Link
+                  to="/case-studies"
+                  onClick={closeMenu}
+                  className="nav-category-stagger text-3xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                >
+                  Cases
+                </Link>
+                <a
+                  href="#contact"
+                  onClick={handleContactClick}
+                  className="nav-category-stagger text-3xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                >
+                  Contact
+                </a>
               </div>
-            ))}
-          </div>
+            )}
 
-          <div className="mt-20 pt-12 border-t border-white/5 nav-category-stagger">
-            <p className="text-gray-400 text-sm mb-6">Ready to scale your business?</p>
-            <Link
-              to="/case-studies"
-              onClick={closeMenu}
-              className="inline-flex items-center text-lg font-bold text-white hover:text-blue-400 transition-colors"
-            >
-              View Case Studies
-              <span className="ml-2">↗</span>
-            </Link>
+            {/* Services Sections */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {serviceCategories.map((category, idx) => (
+                <div key={idx} className="nav-category-stagger">
+                  <h3 className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-6">
+                    {category.label}
+                  </h3>
+                  <div className="flex flex-col space-y-4">
+                    {category.items.map((item, itemIdx) => (
+                      <Link
+                        key={itemIdx}
+                        to={item.path}
+                        onClick={closeMenu}
+                        className="nav-item-stagger group flex items-center text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                      >
+                        <span className="mr-4 text-blue-500/0 group-hover:text-blue-500 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0">
+                          →
+                        </span>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 pt-12 border-t border-white/5 nav-category-stagger">
+              <p className="text-gray-400 text-sm mb-6">Ready to scale your business?</p>
+              <Link
+                to="/case-studies"
+                onClick={closeMenu}
+                className="inline-flex items-center text-lg font-bold text-white hover:text-blue-400 transition-colors"
+              >
+                View Case Studies
+                <span className="ml-2">↗</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function ChevronDown({ size, className }: { size: number, className?: string }) {
-  return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      className={className}
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
   );
 }
