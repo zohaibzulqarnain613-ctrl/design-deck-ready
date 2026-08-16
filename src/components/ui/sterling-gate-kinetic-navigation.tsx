@@ -33,51 +33,56 @@ export function SterlingGateKineticNavigation() {
       const menuItems = containerRef.current!.querySelectorAll(".menu-list-item[data-shape]");
       const shapesContainer = containerRef.current!.querySelector(".ambient-background-shapes");
       
-      menuItems.forEach((item) => {
-        const shapeIndex = item.getAttribute("data-shape");
-        const shape = shapesContainer ? shapesContainer.querySelector(`.bg-shape-${shapeIndex}`) : null;
+      const addEventListeners = () => {
+        const menuItems = containerRef.current?.querySelectorAll(".menu-list-item[data-shape]");
+        const shapesContainer = containerRef.current?.querySelector(".ambient-background-shapes");
         
-        if (!shape) return;
+        menuItems?.forEach((item) => {
+          const shapeIndex = item.getAttribute("data-shape");
+          const shape = shapesContainer ? shapesContainer.querySelector(`.bg-shape-${shapeIndex}`) : null;
+          
+          if (!shape) return;
 
-        const shapeEls = shape.querySelectorAll(".shape-element");
+          const shapeEls = shape.querySelectorAll(".shape-element");
 
-        const onEnter = () => {
-             if (shapesContainer) {
-                 shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
-             }
-             shape.classList.add("active");
-             
-             gsap.fromTo(shapeEls, 
-                { scale: 0.5, opacity: 0, rotation: -10 },
-                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.7)", overwrite: "auto" }
-             );
-        };
-        
-        const onLeave = () => {
-            gsap.to(shapeEls, {
-                scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in",
-                onComplete: () => shape.classList.remove("active"),
-                overwrite: "auto"
-            });
-        };
+          const onEnter = () => {
+               if (shapesContainer) {
+                   shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
+               }
+               shape.classList.add("active");
+               
+               gsap.fromTo(shapeEls, 
+                  { scale: 0.5, opacity: 0, rotation: -10 },
+                  { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.7)", overwrite: "auto" }
+               );
+          };
+          
+          const onLeave = () => {
+              gsap.to(shapeEls, {
+                  scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in",
+                  onComplete: () => shape.classList.remove("active"),
+                  overwrite: "auto"
+              });
+          };
 
-        item.addEventListener("mouseenter", onEnter);
-        item.addEventListener("mouseleave", onLeave);
-        
-        (item as any)._cleanup = () => {
-            item.removeEventListener("mouseenter", onEnter);
-            item.removeEventListener("mouseleave", onLeave);
-        };
-      });
+          item.addEventListener("mouseenter", onEnter);
+          item.addEventListener("mouseleave", onLeave);
+          
+          (item as any)._cleanup = () => {
+              item.removeEventListener("mouseenter", onEnter);
+              item.removeEventListener("mouseleave", onLeave);
+          };
+        });
+      };
+
+      // Set up listeners immediately and also when the menu opens
+      addEventListeners();
+      (containerRef.current as any)._refreshListeners = addEventListeners;
       
     }, containerRef);
 
     return () => {
         ctx.revert();
-        if (containerRef.current) {
-            const items = containerRef.current.querySelectorAll(".menu-list-item[data-shape]");
-            items.forEach((item: any) => item._cleanup && item._cleanup());
-        }
     };
   }, []);
 
@@ -103,7 +108,9 @@ export function SterlingGateKineticNavigation() {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
             tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<");
+              .set(menu, { xPercent: 0 }, "<")
+              .set(overlay, { pointerEvents: "auto" }, "<")
+              .set(document.body, { overflow: "hidden" }, "<");
             
             if (menuButtonTexts) {
               tl.fromTo(menuButtonTexts, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 }, "<");
@@ -120,6 +127,10 @@ export function SterlingGateKineticNavigation() {
                 tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
             }
 
+            if ((containerRef.current as any)._refreshListeners) {
+                (containerRef.current as any)._refreshListeners();
+            }
+
         } else {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
@@ -133,7 +144,8 @@ export function SterlingGateKineticNavigation() {
               tl.to(menuButtonIcon, { rotate: 0 }, "<");
             }
 
-            tl.set(navWrap, { display: "none" });
+            tl.set(document.body, { overflow: "unset" }, "<")
+              .set(navWrap, { display: "none" });
         }
 
       }, containerRef);
@@ -155,22 +167,22 @@ export function SterlingGateKineticNavigation() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div ref={containerRef} className="relative z-50">
+    <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
         onClick={toggleMenu}
-        className="group relative flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600 border border-blue-400 text-white hover:bg-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+        className="group relative flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
       >
-        <span className="text-sm font-medium tracking-wider uppercase">Menu</span>
-        <div className="relative w-5 h-5 flex flex-col justify-center gap-1.5 overflow-hidden">
-          <span className="w-full h-[2px] bg-white transform transition-transform group-hover:translate-x-1"></span>
-          <span className="w-full h-[2px] bg-white transform transition-transform delay-75 group-hover:translate-x-0.5"></span>
-          <span className="w-full h-[2px] bg-white transform transition-transform delay-150 group-hover:translate-x-0"></span>
+        <span>Services</span>
+        <div className="relative w-4 h-4 flex flex-col justify-center gap-1 overflow-hidden">
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full translate-y-[2.5px] rotate-45' : 'w-4'}`}></span>
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-3 group-hover:w-4'}`}></span>
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full -translate-y-[2.5px] -rotate-45' : 'w-4'}`}></span>
         </div>
       </button>
 
       {/* Navigation Overlay Wrapper */}
-      <div className="nav-overlay-wrapper fixed inset-0 hidden pointer-events-none" data-nav="closed" style={{ zIndex: 9999 }}>
+      <div className="nav-overlay-wrapper fixed inset-0 hidden pointer-events-none" data-nav="closed" style={{ zIndex: 99999 }}>
         {/* Semi-transparent Overlay Background */}
         <div 
             className="overlay absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-auto"
@@ -238,56 +250,61 @@ export function SterlingGateKineticNavigation() {
                 <X className="menu-button-icon w-5 h-5" />
             </button>
 
-            {/* Navigation Links List */}
+            {/* Navigation Links List - Specialized for Services */}
             <div className="flex-1 flex items-center justify-center px-8 md:px-24">
                 <nav className="w-full max-w-4xl">
-                    <ul className="flex flex-col gap-4 md:gap-6">
-                        <li className="menu-list-item overflow-hidden" data-shape="1">
-                            <Link 
-                                to="/" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Home
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="2">
-                            <Link 
-                                to="/about" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                About
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="3">
-                            <Link 
-                                to="/services/ai-phone-callers" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Services
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="4">
-                            <Link 
-                                to="/blog" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Blog
-                            </Link>
-                        </li>
-                        <li className="menu-list-item overflow-hidden" data-shape="5">
-                            <Link 
-                                to="/case-studies" 
-                                onClick={closeMenu}
-                                className="nav-link inline-block text-5xl md:text-8xl font-black text-white hover:text-blue-400 transition-colors duration-300"
-                            >
-                                Cases
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+                        {/* AI & Automation */}
+                        <div data-menu-fade>
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">AI & Automation</h3>
+                            <ul className="flex flex-col gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="1">
+                                    <Link to="/services/ai-phone-callers" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        AI Phone Callers
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="2">
+                                    <Link to="/services/ai-chatbots" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        AI Chatbots
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Digital Development */}
+                        <div data-menu-fade>
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">Digital Development</h3>
+                            <ul className="flex flex-col gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="3">
+                                    <Link to="/services/web-development" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Web Development
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="4">
+                                    <Link to="/services/app-development" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        App Development
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Growth & Operations */}
+                        <div data-menu-fade className="md:col-span-2">
+                            <h3 className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 border-b border-white/10 pb-2">Growth & Operations</h3>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <li className="menu-list-item overflow-hidden" data-shape="5">
+                                    <Link to="/services/cold-email-dashboard" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Email Dashboards
+                                    </Link>
+                                </li>
+                                <li className="menu-list-item overflow-hidden" data-shape="1">
+                                    <Link to="/services/content-creation" onClick={closeMenu} className="nav-link inline-block text-3xl md:text-5xl font-black text-white hover:text-blue-400 transition-colors duration-300">
+                                        Content Creation
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </div>
 

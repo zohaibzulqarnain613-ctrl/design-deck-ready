@@ -170,19 +170,110 @@ const Navbar: React.FC = () => {
             </span>
           </div>
 
-          {/* Kinetic Menu Trigger (Desktop & Mobile replacement) */}
-          <div className="flex items-center">
-            <SterlingGateKineticNavigation />
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                location.pathname === '/' ? 'text-blue-400' : 'text-gray-300'
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                location.pathname === '/about' ? 'text-blue-400' : 'text-gray-300'
+              }`}
+            >
+              About
+            </Link>
+
+            {/* Kinetic Menu Trigger for Services */}
+            <div className="relative">
+              <SterlingGateKineticNavigation />
+            </div>
+
+            <Link
+              to="/blog"
+              className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                location.pathname.startsWith('/blog') ? 'text-blue-400' : 'text-gray-300'
+              }`}
+            >
+              Blog
+            </Link>
+            <Link
+              to="/case-studies"
+              className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                location.pathname === '/case-studies' ? 'text-blue-400' : 'text-gray-300'
+              }`}
+            >
+              Cases
+            </Link>
+            <a
+              href="#contact"
+              onClick={handleContactClick}
+              className="px-5 py-2 rounded-full bg-blue-600/20 border border-blue-500/50 text-blue-400 text-sm font-bold hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+            >
+              Let's Talk
+            </a>
           </div>
 
-          {/* Desktop Navigation Links - Hidden since we now use the Kinetic Menu */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            {/* The kinetic menu handles navigation now */}
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex items-center space-x-4">
+            <SterlingGateKineticNavigation />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-gray-400 hover:text-white transition-colors"
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu - Replaced by Kinetic Navigation Overlay */}
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-2xl pt-20">
+          <div className="flex flex-col items-center space-y-8 p-8">
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
+              to="/case-studies"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
+            >
+              Cases
+            </Link>
+            <a
+              href="#contact"
+              onClick={handleContactClick}
+              className="px-8 py-3 rounded-full bg-blue-600 text-white text-lg font-bold shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
