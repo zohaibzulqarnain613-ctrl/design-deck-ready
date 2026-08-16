@@ -229,7 +229,7 @@ const ColdEmailDashboardsBlogPost = () => {
                 Our approach integrates outbound systems with broader digital operations, such as Web Development, to create a consistent lead management ecosystem. We prioritize technical health to protect our clients' digital reputations.
               </p>
               <p>
-                Find more information on our <Link to="/services/cold-email-dashboard" className="text-blue-400 hover:underline">Cold Email Dashboard service page</Link>.
+                Find more information on our <Link to="/services/cold-email-dashboard" className="text-blue-400 hover:underline">Cold Email Dashboards</Link>.
               </p>
               <p>
                 For automated follow up solutions, see our guide on <Link to="/blog/ai-phone-callers" className="text-blue-400 hover:underline">AI Phone Callers</Link>.

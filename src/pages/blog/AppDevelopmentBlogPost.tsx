@@ -281,7 +281,7 @@ const AppDevelopmentBlogPost = () => {
                 Our approach emphasizes secure architecture, scalable integrations, and maintainable code. We treat mobile applications as engineered systems rather than just visual interfaces, ensuring they serve as reliable assets for your business growth.
               </p>
               <p>
-                To learn more about our specific development services, visit our <Link to="/services/app-development" className="text-blue-400 hover:underline">App Development service page</Link>.
+                To learn more about our specific development services, visit our <Link to="/services/app-development" className="text-blue-400 hover:underline">App Development services</Link>.
               </p>
               <p>
                 For integrated communication solutions, see our guide on <Link to="/blog/ai-chatbots" className="text-blue-400 hover:underline">AI Chatbots</Link>.
