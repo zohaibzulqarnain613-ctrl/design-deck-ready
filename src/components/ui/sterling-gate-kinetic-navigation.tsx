@@ -9,6 +9,7 @@ if (typeof window !== "undefined") {
 }
 
 export function SterlingGateKineticNavigation() {
+  // We need a ref for the parent container to scope GSAP
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -21,16 +22,30 @@ export function SterlingGateKineticNavigation() {
 
     // Create custom easing
     try {
-      if (!gsap.parseEase("main")) {
-        CustomEase.create("main", "0.65, 0.01, 0.05, 0.99");
-        gsap.defaults({ ease: "main", duration: 0.7 });
-      }
+        if (!gsap.parseEase("main")) {
+            CustomEase.create("main", "0.65, 0.01, 0.05, 0.99");
+            gsap.defaults({ ease: "main", duration: 0.7 });
+        }
     } catch (e) {
-      console.warn("CustomEase failed to load, falling back to default.", e);
-      gsap.defaults({ ease: "power2.out", duration: 0.7 });
+        console.warn("CustomEase failed to load, falling back to default.", e);
+        gsap.defaults({ ease: "power2.out", duration: 0.7 });
     }
 
     const ctx = gsap.context(() => {
+      // 1. Arrow Animation (Removed from indicator, but keeping logic if arrow existed/restored elsewhere)
+      const arrowLine = document.querySelector(".arrow-line");
+      if (arrowLine) {
+        const pathLength = (arrowLine as SVGPathElement).getTotalLength();
+        gsap.set(arrowLine, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+        const arrowTl = gsap.timeline({ repeat: -1, repeatDelay: 0.8 });
+        arrowTl
+          .to(arrowLine, { strokeDashoffset: 0, duration: 1, ease: "power2.out" })
+          .to({}, { duration: 1.2 })
+          .to(arrowLine, { strokeDashoffset: -pathLength, duration: 0.6, ease: "power2.in" })
+          .set(arrowLine, { strokeDashoffset: pathLength });
+      }
+
+      // 2. Shape Hover
       const menuItems = containerRef.current!.querySelectorAll(".menu-list-item[data-shape]");
       const shapesContainer = containerRef.current!.querySelector(".ambient-background-shapes");
       
@@ -39,6 +54,7 @@ export function SterlingGateKineticNavigation() {
         const shape = shapesContainer ? shapesContainer.querySelector(`.bg-shape-${shapeIndex}`) : null;
         
         if (!shape) return;
+
         const shapeEls = shape.querySelectorAll(".shape-element");
 
         const onEnter = () => {
@@ -83,66 +99,66 @@ export function SterlingGateKineticNavigation() {
 
   // Menu Open/Close Animation Effect
   useEffect(() => {
-    if (!containerRef.current) return;
-    
-    const ctx = gsap.context(() => {
-      const navWrap = containerRef.current!.querySelector(".nav-overlay-wrapper");
-      const menu = containerRef.current!.querySelector(".menu-content");
-      const overlay = containerRef.current!.querySelector(".overlay");
-      const bgPanels = containerRef.current!.querySelectorAll(".backdrop-layer");
-      const menuLinks = containerRef.current!.querySelectorAll(".nav-link");
-      const fadeTargets = containerRef.current!.querySelectorAll("[data-menu-fade]");
+      if (!containerRef.current) return;
       
-      const menuButton = containerRef.current!.querySelector(".nav-close-btn");
-      const menuButtonTexts = menuButton?.querySelectorAll("p");
-      const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
+      const ctx = gsap.context(() => {
+        const navWrap = containerRef.current!.querySelector(".nav-overlay-wrapper");
+        const menu = containerRef.current!.querySelector(".menu-content");
+        const overlay = containerRef.current!.querySelector(".overlay");
+        const bgPanels = containerRef.current!.querySelectorAll(".backdrop-layer");
+        const menuLinks = containerRef.current!.querySelectorAll(".nav-link");
+        const fadeTargets = containerRef.current!.querySelectorAll("[data-menu-fade]");
+        
+        const menuButton = containerRef.current!.querySelector(".nav-close-btn");
+        const menuButtonTexts = menuButton?.querySelectorAll("p");
+        const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
-      const tl = gsap.timeline({
-        onStart: () => setIsAnimating(true),
-        onComplete: () => setIsAnimating(false)
-      });
+        const tl = gsap.timeline({
+          onStart: () => setIsAnimating(true),
+          onComplete: () => setIsAnimating(false)
+        });
+        
+        if (isMenuOpen) {
+            // OPEN
+            if (navWrap) navWrap.setAttribute("data-nav", "open");
+            
+            tl.set(navWrap, { display: "block" })
+              .set(menu, { xPercent: 0 }, "<")
+              // Animate Button Text Swapping if it exists
+              .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
+              .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
+              
+              .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
+              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+              
+            if (fadeTargets.length) {
+                tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
+            }
+            document.body.style.overflow = "hidden";
+        } else {
+            // CLOSE
+            if (navWrap) navWrap.setAttribute("data-nav", "closed");
+
+            tl.to(overlay, { autoAlpha: 0 })
+              .to(menu, { xPercent: 120 }, "<")
+              // Animate Button Text and Icon Back
+              .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
+              .to(menuButtonIcon || [], { rotate: 0 }, "<")
+
+              .set(navWrap, { display: "none" });
+            document.body.style.overflow = "unset";
+        }
+
+      }, containerRef);
       
-      if (isMenuOpen) {
-          // OPEN
-          if (navWrap) navWrap.setAttribute("data-nav", "open");
-          
-          tl.set(navWrap, { display: "block" })
-            .set(menu, { xPercent: 0 }, "<")
-            // Animate Button Text Swapping if it exists
-            .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
-            .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
-            
-            .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-            .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
-            .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
-            
-          if (fadeTargets.length) {
-              // Keep clearProps: "all" for blog entry fix
-              tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
-          }
-          document.body.style.overflow = "hidden";
-      } else {
-          // CLOSE
-          if (navWrap) navWrap.setAttribute("data-nav", "closed");
-
-          tl.to(overlay, { autoAlpha: 0 })
-            .to(menu, { xPercent: 120 }, "<")
-            // Animate Button Text and Icon Back
-            .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
-            .to(menuButtonIcon || [], { rotate: 0 }, "<")
-
-            .set(navWrap, { display: "none" });
-          document.body.style.overflow = "unset";
-      }
-
-    }, containerRef);
-    
-    return () => {
-      ctx.revert();
-      document.body.style.overflow = "unset";
-    };
+      return () => {
+        ctx.revert();
+        document.body.style.overflow = "unset";
+      };
   }, [isMenuOpen]);
 
+  // keydown Escape handling
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
         if (e.key === "Escape" && isMenuOpen && !isAnimating) {
@@ -183,7 +199,7 @@ export function SterlingGateKineticNavigation() {
 
   return (
     <div ref={containerRef} className="sterling-kinetic-nav">
-      {/* Trigger Button - Standard Mobile Menu Style */}
+      {/* Trigger Button */}
       <button
         onClick={toggleMenu}
         className="p-2 text-gray-400 hover:text-white transition-colors relative z-[100]"
@@ -230,20 +246,29 @@ export function SterlingGateKineticNavigation() {
 
           {/* Abstract background shapes */}
           <div className="ambient-background-shapes absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+            {/* Shape 1: Floating circles */}
             <div className="bg-shape bg-shape-1 absolute top-1/4 left-1/4 w-96 h-96 flex items-center justify-center">
               <div className="shape-element absolute w-64 h-64 border-2 border-blue-500 rounded-full opacity-0" />
               <div className="shape-element absolute w-48 h-48 border-2 border-cyan-400 rounded-full opacity-0" />
             </div>
+
+            {/* Shape 2: Wave pattern */}
             <div className="bg-shape bg-shape-2 absolute bottom-1/4 right-1/4 w-96 h-96 flex items-center justify-center">
               <div className="shape-element absolute w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-0" />
               <div className="shape-element absolute w-full h-1 bg-gradient-to-r from-cyan-400 to-transparent translate-y-8 opacity-0" />
             </div>
+
+            {/* Shape 3: Grid dots */}
             <div className="bg-shape bg-shape-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-4 gap-4 opacity-0">
                {[...Array(16)].map((_, i) => (
                  <div key={i} className="shape-element w-2 h-2 bg-blue-500 rounded-full" />
                ))}
             </div>
+
+            {/* Shape 4: Organic blobs */}
             <div className="bg-shape bg-shape-4 absolute top-20 right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl shape-element opacity-0" />
+
+            {/* Shape 5: Diagonal lines */}
             <div className="bg-shape bg-shape-5 absolute bottom-20 left-20 flex gap-4 rotate-45">
                <div className="shape-element w-1 h-64 bg-blue-500 opacity-0" />
                <div className="shape-element w-1 h-64 bg-blue-500 opacity-0 delay-75" />
@@ -253,11 +278,11 @@ export function SterlingGateKineticNavigation() {
           {/* Link List */}
           <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6 pt-24 pb-12">
             {[
-              { label: "Home", path: "/", shape: "1" },
-              { label: "About", path: "/about", shape: "2" },
+              { label: "About us", path: "/about", shape: "1" },
+              { label: "Our work", path: "/cases", shape: "2" },
               { label: "Services", path: "/#services", shape: "3" },
               { label: "Blog", path: "/blog", shape: "4" },
-              { label: "Contact", path: "#contact", shape: "5", isScroll: true }
+              { label: "Contact us", path: "#contact", shape: "5", isScroll: true }
             ].map((link, idx) => (
               <div key={idx} className="menu-list-item overflow-hidden" data-shape={link.shape}>
                 {link.isScroll ? (
