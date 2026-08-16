@@ -164,14 +164,6 @@ export function SterlingGateKineticNavigation() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isMenuOpen]);
 
-  const toggleMenu = () => {
-    console.log("Toggling menu, current state:", isMenuOpen);
-    setIsMenuOpen(prev => !prev);
-  };
-  const closeMenu = () => {
-    console.log("Closing menu");
-    setIsMenuOpen(false);
-  };
 
   return (
     <div ref={containerRef} className="relative">
