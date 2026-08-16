@@ -1,10 +1,12 @@
-/* VERSION: 2 */
-import React, { useEffect, useRef, useState, useLayoutEffect, useCallback } from "react";
+/* VERSION: 3 */
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
-import { Link } from "@tanstack/react-router";
-import { X } from "lucide-react";
+import { Link, useNavigate, useLocation } from "@tanstack/react-router";
+import { X, ChevronDown, Menu } from "lucide-react";
 
-export function SterlingGateKineticNavigation() {
+export function SterlingGateKineticNavigation({ variant = "services" }: { variant?: "services" | "mobile" }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
