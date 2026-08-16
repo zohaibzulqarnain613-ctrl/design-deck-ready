@@ -180,7 +180,7 @@ export function SterlingGateKineticNavigation() {
       </button>
 
       {/* Navigation Overlay Wrapper */}
-      <div className="nav-overlay-wrapper fixed inset-0 hidden pointer-events-none" data-nav="closed" style={{ zIndex: 9999 }}>
+      <div className="nav-overlay-wrapper fixed inset-0 hidden pointer-events-none" data-nav="closed" style={{ zIndex: 99999 }}>
         {/* Semi-transparent Overlay Background */}
         <div 
             className="overlay absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-auto"
