@@ -102,14 +102,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://images.unsplash.com",
       },
       {
+        rel: "dns-prefetch",
+        href: "https://images.unsplash.com",
+      },
+      {
         rel: "preconnect",
         href: "https://images.pexels.com",
       },
       {
+        rel: "dns-prefetch",
+        href: "https://images.pexels.com",
+      },
+      {
         rel: "preload",
-        href: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
-        as: "fetch",
-        crossOrigin: "anonymous",
+        href: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop&format=webp",
+        as: "image",
+        fetchpriority: "high",
+      },
+      {
+        rel: "preload",
+        href: appCss,
+        as: "style",
       },
       {
         rel: "stylesheet",
@@ -157,15 +170,36 @@ function RootComponent() {
         <Navbar />
         <main className="w-full">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Suspense fallback={<div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-gray-800" />}>
+          <Suspense fallback={<div className="min-h-screen w-full bg-gray-950" />}>
             <Outlet />
           </Suspense>
         </main>
         <Suspense fallback={null}>
-          <ChatBot />
+          <DeferredChatBot />
         </Suspense>
       </div>
     </QueryClientProvider>
   );
+}
+
+function DeferredChatBot() {
+  const [shouldRender, setShouldRender] = useEffect(() => {
+    const timer = setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => setShouldRender(true));
+      } else {
+        setShouldRender(true);
+      }
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const [rendered, setRendered] = useState(false);
+  useEffect(() => {
+    if (shouldRender) setRendered(true);
+  }, [shouldRender]);
+
+  if (!rendered) return null;
+  return <ChatBot />;
 }
 

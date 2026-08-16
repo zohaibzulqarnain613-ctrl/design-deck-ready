@@ -4,32 +4,32 @@ const accordionItems = [
   {
     id: 1,
     title: 'AI Phone Sales & Support',
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop&format=webp',
   },
   {
     id: 2,
     title: 'Intelligent AI Chatbots',
-    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2070&auto=format&fit=crop&format=webp',
   },
   {
     id: 3,
     title: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&format=webp',
   },
   {
     id: 4,
     title: 'Content Creation',
-    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop&format=webp',
   },
   {
     id: 5,
     title: 'Cold Email Dashboards',
-    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=2070&auto=format&fit=crop&format=webp',
   },
   {
     id: 6,
     title: 'App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&format=webp',
   },
 ];
 
@@ -54,6 +54,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
         key={item.imageUrl}
         alt={item.title}
         loading={index === 0 ? "eager" : "lazy"}
+        fetchPriority={index === 0 ? "high" : "auto"}
         decoding={index === 0 ? "sync" : "async"}
         className="absolute inset-0 w-full h-full object-cover"
         onError={(e) => { 
