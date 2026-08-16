@@ -159,7 +159,7 @@ export function SterlingGateKineticNavigation() {
       {/* Trigger Button */}
       <button 
         onClick={toggleMenu}
-        className="group relative flex items-center gap-3 px-6 py-3 rounded-full bg-blue-600 border border-blue-400 text-white hover:bg-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+        className="group relative flex items-center gap-3 px-6 py-3 rounded-full bg-blue-600 border border-blue-400 text-white hover:bg-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.5)] cursor-pointer"
       >
         <span className="text-sm font-medium tracking-wider uppercase">Menu</span>
         <div className="relative w-5 h-5 flex flex-col justify-center gap-1.5 overflow-hidden">
