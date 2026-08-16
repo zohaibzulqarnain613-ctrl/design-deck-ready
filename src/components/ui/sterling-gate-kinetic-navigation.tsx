@@ -155,17 +155,17 @@ export function SterlingGateKineticNavigation() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div ref={containerRef} className="relative z-50">
+    <div ref={containerRef} className="relative">
       {/* Trigger Button */}
       <button 
         onClick={toggleMenu}
-        className="group relative flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600 border border-blue-400 text-white hover:bg-blue-500 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+        className="group relative flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
       >
-        <span className="text-sm font-medium tracking-wider uppercase">Menu</span>
-        <div className="relative w-5 h-5 flex flex-col justify-center gap-1.5 overflow-hidden">
-          <span className="w-full h-[2px] bg-white transform transition-transform group-hover:translate-x-1"></span>
-          <span className="w-full h-[2px] bg-white transform transition-transform delay-75 group-hover:translate-x-0.5"></span>
-          <span className="w-full h-[2px] bg-white transform transition-transform delay-150 group-hover:translate-x-0"></span>
+        <span>Services</span>
+        <div className="relative w-4 h-4 flex flex-col justify-center gap-1 overflow-hidden">
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full translate-y-[2.5px] rotate-45' : 'w-4'}`}></span>
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-3 group-hover:w-4'}`}></span>
+          <span className={`h-[1.5px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-full -translate-y-[2.5px] -rotate-45' : 'w-4'}`}></span>
         </div>
       </button>
 
