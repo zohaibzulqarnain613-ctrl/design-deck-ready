@@ -120,14 +120,16 @@ export function SterlingGateKineticNavigation() {
         } else {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
-            tl.to(overlay, { autoAlpha: 0 })
+            tl.to(menuLinks, { yPercent: 100, rotate: -5, stagger: 0.02, duration: 0.3, ease: "power2.in" })
+              .to(overlay, { autoAlpha: 0, duration: 0.3 }, "<")
+              .to(bgPanels, { xPercent: 101, stagger: 0.05, duration: 0.4, ease: "power2.in" }, "<")
               .to(menu, { 
                 xPercent: 101,
                 duration: 0.4,
-                ease: "power2.inOut"
+                ease: "power2.in"
               }, "<")
-              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.4 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<")
+              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.3 }, "<")
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.3 }, "<")
               .set(navWrap, { display: "none" });
             document.body.style.overflow = "unset";
         }
