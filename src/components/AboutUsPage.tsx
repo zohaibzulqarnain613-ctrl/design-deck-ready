@@ -234,7 +234,7 @@ const AboutUsPage: React.FC = () => {
               description={teamMembers[0].description}
               features={teamMembers[0].expertise}
               color="#3b82f6"
-              imageUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300"
+              imageUrl="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300&format=webp"
               onLearnMore={() => setActiveMember(0)}
             />
             <CardFlip
@@ -243,7 +243,7 @@ const AboutUsPage: React.FC = () => {
               description={teamMembers[1].description}
               features={teamMembers[1].expertise}
               color="#8b5cf6"
-              imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=300"
+              imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=300&format=webp"
               onLearnMore={() => setActiveMember(1)}
             />
             <CardFlip
@@ -252,7 +252,7 @@ const AboutUsPage: React.FC = () => {
               description={teamMembers[2].description}
               features={teamMembers[2].expertise}
               color="#06b6d4"
-              imageUrl="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300"
+              imageUrl="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&format=webp"
               onLearnMore={() => setActiveMember(2)}
             />
             <CardFlip
@@ -261,7 +261,7 @@ const AboutUsPage: React.FC = () => {
               description={teamMembers[3].description}
               features={teamMembers[3].expertise}
               color="#ec4899"
-              imageUrl="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300"
+              imageUrl="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300&format=webp"
               onLearnMore={() => setActiveMember(3)}
             />
             <CardFlip
@@ -270,7 +270,7 @@ const AboutUsPage: React.FC = () => {
               description={teamMembers[4].description}
               features={teamMembers[4].expertise}
               color="#10b981"
-              imageUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
+              imageUrl="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300&format=webp"
               onLearnMore={() => setActiveMember(4)}
             />
           </div>
