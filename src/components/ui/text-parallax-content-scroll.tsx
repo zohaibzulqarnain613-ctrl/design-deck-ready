@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { getOptimizedImageUrl, getImageUrlSrcSet } from "@/utils/image-optimization";
 
 interface ServiceParallaxItem {
   imgUrl: string;
@@ -60,7 +61,7 @@ const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
       }}
     >
       <div className="relative h-[150vh] w-full">
-        <StickyImage imgUrl={imgUrl} />
+        <StickyImage imgUrl={imgUrl} isFirst={isFirst} />
         <OverlayCopy heading={heading} subheading={subheading} isFirst={isFirst} />
       </div>
       {children}
@@ -70,9 +71,10 @@ const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
 
 interface StickyImageProps {
   imgUrl: string;
+  isFirst?: boolean;
 }
 
-const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
+const StickyImage: React.FC<StickyImageProps> = ({ imgUrl, isFirst }) => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -94,10 +96,13 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
       className="sticky z-0 overflow-hidden rounded-3xl w-full"
     >
       <img
-        src={imgUrl}
+        src={getOptimizedImageUrl(imgUrl, { width: 1200 })}
+        srcSet={getImageUrlSrcSet(imgUrl, [400, 800, 1200, 1600])}
+        sizes="100vw"
         alt=""
-        loading="lazy"
-        decoding="async"
+        loading={isFirst ? "eager" : "lazy"}
+        fetchPriority={isFirst ? "high" : "auto"}
+        decoding={isFirst ? "sync" : "async"}
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
       <motion.div

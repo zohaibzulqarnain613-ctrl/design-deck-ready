@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
+import { getOptimizedImageUrl, getImageUrlSrcSet } from '@/utils/image-optimization';
 
 const accordionItems = [
   {
     id: 1,
     title: 'AI Phone Sales & Support',
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
   },
   {
     id: 2,
     title: 'Intelligent AI Chatbots',
-    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2070&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a',
   },
   {
     id: 3,
     title: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
   },
   {
     id: 4,
     title: 'Content Creation',
-    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643',
   },
   {
     id: 5,
     title: 'Cold Email Dashboards',
-    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=2070&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa',
   },
   {
     id: 6,
     title: 'App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&format=webp',
+    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c',
   },
 ];
 
@@ -48,8 +49,8 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
       onClick={onMouseEnter}
     >
       <img
-        src={`${item.imageUrl}`}
-        srcSet={`${item.imageUrl} 400w, ${item.imageUrl} 800w`}
+        src={getOptimizedImageUrl(item.imageUrl, { width: isActive ? 800 : 400 })}
+        srcSet={getImageUrlSrcSet(item.imageUrl, [400, 800, 1200])}
         sizes={isActive ? "(max-width: 768px) 100vw, 400px" : "60px"}
         key={item.imageUrl}
         alt={item.title}

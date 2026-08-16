@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -9,48 +9,36 @@ interface SplineSceneProps {
 
 const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '' }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if it's a mobile device or a slow connection
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const connection = (navigator as any).connection;
-    const isSlow = connection && (connection.saveData || /2g|3g/.test(connection.effectiveType));
+    const container = containerRef.current;
+    if (!container) return;
 
-    // Delay Spline loading to prioritize initial LCP elements (text/buttons)
-    const timeout = setTimeout(() => {
-      const load = () => {
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(() => setShouldLoad(true));
-        } else {
-          setShouldLoad(true);
-        }
-      };
-
-      if (isMobile || isSlow) {
-        // More aggressive deferring for mobile/slow
-        const observer = new IntersectionObserver((entries) => {
-          if (entries[0].isIntersecting) {
-            load();
-            observer.disconnect();
-          }
-        }, { rootMargin: '100px' });
-        
-        const el = document.querySelector('.spline-container');
-        if (el) observer.observe(el);
-        else load();
-      } else {
-        load();
+    // Viewport-based loading strategy (P1)
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        setShouldLoad(true);
+        observer.disconnect();
       }
-    }, isMobile ? 3000 : 1000);
+    }, { 
+      // rootMargin 400px ensures it starts loading before the user reaches it
+      rootMargin: '400px' 
+    });
 
-    return () => clearTimeout(timeout);
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <div className={`relative spline-container ${className}`}>
+    <div ref={containerRef} className={`relative spline-container ${className}`}>
       {shouldLoad ? (
         <Suspense fallback={
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center bg-blue-500/5 rounded-full blur-2xl animate-pulse">
             <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
           </div>
         }>
@@ -63,6 +51,7 @@ const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '' }) => {
           />
         </Suspense>
       ) : (
+        /* Matches the background/shape while loading to prevent CLS */
         <div className="w-full h-full flex items-center justify-center bg-blue-500/5 rounded-full blur-2xl animate-pulse">
         </div>
       )}
