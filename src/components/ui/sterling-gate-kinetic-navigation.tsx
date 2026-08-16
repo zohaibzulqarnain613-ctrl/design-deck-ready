@@ -6,7 +6,11 @@ import { Menu, X } from "lucide-react";
 
 // Register GSAP Plugins safely
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(CustomEase);
+  try {
+    gsap.registerPlugin(CustomEase);
+  } catch (e) {
+    console.warn("GSAP CustomEase registration failed:", e);
+  }
 }
 
 export function SterlingGateKineticNavigation() {
