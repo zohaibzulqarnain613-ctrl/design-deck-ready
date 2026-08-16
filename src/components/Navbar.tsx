@@ -255,48 +255,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-2xl pt-20">
-          <div className="flex flex-col items-center space-y-8 p-8">
-            <Link
-              to="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              to="/blog"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              to="/case-studies"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
-            >
-              Cases
-            </Link>
-            <a
-              href="#contact"
-              onClick={handleContactClick}
-              className="px-8 py-3 rounded-full bg-blue-600 text-white text-lg font-bold shadow-[0_0_20px_rgba(59,130,246,0.4)]"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
