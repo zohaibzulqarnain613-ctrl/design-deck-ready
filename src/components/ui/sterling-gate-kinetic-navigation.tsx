@@ -141,8 +141,7 @@ export function SterlingGateKineticNavigation() {
               tl.to(menuButtonIcon, { rotate: 0 }, "<");
             }
 
-            tl.set(document.body, { overflow: "unset" }, "<")
-              .set(navWrap, { display: "none" });
+            tl.set(document.body, { overflow: "unset" }, "<");
         }
 
       }, containerRef.current || undefined);
