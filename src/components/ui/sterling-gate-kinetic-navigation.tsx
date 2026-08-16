@@ -13,12 +13,10 @@ export function SterlingGateKineticNavigation() {
       e.preventDefault();
       e.stopPropagation();
     }
-    console.log("STERLING: Toggling menu from", isMenuOpen);
     setIsMenuOpen(prev => !prev);
   };
   
   const closeMenu = () => {
-    console.log("STERLING: Closing menu");
     setIsMenuOpen(false);
   };
 
@@ -170,6 +168,7 @@ export function SterlingGateKineticNavigation() {
       {/* Trigger Button */}
       <button 
         onClick={toggleMenu}
+        onPointerDown={(e) => e.stopPropagation()}
         className="group relative z-[100] flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium text-sm cursor-pointer"
         style={{ pointerEvents: 'auto' }}
       >
