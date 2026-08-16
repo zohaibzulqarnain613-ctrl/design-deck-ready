@@ -1,7 +1,7 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy } from "@tanstack/react-router";
-const TermsOfServicePage = lazy(() => import("@/pages/TermsOfServicePage"));
+import { lazyRouteComponent } from "@tanstack/react-router";
+const TermsOfServicePage = lazyRouteComponent(() => import("@/pages/TermsOfServicePage"));
 
 export const Route = createFileRoute("/terms-of-service")({
   head: () => ({

@@ -1,7 +1,7 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy } from "@tanstack/react-router";
-const TimelinePage = lazy(() => import("@/pages/TimelinePage"));
+import { lazyRouteComponent } from "@tanstack/react-router";
+const TimelinePage = lazyRouteComponent(() => import("@/pages/TimelinePage"));
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({

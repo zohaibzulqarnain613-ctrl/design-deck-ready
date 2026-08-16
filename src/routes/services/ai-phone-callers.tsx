@@ -1,7 +1,7 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy } from "@tanstack/react-router";
-const AIPhoneCallersPage = lazy(() => import("@/pages/AIPhoneCallersPage"));
+import { lazyRouteComponent } from "@tanstack/react-router";
+const AIPhoneCallersPage = lazyRouteComponent(() => import("@/pages/AIPhoneCallersPage"));
 
 export const Route = createFileRoute("/services/ai-phone-callers")({
   head: () => ({
