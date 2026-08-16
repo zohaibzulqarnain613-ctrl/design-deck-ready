@@ -195,7 +195,7 @@ export function SterlingGateKineticNavigation() {
       {/* Navigation Overlay Wrapper */}
       <div 
         className="nav-overlay-wrapper fixed inset-0 pointer-events-none hidden" 
-        style={{ zIndex: 99999 }}
+        style={{ zIndex: 99999, overflow: 'hidden' }}
       >
         {/* Semi-transparent Backdrop Overlay */}
         <div 
@@ -210,7 +210,7 @@ export function SterlingGateKineticNavigation() {
         </div>
 
         {/* Menu Content Container */}
-        <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto">
+        <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto overflow-y-auto overflow-x-hidden">
           {/* Close Button Inside Menu */}
           <button 
             onClick={closeMenu}
@@ -248,7 +248,7 @@ export function SterlingGateKineticNavigation() {
           </div>
 
           {/* Link List */}
-          <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6">
+          <nav className="relative z-10 flex flex-col space-y-4 md:space-y-6 pt-24 pb-12">
             {[
               { label: "Home", path: "/", shape: "1" },
               { label: "About", path: "/about", shape: "2" },
@@ -279,7 +279,7 @@ export function SterlingGateKineticNavigation() {
           </nav>
 
           {/* Footer content inside menu */}
-          <div className="mt-12 md:mt-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/10 pt-8" data-menu-fade>
+          <div className="mt-auto mb-8 md:mt-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/10 pt-8" data-menu-fade>
             <div>
               <p className="text-gray-500 text-xs uppercase tracking-widest mb-2">Socials</p>
               <div className="flex gap-6 text-sm font-bold text-white uppercase italic">
