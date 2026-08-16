@@ -3,15 +3,7 @@ import gsap from "gsap";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
-// Register GSAP Plugins safely
-if (typeof window !== "undefined") {
-  try {
-    gsap.registerPlugin(CustomEase);
-  } catch (e) {
-    console.warn("GSAP CustomEase registration failed:", e);
-  }
-}
-
+// We will use standard GSAP eases to avoid CustomEase registration issues in the preview environment
 export function SterlingGateKineticNavigation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
