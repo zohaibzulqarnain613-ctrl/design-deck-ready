@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# LLM Crawler Access
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /llms-services.txt
+Allow: /llms-blog.txt
+Allow: /llms-about.txt
+Allow: /llms-contact.txt
+
 Sitemap: https://samysai.com/sitemap.xml
