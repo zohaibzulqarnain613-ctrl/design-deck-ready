@@ -117,9 +117,13 @@ export function SterlingGateKineticNavigation() {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
             tl.to(overlay, { autoAlpha: 0 })
-              .to(menu, { xPercent: 120 }, "<")
-              .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0 }, "<")
+              .to(menu, { 
+                xPercent: 120,
+                duration: 0.6,
+                ease: "power3.in"
+              }, "<")
+              .to(Array.from(menuButtonTexts || []), { yPercent: 0, duration: 0.4 }, "<")
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<")
               .set(navWrap, { display: "none" });
             document.body.style.overflow = "unset";
         }
