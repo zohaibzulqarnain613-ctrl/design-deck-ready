@@ -111,7 +111,7 @@ export function SterlingGateKineticNavigation() {
               .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
               .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
               .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.1, duration: 0.45, ease: "power3.out" }, "<")
-              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05, duration: 0.5 }, "<+=0.2");
               
             if (fadeTargets.length) {
                 tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
