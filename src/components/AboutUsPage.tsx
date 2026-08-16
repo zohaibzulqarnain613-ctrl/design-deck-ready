@@ -6,8 +6,11 @@ import TeamMessageModal from './TeamMessageModal';
 import CardFlip from './ui/flip-card';
 import { getOptimizedImageUrl } from '@/utils/image-optimization';
 
-interface TeamMemberProps {
-...
+const AboutUsPage: React.FC = () => {
+  const [teamVisible, setTeamVisible] = useState(false);
+  const [activeMember, setActiveMember] = useState<number | null>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
+
   const teamMembers = [
     {
       name: "Samy",
@@ -60,7 +63,162 @@ interface TeamMemberProps {
       imageUrl: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
     }
   ];
-...
+
+  useEffect(() => {
+    const teamObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTeamVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (teamRef.current) {
+      teamObserver.observe(teamRef.current);
+    }
+
+    return () => {
+      teamObserver.disconnect();
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#050505] pt-16">
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Who We Are */}
+      <section className="py-24 px-6 bg-[#050505] border-t border-white/5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Who We Are</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tighter leading-tight">
+              One technology team across AI, software, and growth systems.
+            </h3>
+          </div>
+          <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
+            <p>
+              SamysAI builds AI powered systems, digital products, and growth infrastructure for businesses. Our work spans three connected areas: AI and automation, including phone callers and chatbots; digital development, covering web and app builds; and growth and operations, including cold email dashboards and content systems.
+            </p>
+            <p>
+              These are not separate service lines. A chatbot is more useful when it is wired into the product it supports. An outreach dashboard is more useful when the content feeding it is planned alongside it. We build the pieces so they work together.
+            </p>
+            <p>
+              We start from the business problem rather than the technology. If automation is the right answer, we automate. If the answer is a better tool, a cleaner process, or a simpler build, we do that instead.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section - Distinct Layout */}
+      <section className="py-32 px-6 bg-[#050505]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-8">Our Mission</h2>
+          <p className="text-3xl md:text-5xl font-bold leading-tight tracking-tighter text-white">
+            To take repetitive work off people's hands with systems that are genuinely <span className="text-blue-400">useful</span>, so teams can spend their time on the work that needs them.
+          </p>
+        </div>
+      </section>
+
+      {/* Vision & Values - Grid Layout */}
+      <section className="py-20 px-6 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-tight">Our Vision</h3>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              We want to help build a business environment where intelligent systems work alongside people rather than around them, handling routine communication, carrying operational load, and giving teams better digital tools to work with.
+            </p>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              We believe practical intelligent technology should be accessible to businesses of all sizes, not only companies with large internal engineering teams.
+            </p>
+          </div>
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-tight">Our Values</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Innovation', body: 'We adopt new technology when it solves a real problem, not simply because it is new.' },
+                { title: 'Integrity', body: 'We set realistic expectations and say clearly what a system can and cannot do.' },
+                { title: 'Excellence', body: 'We judge our work by how well it holds up in daily use, not how it looks at launch.' },
+                { title: 'Empowerment', body: 'We build tools that make people better at their work rather than replacing them.' },
+              ].map((v) => (
+                <div key={v.title} className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <p className="text-sm font-semibold text-gray-200">{v.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-400">{v.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose SamysAI & Our Promise */}
+      <section className="py-20 px-6 border-t border-white/5 bg-[#050505]">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em]">Why SamysAI</h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Built around the problem, not the tool</h3>
+            <ul className="space-y-5 text-gray-400 text-base leading-relaxed">
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We define the business problem before choosing the technology.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We choose practical solutions based on what the business actually needs.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We design around how people will use the system in their daily work.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We build with future changes and growth in mind.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 shrink-0" />
+                <span>We connect technology where doing so creates genuine value.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-sm font-mono text-purple-400 uppercase tracking-[0.3em]">Our Promise</h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight md:max-w-[20ch]">Clear communication and work you can rely on</h3>
+            <ul className="space-y-5 text-gray-400 text-base leading-relaxed">
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We explain what we are building, why, and what it will realistically do.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We propose practical solutions and tell you when something is not worth building.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We implement carefully and test before anything goes live.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We deliver on what we agree, and raise it early when something changes.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-400/60 shrink-0" />
+                <span>We build systems that can evolve with the business instead of needing a rebuild.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section ref={teamRef} className="relative py-24 bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16 text-center">
+            <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
+              Meet the Team
+            </h3>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 max-w-7xl mx-auto justify-items-center">
             {teamMembers.map((member, index) => (
               <CardFlip
