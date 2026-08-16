@@ -8,7 +8,7 @@ import {
   Scripts,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode, Suspense, lazy } from "react";
+import { useEffect, type ReactNode, Suspense, lazy, useState } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -183,7 +183,9 @@ function RootComponent() {
 }
 
 function DeferredChatBot() {
-  const [shouldRender, setShouldRender] = useEffect(() => {
+  const [shouldRender, setShouldRender] = useState(false);
+  
+  useEffect(() => {
     const timer = setTimeout(() => {
       if ('requestIdleCallback' in window) {
         window.requestIdleCallback(() => setShouldRender(true));
@@ -194,12 +196,7 @@ function DeferredChatBot() {
     return () => clearTimeout(timer);
   }, []);
 
-  const [rendered, setRendered] = useState(false);
-  useEffect(() => {
-    if (shouldRender) setRendered(true);
-  }, [shouldRender]);
-
-  if (!rendered) return null;
+  if (!shouldRender) return null;
   return <ChatBot />;
 }
 
