@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -20,12 +20,12 @@ type MarqueeAnimationProps = {
   baseVelocity: number;
 };
 
-function MarqueeAnimation({
+const MarqueeAnimation = React.memo(({
   children,
   className,
   direction = "left",
   baseVelocity = 10,
-}: MarqueeAnimationProps) {
+}: MarqueeAnimationProps) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -70,6 +70,6 @@ function MarqueeAnimation({
       </motion.div>
     </div>
   );
-}
+});
 
 export { MarqueeAnimation };

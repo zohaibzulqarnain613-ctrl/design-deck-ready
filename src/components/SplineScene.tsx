@@ -18,25 +18,36 @@ const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '' }) => {
 
     // Delay Spline loading to prioritize initial LCP elements (text/buttons)
     const timeout = setTimeout(() => {
-      // On slow connections or mobile, we can be even more conservative
-      if (isMobile || isSlow) {
-        // Use IntersectionObserver to load only when visible? 
-        // For hero, it's usually visible, but let's at least wait for main thread to be idle
+      const load = () => {
         if ('requestIdleCallback' in window) {
           window.requestIdleCallback(() => setShouldLoad(true));
         } else {
           setShouldLoad(true);
         }
+      };
+
+      if (isMobile || isSlow) {
+        // More aggressive deferring for mobile/slow
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            load();
+            observer.disconnect();
+          }
+        }, { rootMargin: '100px' });
+        
+        const el = document.querySelector('.spline-container');
+        if (el) observer.observe(el);
+        else load();
       } else {
-        setShouldLoad(true);
+        load();
       }
-    }, isMobile ? 2000 : 500);
+    }, isMobile ? 3000 : 1000);
 
     return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative spline-container ${className}`}>
       {shouldLoad ? (
         <Suspense fallback={
           <div className="w-full h-full flex items-center justify-center">

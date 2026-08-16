@@ -18,11 +18,14 @@ const ParticleBackground: React.FC = () => {
   const [showParticles, setShowParticles] = useState(false);
 
   useEffect(() => {
-    // Only show particles on desktop or high-performance devices to save mobile CPU
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (!isMobile) {
-      setShowParticles(true);
-    }
+    // Highly aggressive deferring for home page particles
+    const timer = setTimeout(() => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (!isMobile && 'requestIdleCallback' in window) {
+        window.requestIdleCallback(() => setShowParticles(true));
+      }
+    }, 4000);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!showParticles) return null;
