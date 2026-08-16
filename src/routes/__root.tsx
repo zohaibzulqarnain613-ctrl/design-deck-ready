@@ -8,12 +8,13 @@ import {
   Scripts,
   useLocation,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode, Suspense, lazy } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import Navbar from "@/components/Navbar";
-import ChatBot from "@/components/ChatBot";
+
+const ChatBot = lazy(() => import("@/components/ChatBot"));
 
 function NotFoundComponent() {
   return (
@@ -158,7 +159,9 @@ function RootComponent() {
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <ChatBot />
+        <Suspense fallback={null}>
+          <ChatBot />
+        </Suspense>
       </div>
     </QueryClientProvider>
   );

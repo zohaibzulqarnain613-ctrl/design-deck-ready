@@ -177,6 +177,7 @@ const Navbar: React.FC = () => {
             {/* Home */}
             <Link
               to="/"
+              preload="intent"
               className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
             >
               <span className="relative z-10">Home</span>
@@ -187,6 +188,7 @@ const Navbar: React.FC = () => {
             {/* About Us */}
             <Link
               to="/about"
+              preload="intent"
               className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:rounded-lg"
             >
               <span className="relative z-10">About Us</span>
@@ -197,6 +199,7 @@ const Navbar: React.FC = () => {
             {/* Blog */}
             <Link
               to="/blog"
+              preload="intent"
               className="relative text-white font-medium transition-all duration-300 hover:text-blue-300 hover:scale-105 group"
             >
               <span className="relative z-10">Blog</span>
@@ -236,6 +239,7 @@ const Navbar: React.FC = () => {
                         <Link
                           key={service.name}
                           to={service.path}
+                          preload="intent"
                           onClick={() => setIsServicesOpen(false)}
                           className={`relative block px-4 py-2.5 text-sm text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(147,197,253,0.5)] transform hover:translate-x-1 rounded-lg ${
                             isServicesOpen ? 'animate-fade-in' : ''
