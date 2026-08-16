@@ -125,6 +125,10 @@ export function SterlingGateKineticNavigation() {
                 tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
             }
 
+            if ((containerRef.current as any)._refreshListeners) {
+                (containerRef.current as any)._refreshListeners();
+            }
+
         } else {
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
