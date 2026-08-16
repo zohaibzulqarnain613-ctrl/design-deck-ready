@@ -118,10 +118,15 @@ export function SterlingGateKineticNavigation() {
           }
           document.body.style.overflow = "hidden";
       } else {
+          // CLOSE
           if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
           tl.to(overlay, { autoAlpha: 0 })
             .to(menu, { xPercent: 120 }, "<")
+            // Animate Button Text and Icon Back
+            .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
+            .to(menuButtonIcon || [], { rotate: 0 }, "<")
+
             .set(navWrap, { display: "none" });
           document.body.style.overflow = "unset";
       }
