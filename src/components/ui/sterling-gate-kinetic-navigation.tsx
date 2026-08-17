@@ -114,8 +114,16 @@ export function SterlingGateKineticNavigation() {
         const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
         const tl = gsap.timeline({
-          onStart: () => setIsAnimating(true),
-          onComplete: () => setIsAnimating(false)
+          onStart: () => {
+            setIsAnimating(true);
+          },
+          onComplete: () => {
+            setIsAnimating(false);
+            if (!isMenuOpen && navWrap) {
+              gsap.set(navWrap, { display: "none", clearProps: "display" });
+              (navWrap as HTMLElement).style.display = "none";
+            }
+          }
         });
         
         if (isMenuOpen) {
@@ -151,8 +159,6 @@ export function SterlingGateKineticNavigation() {
               .set(navWrap, { display: "none" });
             
             document.body.style.overflow = "unset";
-            // Immediate cleanup for z-index issues
-            (navWrap as HTMLElement).style.display = "none";
         }
 
       }, containerRef);
@@ -178,6 +184,7 @@ export function SterlingGateKineticNavigation() {
     if (isAnimating) return;
     setIsMenuOpen(prev => !prev);
   };
+
   const closeMenu = () => {
     if (isAnimating || !isMenuOpen) return;
     setIsMenuOpen(false);
