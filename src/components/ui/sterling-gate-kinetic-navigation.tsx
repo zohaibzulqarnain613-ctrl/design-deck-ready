@@ -156,8 +156,7 @@ export function SterlingGateKineticNavigation() {
             tl.to(overlay, { autoAlpha: 0 })
               .to(menu, { xPercent: 120 }, "<")
               .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<")
-              .set(navWrap, { display: "none" });
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<");
             
             document.body.style.overflow = "unset";
         }
