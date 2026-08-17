@@ -116,12 +116,14 @@ export function SterlingGateKineticNavigation() {
         const tl = gsap.timeline({
           onStart: () => {
             setIsAnimating(true);
+            if (isMenuOpen && navWrap) {
+              gsap.set(navWrap, { display: "block" });
+            }
           },
           onComplete: () => {
             setIsAnimating(false);
             if (!isMenuOpen && navWrap) {
-              gsap.set(navWrap, { display: "none", clearProps: "display" });
-              (navWrap as HTMLElement).style.display = "none";
+              gsap.set(navWrap, { display: "none" });
             }
           }
         });
@@ -130,8 +132,7 @@ export function SterlingGateKineticNavigation() {
             // OPEN
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
-            tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<")
+            tl.set(menu, { xPercent: 0 })
               .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
               .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
               .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
