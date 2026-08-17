@@ -151,6 +151,8 @@ export function SterlingGateKineticNavigation() {
               .set(navWrap, { display: "none" });
             
             document.body.style.overflow = "unset";
+            // Immediate cleanup for z-index issues
+            (navWrap as HTMLElement).style.display = "none";
         }
 
       }, containerRef);
