@@ -121,8 +121,10 @@ export function SterlingGateKineticNavigation() {
             }
           },
           onComplete: () => {
+            console.log("Animation complete, isMenuOpen:", isMenuOpen);
             setIsAnimating(false);
             if (!isMenuOpen && navWrap) {
+              console.log("Setting navWrap to display none");
               gsap.set(navWrap, { display: "none" });
             }
           }
