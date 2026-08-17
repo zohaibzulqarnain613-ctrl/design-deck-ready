@@ -114,23 +114,36 @@ export function SterlingGateKineticNavigation() {
         const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
         const tl = gsap.timeline({
-          onStart: () => setIsAnimating(true),
-          onComplete: () => setIsAnimating(false)
+          onStart: () => {
+            setIsAnimating(true);
+            if (isMenuOpen && navWrap) {
+              gsap.set(navWrap, { display: "block" });
+            }
+          },
+          onComplete: () => {
+            setIsAnimating(false);
+            if (!isMenuOpen && navWrap) {
+              gsap.set(navWrap, { display: "none" });
+            }
+          }
         });
         
         if (isMenuOpen) {
             // OPEN
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
-            tl.set(navWrap, { display: "block" })
-              .set(menu, { xPercent: 0 }, "<")
-              // Animate Button Text Swapping if it exists
-              .fromTo(Array.from(menuButtonTexts || []), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
-              .fromTo(menuButtonIcon || [], { rotate: 0 }, { rotate: 315 }, "<")
-              
+            tl.set(menu, { xPercent: 0 })
               .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
               .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
               .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+              
+            // Animate Button Text and Icon Swapping
+            if (menuButtonTexts && menuButtonTexts.length > 0) {
+              tl.fromTo(Array.from(menuButtonTexts), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 }, "<");
+            }
+            if (menuButtonIcon) {
+              tl.fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315 }, "<");
+            }
               
             if (fadeTargets.length) {
                 tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
@@ -142,11 +155,9 @@ export function SterlingGateKineticNavigation() {
 
             tl.to(overlay, { autoAlpha: 0 })
               .to(menu, { xPercent: 120 }, "<")
-              // Animate Button Text and Icon Back
               .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0 }, "<")
-
-              .set(navWrap, { display: "none" });
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<");
+            
             document.body.style.overflow = "unset";
         }
 
@@ -173,6 +184,7 @@ export function SterlingGateKineticNavigation() {
     if (isAnimating) return;
     setIsMenuOpen(prev => !prev);
   };
+
   const closeMenu = () => {
     if (isAnimating || !isMenuOpen) return;
     setIsMenuOpen(false);
@@ -219,7 +231,10 @@ export function SterlingGateKineticNavigation() {
         {/* Semi-transparent Backdrop Overlay */}
         <div 
           className="overlay absolute inset-0 bg-gray-950/80 backdrop-blur-xl opacity-0 pointer-events-auto"
-          onClick={closeMenu}
+          onClick={(e) => {
+            e.stopPropagation();
+            closeMenu();
+          }}
         />
 
         {/* Animated Background Layers */}
@@ -232,16 +247,18 @@ export function SterlingGateKineticNavigation() {
         <div className="menu-content absolute inset-0 flex flex-col justify-center px-8 md:px-20 pointer-events-auto overflow-y-auto overflow-x-hidden">
           {/* Close Button Inside Menu */}
           <button 
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               if (!isAnimating) setIsMenuOpen(false);
             }}
-            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs z-[101]"
+            className="nav-close-btn absolute top-8 right-8 flex flex-col h-6 overflow-hidden text-white font-bold uppercase tracking-widest text-xs z-[100000] cursor-pointer"
           >
             <div className="relative flex flex-col transition-transform duration-300 pointer-events-none">
-              <p className="h-6">Menu</p>
-              <p className="h-6 text-blue-400">Close</p>
+              <p className="h-6 flex items-center">Menu</p>
+              <p className="h-6 flex items-center text-blue-400">Close</p>
             </div>
-            <div className="menu-button-icon absolute -right-6 top-0 text-white pointer-events-none">
+            <div className="menu-button-icon absolute -right-6 top-1 text-white pointer-events-none">
               <svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
             </div>
           </button>
