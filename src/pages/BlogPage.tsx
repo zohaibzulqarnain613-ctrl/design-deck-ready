@@ -1,5 +1,10 @@
 import { Blog7 } from "@/components/ui/blog7";
 import Footer from "@/components/Footer";
+import { VolumetricStudio } from "@/components/ui/volumetric-studio";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
+
 
 const blogData = {
   tagline: "Insights & Innovation",
@@ -81,13 +86,38 @@ const blogData = {
 const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
-      <div className="pt-20">
+      <div className="pt-20 px-4 max-w-7xl mx-auto">
+        <VolumetricStudio className="mb-12 shadow-2xl border border-white/5">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+            className="max-w-3xl space-y-8"
+          >
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+              Design in a<br />new dimension.
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 font-medium">
+              The UI Factory brings physically accurate WebGL rendering straight to your DOM.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 rounded-full font-bold">
+                Get Started
+              </Button>
+              <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 px-8 rounded-full font-bold">
+                View Documentation
+              </Button>
+            </div>
+          </motion.div>
+        </VolumetricStudio>
+
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
         <Blog7 {...blogData} />
       </div>
       <Footer />
     </div>
   );
+
 };
 
 export default BlogPage;
