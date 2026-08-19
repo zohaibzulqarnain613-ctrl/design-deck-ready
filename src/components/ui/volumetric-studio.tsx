@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouterState } from "@tanstack/react-router";
 
 interface InteractiveLightBarProps {
   className?: string;
 }
 
 export const VolumetricStudio = ({ className }: InteractiveLightBarProps) => {
-  const [isOn, setIsOn] = useState(false);
-
-  const toggleLights = () => setIsOn(!isOn);
+  const router = useRouterState();
+  const isOn = router.location.pathname === "/blog";
 
   // Spotlight positions
   const spots = [25, 50, 75];
@@ -32,26 +32,18 @@ export const VolumetricStudio = ({ className }: InteractiveLightBarProps) => {
               {/* Fixture Mount */}
               <div className="w-1 h-3 bg-neutral-800" />
               {/* Spotlight Housing */}
-              <button
-                onClick={toggleLights}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    toggleLights();
-                  }
-                }}
-                aria-label="Toggle studio lights"
-                className="group relative w-10 h-10 bg-neutral-900 rounded-b-xl border border-white/5 shadow-xl transition-transform active:scale-95 pointer-events-auto cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20"
+              <div
+                className="group relative w-10 h-10 bg-neutral-900 rounded-b-xl border border-white/5 shadow-xl transition-transform pointer-events-none"
               >
                 {/* Lens Area */}
                 <div className={cn(
-                  "absolute inset-1 rounded-full transition-colors duration-500",
+                  "absolute inset-1 rounded-full transition-colors duration-700",
                   isOn ? "bg-white/90 shadow-[0_0_15px_rgba(255,255,255,0.8)]" : "bg-neutral-800"
                 )} />
                 
                 {/* Inner Detail */}
                 <div className="absolute inset-0 rounded-b-xl border-t border-white/10 opacity-50" />
-              </button>
+              </div>
             </div>
           ))}
         </div>
