@@ -38,7 +38,7 @@ function Room({
       `polygon(${pts.map(([x, y]) => `${x}% ${y}%`).join(", ")})`,
     []
   );
-  const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+  const EASE: any = "cubic-bezier(0.16, 1, 0.3, 1)";
 
   return (
     <div className={cn("relative w-full h-full bg-[#030303] overflow-hidden", className)}>
