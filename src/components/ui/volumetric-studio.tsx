@@ -99,7 +99,7 @@ function Room({
             }}
             transition={{ 
               duration: isFlickering ? 0.3 : 0.8,
-              ease: EASE
+              ease: "easeOut"
             }}
             className="absolute top-0 w-[40%] h-[150%] origin-top opacity-30"
             style={{
