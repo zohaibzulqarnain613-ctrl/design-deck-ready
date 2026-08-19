@@ -125,7 +125,7 @@ const BlogPage = () => {
 
 
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
-        <Blog7 {...blogData} />
+        <Blog7 {...blogData} tagline="" heading="" description="" />
       </div>
       <Footer />
     </div>
