@@ -159,7 +159,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ScrollToTop />
+
       <div className="w-full bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-x-hidden">
         <Navbar />
         <main className="w-full">
