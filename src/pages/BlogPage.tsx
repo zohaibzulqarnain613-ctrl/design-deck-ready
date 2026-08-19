@@ -108,10 +108,11 @@ const BlogPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-center mt-4">
               <Button 
                 asChild
-                className="h-14 px-10 rounded-full bg-white text-black font-bold text-lg hover:scale-105 transition-transform active:scale-95 border-none"
+                className="h-14 px-10 rounded-full bg-white text-black font-bold text-lg hover:scale-105 transition-transform active:scale-95 border-none cursor-pointer"
               >
-                <Link to="/contact">Get Started</Link>
+                <a href="/#contact">Get Started</a>
               </Button>
+
               <Button 
                 variant="outline"
                 className="h-14 px-10 rounded-full bg-white/5 text-white font-bold text-lg border border-white/10 hover:bg-white/15 transition-all backdrop-blur-xl"

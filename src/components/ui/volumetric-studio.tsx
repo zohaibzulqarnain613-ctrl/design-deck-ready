@@ -102,8 +102,12 @@ export const VolumetricStudio = ({
   const [lightsOn, setLightsOn] = useState(false);
   const [isFlickering, setIsFlickering] = useState(true);
 
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
+    setIsMounted(true);
     let mounted = true;
+
     const runFlicker = async () => {
       const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
       await sleep(800);
@@ -132,11 +136,14 @@ export const VolumetricStudio = ({
 
   return (
     <div className={cn("relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-3xl bg-[#030303] shadow-2xl border border-white/5", className)}>
-      <Suspense fallback={<div className="w-full h-full bg-[#030303]" />}>
-        <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 3, 10], fov: 50 }}>
-          <Scene lightsOn={lightsOn} lightColor="#e6f0ff" spots={[30, 50, 70]} />
-        </Canvas>
-      </Suspense>
+      {isMounted && (
+        <Suspense fallback={<div className="w-full h-full bg-[#030303]" />}>
+          <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 3, 10], fov: 50 }}>
+            <Scene lightsOn={lightsOn} lightColor="#e6f0ff" spots={[30, 50, 70]} />
+          </Canvas>
+        </Suspense>
+      )}
+
       
       {/* Overlay Content */}
       <div className="absolute inset-0 z-30 flex items-center justify-center p-6 text-center">
