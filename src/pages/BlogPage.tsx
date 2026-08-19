@@ -86,8 +86,8 @@ const blogData = {
 const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
-      <div className="pt-20 px-4 max-w-7xl mx-auto">
-        <VolumetricStudio className="mb-12" />
+      <div className="pt-24 px-4 max-w-7xl mx-auto flex flex-col items-center">
+        <VolumetricStudio className="mb-4" />
 
 
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
