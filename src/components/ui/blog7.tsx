@@ -75,23 +75,34 @@ const Blog7 = ({
   return (
     <section className="py-32">
       <div className="container mx-auto flex flex-col items-center gap-16 lg:px-16">
-        <div className="text-center">
-          <Badge variant="secondary" className="mb-6 bg-white/10 text-blue-300 border-white/20">
-            {tagline}
-          </Badge>
-          <h2 className="mb-3 text-pretty text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl text-white tracking-tight drop-shadow-2xl">
-            {heading}
-          </h2>
-          <p className="mb-8 text-muted-foreground md:text-base lg:max-w-2xl lg:text-lg">
-            {description}
-          </p>
-          <Button variant="link" className="w-full sm:w-auto" asChild>
-            <Link to={buttonUrl}>
-              {buttonText}
-              <ArrowRight className="ml-2 size-4" />
-            </Link>
-          </Button>
-        </div>
+        {(tagline || heading || description) && (
+          <div className="text-center">
+            {tagline && (
+              <Badge variant="secondary" className="mb-6 bg-white/10 text-blue-300 border-white/20">
+                {tagline}
+              </Badge>
+            )}
+            {heading && (
+              <h2 className="mb-3 text-pretty text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl text-white tracking-tight drop-shadow-2xl">
+                {heading}
+              </h2>
+            )}
+            {description && (
+              <p className="mb-8 text-muted-foreground md:text-base lg:max-w-2xl lg:text-lg">
+                {description}
+              </p>
+            )}
+            {(buttonText && buttonUrl) && (
+              <Button variant="link" className="w-full sm:w-auto" asChild>
+                <Link to={buttonUrl}>
+                  {buttonText}
+                  <ArrowRight className="ml-2 size-4" />
+                </Link>
+              </Button>
+            )}
+          </div>
+        )}
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {posts.map((post) => (
             <Card key={post.id} className="grid grid-rows-[auto_auto_1fr_auto] rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/10">
