@@ -9,12 +9,22 @@ if (typeof window !== "undefined") {
 }
 
 export function SterlingGateKineticNavigation() {
-  // We need a ref for the parent container to scope GSAP
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Handle viewport detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Initial Setup & Hover Effects
   useEffect(() => {
@@ -57,23 +67,42 @@ export function SterlingGateKineticNavigation() {
 
         const shapeEls = shape.querySelectorAll(".shape-element");
 
+        let hoverTimeout: any;
+
         const onEnter = () => {
-             if (shapesContainer) {
-                 shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
-             }
-             shape.classList.add("active");
-             
-             gsap.fromTo(shapeEls, 
-                { scale: 0.5, opacity: 0, rotation: -10 },
-                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.7)", overwrite: "auto" }
-             );
+             clearTimeout(hoverTimeout);
+             hoverTimeout = setTimeout(() => {
+                 if (shapesContainer) {
+                     shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
+                 }
+                 shape.classList.add("active");
+                 
+                 gsap.fromTo(shapeEls, 
+                    { scale: 0.5, opacity: 0, rotation: -10 },
+                    { 
+                        scale: 1, 
+                        opacity: 1, 
+                        rotation: 0, 
+                        duration: 0.6, 
+                        stagger: 0.08, 
+                        ease: "back.out(1.7)", 
+                        overwrite: "auto",
+                        force3D: true 
+                    }
+                 );
+             }, 50); // Debounce hover
         };
         
         const onLeave = () => {
+            clearTimeout(hoverTimeout);
             gsap.to(shapeEls, {
-                scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in",
+                scale: 0.8, 
+                opacity: 0, 
+                duration: 0.3, 
+                ease: "power2.in",
                 onComplete: () => shape.classList.remove("active"),
-                overwrite: "auto"
+                overwrite: "auto",
+                force3D: true
             });
         };
 
@@ -133,30 +162,30 @@ export function SterlingGateKineticNavigation() {
             if (navWrap) navWrap.setAttribute("data-nav", "open");
             
             tl.set(menu, { xPercent: 0 })
-              .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
-              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05 }, "<+=0.35");
+              .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, force3D: true }, "<")
+              .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575, force3D: true }, "<")
+              .fromTo(menuLinks, { yPercent: 140, rotate: 10 }, { yPercent: 0, rotate: 0, stagger: 0.05, force3D: true }, "<+=0.35");
               
             // Animate Button Text and Icon Swapping
             if (menuButtonTexts && menuButtonTexts.length > 0) {
-              tl.fromTo(Array.from(menuButtonTexts), { yPercent: 0 }, { yPercent: -100, stagger: 0.2 }, "<");
+              tl.fromTo(Array.from(menuButtonTexts), { yPercent: 0 }, { yPercent: -100, stagger: 0.2, force3D: true }, "<");
             }
             if (menuButtonIcon) {
-              tl.fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315 }, "<");
+              tl.fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315, force3D: true }, "<");
             }
               
             if (fadeTargets.length) {
-                tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all" }, "<+=0.2");
+                tl.fromTo(fadeTargets, { autoAlpha: 0, yPercent: 50 }, { autoAlpha: 1, yPercent: 0, stagger: 0.04, clearProps: "all", force3D: true }, "<+=0.2");
             }
             document.body.style.overflow = "hidden";
         } else {
             // CLOSE
             if (navWrap) navWrap.setAttribute("data-nav", "closed");
 
-            tl.to(overlay, { autoAlpha: 0 })
-              .to(menu, { xPercent: 120 }, "<")
-              .to(Array.from(menuButtonTexts || []), { yPercent: 0 }, "<")
-              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4 }, "<");
+            tl.to(overlay, { autoAlpha: 0, force3D: true })
+              .to(menu, { xPercent: 120, force3D: true }, "<")
+              .to(Array.from(menuButtonTexts || []), { yPercent: 0, force3D: true }, "<")
+              .to(menuButtonIcon || [], { rotate: 0, duration: 0.4, force3D: true }, "<");
             
             document.body.style.overflow = "unset";
         }
@@ -269,18 +298,18 @@ export function SterlingGateKineticNavigation() {
             {/* Shape 1: Floating circles */}
             <div className="bg-shape bg-shape-1 absolute top-1/4 left-1/4 w-96 h-96 flex items-center justify-center">
               <div className="shape-element absolute w-64 h-64 border-2 border-blue-500 rounded-full opacity-0" />
-              <div className="shape-element absolute w-48 h-48 border-2 border-cyan-400 rounded-full opacity-0" />
+              {!isMobile && <div className="shape-element absolute w-48 h-48 border-2 border-cyan-400 rounded-full opacity-0" />}
             </div>
 
             {/* Shape 2: Wave pattern */}
             <div className="bg-shape bg-shape-2 absolute bottom-1/4 right-1/4 w-96 h-96 flex items-center justify-center">
               <div className="shape-element absolute w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-0" />
-              <div className="shape-element absolute w-full h-1 bg-gradient-to-r from-cyan-400 to-transparent translate-y-8 opacity-0" />
+              {!isMobile && <div className="shape-element absolute w-full h-1 bg-gradient-to-r from-cyan-400 to-transparent translate-y-8 opacity-0" />}
             </div>
 
-            {/* Shape 3: Grid dots */}
+            {/* Shape 3: Grid dots - Reduced on mobile */}
             <div className="bg-shape bg-shape-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-4 gap-4 opacity-0">
-               {[...Array(16)].map((_, i) => (
+               {[...Array(isMobile ? 8 : 16)].map((_, i) => (
                  <div key={i} className="shape-element w-2 h-2 bg-blue-500 rounded-full" />
                ))}
             </div>
@@ -288,10 +317,10 @@ export function SterlingGateKineticNavigation() {
             {/* Shape 4: Organic blobs */}
             <div className="bg-shape bg-shape-4 absolute top-20 right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl shape-element opacity-0" />
 
-            {/* Shape 5: Diagonal lines */}
+            {/* Shape 5: Diagonal lines - Simplified on mobile */}
             <div className="bg-shape bg-shape-5 absolute bottom-20 left-20 flex gap-4 rotate-45">
                <div className="shape-element w-1 h-64 bg-blue-500 opacity-0" />
-               <div className="shape-element w-1 h-64 bg-blue-500 opacity-0 delay-75" />
+               {!isMobile && <div className="shape-element w-1 h-64 bg-blue-500 opacity-0 delay-75" />}
             </div>
           </div>
 
@@ -345,7 +374,19 @@ export function SterlingGateKineticNavigation() {
       </div>
 
       <style>{`
-        .bg-shape { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .nav-overlay-wrapper {
+          will-change: transform, opacity;
+          contain: paint;
+        }
+        .backdrop-layer, .nav-link, .menu-list-item, .shape-element {
+          will-change: transform, opacity;
+        }
+        .bg-shape { 
+          opacity: 0; 
+          pointer-events: none; 
+          transition: opacity 0.3s; 
+          contain: layout paint;
+        }
         .bg-shape.active { opacity: 1; }
       `}</style>
     </div>
