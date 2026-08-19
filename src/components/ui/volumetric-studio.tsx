@@ -21,21 +21,21 @@ function Scene({ lightsOn, lightColor, spots }: { lightsOn: boolean, lightColor:
     <>
       <color attach="background" args={["#030303"]} />
       <Environment preset="city" />
-      <PerspectiveCamera makeDefault position={[0, 3, 10]} fov={50} />
+      <PerspectiveCamera makeDefault position={[0, 5, 12]} fov={50} />
       
-      {/* Lights */}
+      {/* Lights positioned strictly at the top */}
       {spots.map((x, i) => (
         <MovingSpot 
           key={i} 
-          position={[((x - 50) / 8), 10, 0]} 
+          position={[((x - 50) / 4), 12, -2]} 
           color={lightColor} 
           lightsOn={lightsOn} 
           depthBuffer={depthBuffer} 
         />
       ))}
 
-      {/* Floor */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
+      {/* Floor - darkened and lowered to focus on light beams */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
         <planeGeometry args={[100, 100]} />
         <MeshReflectorMaterial
           blur={[300, 100]}
@@ -46,19 +46,17 @@ function Scene({ lightsOn, lightColor, spots }: { lightsOn: boolean, lightColor:
           depthScale={1.2}
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
-          color="#050505"
+          color="#020202"
           metalness={0.5}
-          mirror={0.8}
+          mirror={0.5}
         />
       </mesh>
 
       {/* Back Wall */}
       <mesh position={[0, 10, -10]}>
         <planeGeometry args={[100, 30]} />
-        <meshStandardMaterial color="#0a0a0a" roughness={1} />
+        <meshStandardMaterial color="#000000" roughness={1} />
       </mesh>
-
-      <ContactShadows resolution={1024} scale={20} blur={2} opacity={0.5} far={10} color="#000000" />
     </>
   );
 }
@@ -68,7 +66,8 @@ function MovingSpot({ position, color, lightsOn, depthBuffer, ...props }: any) {
   const [target] = useState(() => new THREE.Object3D());
   
   useEffect(() => {
-    target.position.set(position[0], 0, 0);
+    // Pointing straight down or slightly forward
+    target.position.set(position[0], -5, position[2]);
   }, [position, target]);
 
   return (
@@ -77,12 +76,12 @@ function MovingSpot({ position, color, lightsOn, depthBuffer, ...props }: any) {
       <SpotLight
         ref={light}
         castShadow
-        penumbra={1}
-        distance={30}
-        angle={0.4}
-        attenuation={5}
-        anglePower={5}
-        intensity={lightsOn ? 100 : 0}
+        penumbra={0.5}
+        distance={45}
+        angle={0.35}
+        attenuation={8}
+        anglePower={4}
+        intensity={lightsOn ? 150 : 0}
         color={color}
         position={position}
         target={target}
@@ -132,12 +131,12 @@ export const VolumetricStudio = ({
   }, []);
 
   return (
-    <div className={cn("relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-3xl bg-[#030303] shadow-2xl border border-white/5 flex items-center justify-center", className)}>
+    <div className={cn("relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-3xl bg-[#000000] shadow-2xl border border-white/5 flex items-center justify-center", className)}>
       {isMounted && (
         <div className="absolute inset-0 z-0">
-          <Suspense fallback={<div className="w-full h-full bg-[#030303]" />}>
-            <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 3, 10], fov: 50 }}>
-              <Scene lightsOn={lightsOn} lightColor="#e6f0ff" spots={[30, 50, 70]} />
+          <Suspense fallback={<div className="w-full h-full bg-[#000000]" />}>
+            <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 5, 12], fov: 50 }}>
+              <Scene lightsOn={lightsOn} lightColor="#ffffff" spots={[20, 40, 60, 80]} />
             </Canvas>
           </Suspense>
         </div>
