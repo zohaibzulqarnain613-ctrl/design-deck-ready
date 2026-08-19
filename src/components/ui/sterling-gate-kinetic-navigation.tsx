@@ -222,19 +222,34 @@ export function SterlingGateKineticNavigation() {
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     closeMenu();
-    if (location.pathname !== '/') {
-      navigate({ to: '/' });
-      setTimeout(() => {
-        const element = document.getElementById('contact');
+    
+    // Using a more reliable way to navigate and scroll that works across browsers
+    const targetId = 'contact';
+    const navigateAndScroll = () => {
+      // Use requestAnimationFrame to ensure the DOM is ready after navigation
+      requestAnimationFrame(() => {
+        const element = document.getElementById(targetId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Calculate offset if navbar is fixed
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
-      }, 100);
+      });
+    };
+
+    if (location.pathname !== '/') {
+      navigate({ to: '/' }).then(() => {
+        // Wait slightly for route transition
+        setTimeout(navigateAndScroll, 100);
+      });
     } else {
-      const element = document.getElementById('contact');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      navigateAndScroll();
     }
   };
 

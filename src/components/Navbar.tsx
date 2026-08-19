@@ -22,21 +22,32 @@ const Navbar: React.FC = () => {
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (location.pathname !== '/') {
-      navigate({ to: '/' });
-      setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
-      const element = document.getElementById('contact');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
     setIsMobileMenuOpen(false);
+    
+    const targetId = 'contact';
+    const navigateAndScroll = () => {
+      requestAnimationFrame(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    };
+
+    if (location.pathname !== '/') {
+      navigate({ to: '/' }).then(() => {
+        setTimeout(navigateAndScroll, 100);
+      });
+    } else {
+      navigateAndScroll();
+    }
   };
 
   useEffect(() => {
