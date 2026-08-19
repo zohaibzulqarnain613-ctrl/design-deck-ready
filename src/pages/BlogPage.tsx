@@ -87,29 +87,41 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       <div className="pt-20 px-4 max-w-7xl mx-auto">
-        <VolumetricStudio className="mb-12 shadow-2xl border border-white/5">
+        <VolumetricStudio className="mb-12">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.2, duration: 0.8 }}
-            className="max-w-3xl space-y-8"
+            transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
+            className="relative z-10 flex flex-col justify-center items-center"
           >
-            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              Design in a<br />new dimension.
+            {/* Title */}
+            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 leading-[0.85] text-center drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              AI Automation<br />Insights.
             </h2>
-            <p className="text-lg md:text-xl text-white/70 font-medium">
-              The UI Factory brings physically accurate WebGL rendering straight to your DOM.
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-white/60 max-w-2xl text-center mb-10 leading-tight font-medium">
+              Explore the latest strategies, success stories, and best practices in AI automation.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-              <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 rounded-full font-bold">
-                Get Started
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 items-center mt-4">
+              <Button 
+                asChild
+                className="h-14 px-10 rounded-full bg-white text-black font-bold text-lg hover:scale-105 transition-transform active:scale-95 border-none"
+              >
+                <Link to="/contact">Get Started</Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 px-8 rounded-full font-bold">
-                View Documentation
+              <Button 
+                variant="outline"
+                className="h-14 px-10 rounded-full bg-white/5 text-white font-bold text-lg border border-white/10 hover:bg-white/15 transition-all backdrop-blur-xl"
+              >
+                Learn More
               </Button>
             </div>
           </motion.div>
         </VolumetricStudio>
+
 
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
         <Blog7 {...blogData} />
