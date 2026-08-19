@@ -1,5 +1,10 @@
 import { Blog7 } from "@/components/ui/blog7";
 import Footer from "@/components/Footer";
+import { VolumetricStudio } from "@/components/ui/volumetric-studio";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
+
 
 const blogData = {
   tagline: "Insights & Innovation",
@@ -81,13 +86,51 @@ const blogData = {
 const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
-      <div className="pt-20">
+      <div className="pt-20 px-4 max-w-7xl mx-auto">
+        <VolumetricStudio className="mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
+            className="relative z-10 flex flex-col justify-center items-center"
+          >
+            {/* Title */}
+            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 leading-[0.85] text-center drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              AI Automation<br />Insights.
+            </h2>
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-white/60 max-w-2xl text-center mb-10 leading-tight font-medium">
+              Explore the latest strategies, success stories, and best practices in AI automation.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 items-center mt-4">
+              <Button 
+                asChild
+                className="h-14 px-10 rounded-full bg-white text-black font-bold text-lg hover:scale-105 transition-transform active:scale-95 border-none cursor-pointer"
+              >
+                <a href="/#contact">Get Started</a>
+              </Button>
+
+              <Button 
+                variant="outline"
+                className="h-14 px-10 rounded-full bg-white/5 text-white font-bold text-lg border border-white/10 hover:bg-white/15 transition-all backdrop-blur-xl"
+              >
+                Learn More
+              </Button>
+            </div>
+          </motion.div>
+        </VolumetricStudio>
+
+
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
-        <Blog7 {...blogData} />
+        <Blog7 {...blogData} tagline="" heading="" description="" />
       </div>
       <Footer />
     </div>
   );
+
 };
 
 export default BlogPage;
