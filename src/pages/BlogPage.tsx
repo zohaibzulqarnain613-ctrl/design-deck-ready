@@ -1,10 +1,5 @@
 import { Blog7 } from "@/components/ui/blog7";
 import Footer from "@/components/Footer";
-import { VolumetricStudio } from "@/components/ui/volumetric-studio";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
-
 
 const blogData = {
   tagline: "Insights & Innovation",
@@ -86,17 +81,13 @@ const blogData = {
 const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
-      <div className="pt-24 px-4 max-w-7xl mx-auto flex flex-col items-center">
-        <VolumetricStudio className="mb-4" />
-
-
+      <div className="pt-20 px-4 max-w-7xl mx-auto">
         <h1 className="sr-only">SamysAI Blog: Insights on AI Automation and Business Growth</h1>
-        <Blog7 {...blogData} tagline="" heading="" description="" />
+        <Blog7 {...blogData} />
       </div>
       <Footer />
     </div>
   );
-
 };
 
 export default BlogPage;
