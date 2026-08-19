@@ -1,35 +1,33 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, Suspense, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { 
   SpotLight, 
   useDepthBuffer, 
   MeshReflectorMaterial, 
   PerspectiveCamera,
-  Float,
-  Text,
-  Environment
+  Environment,
+  ContactShadows
 } from "@react-three/drei";
 import { cn } from "@/lib/utils";
 import * as THREE from "three";
-
-const METAL_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E")';
 
 function Scene({ lightsOn, lightColor, spots }: { lightsOn: boolean, lightColor: string, spots: number[] }) {
   const depthBuffer = useDepthBuffer();
   
   return (
     <>
+      <color attach="background" args={["#030303"]} />
       <Environment preset="city" />
-      <PerspectiveCamera makeDefault position={[0, 2, 8]} fov={50} />
+      <PerspectiveCamera makeDefault position={[0, 3, 10]} fov={50} />
       
       {/* Lights */}
       {spots.map((x, i) => (
         <MovingSpot 
           key={i} 
-          position={[((x - 50) / 10), 8, 0]} 
+          position={[((x - 50) / 8), 10, 0]} 
           color={lightColor} 
           lightsOn={lightsOn} 
           depthBuffer={depthBuffer} 
@@ -38,33 +36,35 @@ function Scene({ lightsOn, lightColor, spots }: { lightsOn: boolean, lightColor:
 
       {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
-        <planeGeometry args={[50, 50]} />
+        <planeGeometry args={[100, 100]} />
         <MeshReflectorMaterial
           blur={[300, 100]}
-          resolution={2048}
+          resolution={1024}
           mixBlur={1}
-          mixStrength={40}
+          mixStrength={60}
           roughness={1}
           depthScale={1.2}
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
           color="#050505"
           metalness={0.5}
-          mirror={1}
+          mirror={0.8}
         />
       </mesh>
 
       {/* Back Wall */}
-      <mesh position={[0, 4, -5]}>
-        <planeGeometry args={[50, 10]} />
+      <mesh position={[0, 10, -10]}>
+        <planeGeometry args={[100, 30]} />
         <meshStandardMaterial color="#0a0a0a" roughness={1} />
       </mesh>
+
+      <ContactShadows resolution={1024} scale={20} blur={2} opacity={0.5} far={10} color="#000000" />
     </>
   );
 }
 
 function MovingSpot({ position, color, lightsOn, depthBuffer, ...props }: any) {
-  const light = React.useRef<THREE.SpotLight>(null!);
+  const light = useRef<THREE.SpotLight>(null!);
   const [target] = useState(() => new THREE.Object3D());
   
   useEffect(() => {
@@ -78,11 +78,11 @@ function MovingSpot({ position, color, lightsOn, depthBuffer, ...props }: any) {
         ref={light}
         castShadow
         penumbra={1}
-        distance={20}
-        angle={0.35}
+        distance={30}
+        angle={0.4}
         attenuation={5}
-        anglePower={4}
-        intensity={lightsOn ? 10 : 0}
+        anglePower={5}
+        intensity={lightsOn ? 100 : 0}
         color={color}
         position={position}
         target={target}
@@ -106,24 +106,22 @@ export const VolumetricStudio = ({
     let mounted = true;
     const runFlicker = async () => {
       const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-      await sleep(600);
+      await sleep(800);
       if (!mounted) return;
-      setLightsOn(true);
-      await sleep(100);
-      setLightsOn(false);
-      await sleep(300);
-      setLightsOn(true);
-      await sleep(50);
-      setLightsOn(false);
-      await sleep(200);
-      setLightsOn(true);
-      await sleep(40);
-      setLightsOn(false);
-      await sleep(60);
-      setLightsOn(true);
-      await sleep(40);
-      setLightsOn(false);
-      await sleep(400);
+      
+      // Initial flicker sequence
+      const flicker = async (duration: number) => {
+        setLightsOn(true);
+        await sleep(duration);
+        setLightsOn(false);
+        await sleep(duration * 2);
+      };
+
+      await flicker(50);
+      await flicker(30);
+      await flicker(80);
+      await flicker(40);
+      
       if (!mounted) return;
       setIsFlickering(false);
       setLightsOn(true);
@@ -133,25 +131,30 @@ export const VolumetricStudio = ({
   }, []);
 
   return (
-    <div className={cn("relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-3xl bg-[#030303]", className)}>
-      <Canvas shadows dpr={[1, 2]}>
-        <Scene lightsOn={lightsOn} lightColor="#e6f0ff" spots={[35, 50, 65]} />
-      </Canvas>
+    <div className={cn("relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-3xl bg-[#030303] shadow-2xl border border-white/5", className)}>
+      <Suspense fallback={<div className="w-full h-full bg-[#030303]" />}>
+        <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 3, 10], fov: 50 }}>
+          <Scene lightsOn={lightsOn} lightColor="#e6f0ff" spots={[30, 50, 70]} />
+        </Canvas>
+      </Suspense>
       
       {/* Overlay Content */}
-      <div className="absolute inset-0 z-30 flex items-center justify-center p-6 text-center pointer-events-none">
-        <div className="pointer-events-auto">
+      <div className="absolute inset-0 z-30 flex items-center justify-center p-6 text-center">
+        <div className="relative z-40 pointer-events-auto">
           {children}
         </div>
       </div>
 
       {/* Vignette Overlay */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-20"
         style={{
-          background: `radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.6) 100%)`
+          background: `radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.7) 100%)`
         }}
       />
+      
+      {/* Subtle Grain */}
+      <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </div>
   );
 };
