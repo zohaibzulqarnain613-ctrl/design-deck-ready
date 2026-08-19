@@ -152,13 +152,7 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
+// ScrollToTop removed to allow TanStack Router's native scrollRestoration: true to manage position memory correctly.
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
