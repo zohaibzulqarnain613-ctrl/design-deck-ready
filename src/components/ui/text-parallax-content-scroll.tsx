@@ -104,6 +104,9 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl, isFirst }) => {
         fetchPriority={isFirst ? "high" : "auto"}
         decoding={isFirst ? "sync" : "async"}
         className="absolute inset-0 h-full w-full object-cover object-center"
+        width="1200"
+        height="800"
+
       />
       <motion.div
         className="absolute inset-0 bg-neutral-950/70"

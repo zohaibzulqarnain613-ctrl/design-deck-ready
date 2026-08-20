@@ -58,6 +58,9 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
         fetchPriority={index === 0 ? "high" : "auto"}
         decoding={index === 0 ? "sync" : "async"}
         className="absolute inset-0 w-full h-full object-cover"
+        width="400"
+        height="450"
+
         onError={(e) => { 
           const target = e.target as HTMLImageElement; 
           target.onerror = null; 
