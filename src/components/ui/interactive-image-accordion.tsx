@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getOptimizedImageUrl, getImageUrlSrcSet } from '@/utils/image-optimization';
+import { getOptimizedImageUrl, getImageSrcSet } from '@/utils/image-optimization';
 
 const accordionItems = [
   {
@@ -49,8 +49,8 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
       onClick={onMouseEnter}
     >
       <img
-        src={getOptimizedImageUrl(item.imageUrl, { width: isActive ? 800 : 400 })}
-        srcSet={getImageUrlSrcSet(item.imageUrl, [400, 800, 1200])}
+        src={getOptimizedImageUrl(item.imageUrl, isActive ? 800 : 400)}
+        srcSet={getImageSrcSet(item.imageUrl, [400, 800, 1200])}
         sizes={isActive ? "(max-width: 768px) 100vw, 400px" : "60px"}
         key={item.imageUrl}
         alt={item.title}
@@ -58,6 +58,9 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
         fetchPriority={index === 0 ? "high" : "auto"}
         decoding={index === 0 ? "sync" : "async"}
         className="absolute inset-0 w-full h-full object-cover"
+        width="400"
+        height="450"
+
         onError={(e) => { 
           const target = e.target as HTMLImageElement; 
           target.onerror = null; 
