@@ -23,3 +23,4 @@ export function getImageSrcSet(url: string, widths: number[] = [400, 800, 1200, 
     .map(w => `${getOptimizedImageUrl(url, w)} ${w}w`)
     .join(', ');
 }
+

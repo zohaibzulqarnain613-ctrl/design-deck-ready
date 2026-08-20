@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { getOptimizedImageUrl, getImageUrlSrcSet } from "@/utils/image-optimization";
+import { getOptimizedImageUrl, getImageSrcSet } from "@/utils/image-optimization";
 
 interface ServiceParallaxItem {
   imgUrl: string;
@@ -96,8 +96,8 @@ const StickyImage: React.FC<StickyImageProps> = ({ imgUrl, isFirst }) => {
       className="sticky z-0 overflow-hidden rounded-3xl w-full"
     >
       <img
-        src={getOptimizedImageUrl(imgUrl, { width: 1200 })}
-        srcSet={getImageUrlSrcSet(imgUrl, [400, 800, 1200, 1600])}
+        src={getOptimizedImageUrl(imgUrl, 1200)}
+        srcSet={getImageSrcSet(imgUrl, [400, 800, 1200, 1600])}
         sizes="100vw"
         alt=""
         loading={isFirst ? "eager" : "lazy"}
