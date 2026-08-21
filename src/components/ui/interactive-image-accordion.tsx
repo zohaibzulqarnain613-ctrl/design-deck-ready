@@ -5,7 +5,7 @@ const accordionItems = [
   {
     id: 1,
     title: 'AI Phone Sales & Support',
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
+    imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
   },
   {
     id: 2,
