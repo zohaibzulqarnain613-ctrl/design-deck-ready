@@ -4,33 +4,39 @@ import { getOptimizedImageUrl, getImageSrcSet } from '@/utils/image-optimization
 const accordionItems = [
   {
     id: 1,
-    title: 'AI Phone Sales & Support',
+    title: 'AI Phone Callers',
     imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
+    link: '/services/ai-phone-callers',
   },
   {
     id: 2,
     title: 'Intelligent AI Chatbots',
     imageUrl: 'https://images.unsplash.com/photo-1593508512855-d6c582782918',
+    link: '/services/ai-chatbots',
   },
   {
     id: 3,
     title: 'Web Development',
     imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+    link: '/services/web-development',
   },
   {
     id: 4,
-    title: 'Content Creation',
-    imageUrl: 'https://images.unsplash.com/photo-1493612276216-ee3925520721',
+    title: 'App Development',
+    imageUrl: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb',
+    link: '/services/app-development',
   },
   {
     id: 5,
     title: 'Cold Email Dashboards',
     imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984',
+    link: '/services/cold-email-dashboard',
   },
   {
     id: 6,
-    title: 'App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb',
+    title: 'Content Creation',
+    imageUrl: 'https://images.unsplash.com/photo-1493612276216-ee3925520721',
+    link: '/services/content-creation',
   },
 ];
 
