@@ -47,19 +47,24 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
       `}
       onMouseEnter={onMouseEnter}
       onClick={onMouseEnter}
+      role="button"
+      tabIndex={0}
+      aria-label={item.title}
     >
       <img
         src={getOptimizedImageUrl(item.imageUrl, isActive ? 800 : 400)}
         srcSet={getImageSrcSet(item.imageUrl, [800, 1200, 1600])}
         sizes={isActive ? "(max-width: 768px) 100vw, 800px" : "400px"}
         key={item.imageUrl}
-        alt={item.title}
+        alt=""
+        aria-hidden="true"
         loading={index === 0 ? "eager" : "lazy"}
         fetchPriority={index === 0 ? "high" : "auto"}
         decoding={index === 0 ? "sync" : "async"}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         width="400"
         height="450"
+
 
         onError={(e) => { 
           const target = e.target as HTMLImageElement; 
