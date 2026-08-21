@@ -1,6 +1,7 @@
 import React from "react";
-import { createFileRoute } from "@tanstack/react-router";
-const LinkedInOutreachPage = React.lazy(() => import("@/pages/LinkedInOutreachPage"));
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+
+const LinkedInOutreachPage = lazyRouteComponent(() => import("@/pages/LinkedInOutreachPage"));
 
 export const Route = createFileRoute("/services/linkedin-outreach")({
   head: () => ({

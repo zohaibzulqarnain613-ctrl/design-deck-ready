@@ -1,6 +1,7 @@
 import React from "react";
-import { createFileRoute } from "@tanstack/react-router";
-const IGDMBotPage = React.lazy(() => import("@/pages/IGDMBotPage"));
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+
+const IGDMBotPage = lazyRouteComponent(() => import("@/pages/IGDMBotPage"));
 
 export const Route = createFileRoute("/services/ig-dm-bot")({
   head: () => ({
