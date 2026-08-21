@@ -167,15 +167,14 @@ const HomePage = () => {
       {/* Section 2: What We Build */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] relative overflow-hidden border-b border-white/5">
         <div className="max-w-7xl mx-auto text-center">
+          <p className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-4">
+            WHAT WE BUILD
+          </p>
           <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tighter text-white">
-            We Build Growth Infrastructure
+            AI Systems & Digital Services
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            SamysAI isn't just an AI agency. We are a technology partner that builds 
-            <span className="text-blue-400"> AI-powered systems</span>, 
-            <span className="text-purple-400"> digital products</span>, and 
-            <span className="text-pink-400"> growth infrastructure</span> 
-            designed to help businesses operate and scale smarter.
+            Explore the AI, development, and growth systems we build to help businesses automate operations, improve customer experiences, and scale with better technology.
           </p>
         </div>
       </section>
