@@ -173,7 +173,7 @@ const HomePage = () => {
       </section>
 
       {/* Section 3: Services Section */}
-      <ServicesSection />
+      
 
       {/* Technology Ecosystem Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 bg-[#050505]">
