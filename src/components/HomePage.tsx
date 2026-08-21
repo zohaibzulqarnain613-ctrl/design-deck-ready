@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import SplineScene from '@/components/SplineScene';
+import { LandingAccordionItem } from './ui/interactive-image-accordion';
 import ServicesSection from '@/components/ServicesSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import { WordPullUp } from '@/components/ui/word-pull-up';
@@ -139,17 +140,9 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Right Column - Robot */}
-            <div className="flex-1 flex items-center justify-center w-full mt-4 md:mt-0">
-              <div className="w-full flex items-center justify-center relative">
-                {/* Robot Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="relative float-animation w-full">
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] object-cover max-w-full overflow-visible rounded-lg relative z-10 scale-110"
-                />
-                </div>
+            <div className="flex-1 w-full mt-4 md:mt-0">
+              <div className="w-full relative">
+                <LandingAccordionItem />
               </div>
             </div>
           </div>
@@ -180,7 +173,7 @@ const HomePage = () => {
       </section>
 
       {/* Section 3: Services Section */}
-      <ServicesSection />
+      
 
       {/* Technology Ecosystem Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 bg-[#050505]">
