@@ -50,8 +50,8 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
     >
       <img
         src={getOptimizedImageUrl(item.imageUrl, isActive ? 800 : 400)}
-        srcSet={getImageSrcSet(item.imageUrl, [400, 800, 1200])}
-        sizes={isActive ? "(max-width: 768px) 100vw, 400px" : "60px"}
+        srcSet={getImageSrcSet(item.imageUrl, [800, 1200, 1600])}
+        sizes={isActive ? "(max-width: 768px) 100vw, 800px" : "400px"}
         key={item.imageUrl}
         alt={item.title}
         loading={index === 0 ? "eager" : "lazy"}
