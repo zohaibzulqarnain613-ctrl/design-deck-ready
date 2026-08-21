@@ -119,7 +119,7 @@ export function LandingAccordionItem() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/[0.02] rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
+      <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Text content removed as it is now in HomePage.tsx hero */}
           <div className="w-full">
