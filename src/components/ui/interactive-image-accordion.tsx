@@ -65,11 +65,9 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
           className="w-full h-full object-cover"
           width="400"
           height="450"
-
-
-        onError={(e) => { 
-          const target = e.target as HTMLImageElement; 
-          target.onerror = null; 
+          onError={(e) => { 
+            const target = e.target as HTMLImageElement; 
+            target.onerror = null; 
             target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
           }}
         />
@@ -114,36 +112,17 @@ export function LandingAccordionItem() {
   };
 
   return (
-    <div className="relative bg-[#050505] overflow-hidden">
-      {/* Background Effects - More subtle */}
+    <div className="relative bg-[#050505] overflow-hidden min-h-[500px]">
+      {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/[0.02] rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/[0.02] rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
-      <section className="relative z-10 container mx-auto px-4 py-12 md:py-24">
+      <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-
-          <div className="w-full md:w-1/2 text-center md:text-left px-2 sm:px-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight tracking-tighter drop-shadow-2xl">
-              Scale Your Business with AI-Powered Systems
-            </h1>
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed px-2 sm:px-0">
-              We design and build AI-powered systems, digital products, and growth infrastructure designed to automate repetitive tasks and accelerate your business growth.
-            </p>
-            <div className="mt-6 sm:mt-8">
-              <a
-                href="#contact"
-                className="inline-block group relative px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 ease-in-out overflow-hidden"
-              >
-                <span className="relative z-10">Contact Us</span>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg scale-110"></div>
-                <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              </a>
-            </div>
-          </div>
-
-          <div className="w-full md:w-1/2">
+          {/* Text content removed as it is now in HomePage.tsx hero */}
+          <div className="w-full">
             <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} items-center justify-center gap-4 p-4 ${isMobile ? '' : 'overflow-x-auto'}`}>
               {accordionItems.map((item, index) => (
                 <AccordionItem
@@ -158,7 +137,7 @@ export function LandingAccordionItem() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
