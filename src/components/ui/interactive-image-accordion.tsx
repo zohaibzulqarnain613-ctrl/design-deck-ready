@@ -94,7 +94,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
       >
         {item.title}
       </span>
-    </div>
+    </Link>
   );
 };
 
