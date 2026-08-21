@@ -141,8 +141,11 @@ const HomePage = () => {
             </div>
 
             <div className="flex-1 w-full mt-4 md:mt-0">
-              <div className="w-full relative">
-                <LandingAccordionItem />
+              <div className="w-full relative h-[400px] sm:h-[500px] md:h-[600px]">
+                <SplineScene 
+                  scene="https://prod.spline.design/kZqon7WqQ8ifDdtV/scene.splinecode"
+                  className="w-full h-full"
+                />
               </div>
             </div>
           </div>
@@ -173,6 +176,7 @@ const HomePage = () => {
       </section>
 
       {/* Section 3: Services Section */}
+      <ServicesSection />
       
 
       {/* Technology Ecosystem Section */}
