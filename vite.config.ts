@@ -17,6 +17,7 @@ export default defineConfig({
       // Spline ships WASM assets that break when pre-bundled by the dep optimizer
       // (the .wasm URL resolves to index.html and fails WebAssembly.instantiate).
       exclude: ["@splinetool/react-spline", "@splinetool/runtime"],
+      include: ["lodash.debounce"],
     },
   },
 });
