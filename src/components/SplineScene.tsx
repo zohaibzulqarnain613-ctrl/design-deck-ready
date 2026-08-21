@@ -11,17 +11,17 @@ class SplineErrorBoundary extends React.Component<
   { fallback: React.ReactNode; children: React.ReactNode },
   { hasError: boolean }
 > {
-  state = { hasError: false };
+  override state = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error: unknown) {
+  override componentDidCatch(error: unknown) {
     console.warn('Spline scene failed to render, showing fallback.', error);
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) return this.props.fallback;
     return this.props.children;
   }
