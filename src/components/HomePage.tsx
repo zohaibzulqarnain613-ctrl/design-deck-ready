@@ -147,7 +147,7 @@ const HomePage = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
                 <div className="relative float-animation w-full">
                   <SplineScene 
-                    scene="https://prod.spline.design/kZqon7WqQ8ifDdtV/scene.splinecode"
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                     className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] object-cover max-w-full overflow-visible rounded-lg relative z-10 scale-110"
                   />
                 </div>
