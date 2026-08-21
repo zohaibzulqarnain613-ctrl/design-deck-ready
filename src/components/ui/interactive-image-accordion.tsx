@@ -51,31 +51,33 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
       tabIndex={0}
       aria-label={item.title}
     >
-      <img
-        src={getOptimizedImageUrl(item.imageUrl, isActive ? 800 : 400)}
-        srcSet={getImageSrcSet(item.imageUrl, [800, 1200, 1600])}
-        sizes={isActive ? "(max-width: 768px) 100vw, 800px" : "400px"}
-        key={item.imageUrl}
-        alt=""
-        aria-hidden="true"
-        loading={index === 0 ? "eager" : "lazy"}
-        fetchPriority={index === 0 ? "high" : "auto"}
-        decoding={index === 0 ? "sync" : "async"}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        width="400"
-        height="450"
+      <div className="absolute inset-0 z-0">
+        <img
+          src={getOptimizedImageUrl(item.imageUrl, isActive ? 800 : 400)}
+          srcSet={getImageSrcSet(item.imageUrl, [800, 1200, 1600])}
+          sizes={isActive ? "(max-width: 768px) 100vw, 800px" : "400px"}
+          key={item.imageUrl}
+          alt=""
+          aria-hidden="true"
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchPriority={index === 0 ? "high" : "auto"}
+          decoding={index === 0 ? "sync" : "async"}
+          className="w-full h-full object-cover"
+          width="400"
+          height="450"
 
 
         onError={(e) => { 
           const target = e.target as HTMLImageElement; 
           target.onerror = null; 
-          target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
-        }}
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none"></div>
+            target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
+          }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
       <span
         className={`
-          absolute text-white text-lg font-semibold whitespace-nowrap pointer-events-none
+          absolute text-white text-lg font-semibold whitespace-nowrap z-10
           transition-all duration-300 ease-in-out
           ${isMobile
             ? isActive
