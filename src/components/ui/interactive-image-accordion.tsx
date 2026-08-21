@@ -10,27 +10,27 @@ const accordionItems = [
   {
     id: 2,
     title: 'Intelligent AI Chatbots',
-    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a',
+    imageUrl: 'https://images.unsplash.com/photo-1593508512855-d6c582782918',
   },
   {
     id: 3,
     title: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
+    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
   },
   {
     id: 4,
     title: 'Content Creation',
-    imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643',
+    imageUrl: 'https://images.unsplash.com/photo-1493612276216-ee3925520721',
   },
   {
     id: 5,
     title: 'Cold Email Dashboards',
-    imageUrl: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa',
+    imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984',
   },
   {
     id: 6,
     title: 'App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c',
+    imageUrl: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb',
   },
 ];
 
