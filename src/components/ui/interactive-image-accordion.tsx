@@ -43,7 +43,8 @@ const accordionItems = [
 
 const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item: typeof accordionItems[0], isActive: boolean, onMouseEnter: () => void, isMobile: boolean, index: number }) => {
   return (
-    <div
+    <Link
+      to={item.link}
       className={`
         relative rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out
@@ -53,9 +54,6 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
         }
       `}
       onMouseEnter={onMouseEnter}
-      onClick={onMouseEnter}
-      role="button"
-      tabIndex={0}
       aria-label={item.title}
     >
       <div className="absolute inset-0 z-0">
