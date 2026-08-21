@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    optimizeDeps: {
+      // Spline ships WASM assets that break when pre-bundled by the dep optimizer
+      // (the .wasm URL resolves to index.html and fails WebAssembly.instantiate).
+      exclude: ["@splinetool/react-spline", "@splinetool/runtime"],
+    },
+  },
 });
