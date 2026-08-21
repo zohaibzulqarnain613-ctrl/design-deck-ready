@@ -72,11 +72,10 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item
           target.src = `https://placehold.co/400x450/2d3748/ffffff?text=${encodeURIComponent(item.title)}`; 
         }}
       />
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
+      <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none"></div>
       <span
         className={`
-          absolute text-white text-lg font-semibold whitespace-nowrap
+          absolute text-white text-lg font-semibold whitespace-nowrap pointer-events-none
           transition-all duration-300 ease-in-out
           ${isMobile
             ? isActive
