@@ -164,22 +164,7 @@ const HomePage = () => {
         </div>
       </section>
       
-      {/* Section 2: What We Build */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] relative overflow-hidden border-b border-white/5">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm font-mono text-blue-400 uppercase tracking-[0.3em] mb-4">
-            WHAT WE BUILD
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tighter text-white">
-            AI Systems & Digital Services
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Explore the AI, development, and growth systems we build to help businesses automate operations, improve customer experiences, and scale with better technology.
-          </p>
-        </div>
-      </section>
-
-      {/* Section 3: Services Section */}
+      {/* Services Section */}
       <ServicesSection />
       
 
