@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import SplineScene from '@/components/SplineScene';
+import { LandingAccordionItem } from './ui/interactive-image-accordion';
 import ServicesSection from '@/components/ServicesSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import { WordPullUp } from '@/components/ui/word-pull-up';
