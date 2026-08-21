@@ -112,7 +112,7 @@ export function LandingAccordionItem() {
   };
 
   return (
-    <div className="relative bg-[#050505] overflow-hidden min-h-[500px]">
+    <div className="relative bg-transparent overflow-hidden min-h-[500px]">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/[0.02] rounded-full filter blur-3xl animate-pulse"></div>
