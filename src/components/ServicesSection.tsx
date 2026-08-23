@@ -16,7 +16,7 @@ const ServicesSection: React.FC = () => {
             '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            again you have remove robot dont do this again
+                                            Implement a before/after performance test that measures page load times for the main navigation routes and generates a comparison report.
           </p>
         </div>
         <LandingAccordionItem />
