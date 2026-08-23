@@ -53,7 +53,7 @@ const AboutUsPage: React.FC = () => {
       imageUrl: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
     },
     {
-      name: "Sufi K",
+      name: "Sami S",
       role: "Head of App Development",
       tagline: "Ship something people can use every day.",
       description: "Leads mobile and cross platform app development.",
@@ -215,7 +215,11 @@ const AboutUsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
             <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
-              Meet the Team
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            i am asking to update this in 
+Meet the Team
             </h3>
           </div>
 
