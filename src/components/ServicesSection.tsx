@@ -16,7 +16,7 @@ const ServicesSection: React.FC = () => {
             '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Enable route-based code-splitting and prefetching so pages load faster when users navigate.
+                                            Verify the improved navigation performance by measuring page load times and reporting before/after metrics.
           </p>
         </div>
         <LandingAccordionItem />
