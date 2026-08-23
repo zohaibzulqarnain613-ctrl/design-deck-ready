@@ -53,7 +53,7 @@ const AboutUsPage: React.FC = () => {
       imageUrl: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
     },
     {
-      name: "Sufi K",
+      name: "Sami S",
       role: "Head of App Development",
       tagline: "Ship something people can use every day.",
       description: "Leads mobile and cross platform app development.",
