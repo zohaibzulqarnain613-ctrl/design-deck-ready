@@ -16,22 +16,7 @@ const ServicesSection: React.FC = () => {
 {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            For the code present, I get the error below.
-
-Please think step-by-step in order to resolve it.
-\`\`\`
-Failed to fetch dynamically imported module: https://5edae89d-ec98-4829-99e4-7827c7bed903.lovableproject.com/src/components/ChatBot.tsx
-
-{
-  "timestamp": 1787518787439,
-  "error_type": "RUNTIME_ERROR",
-  "filename": "/",
-  "lineno": 0,
-  "colno": 0,
-  "stack": "TypeError: Failed to fetch dynamically imported module: https://5edae89d-ec98-4829-99e4-7827c7bed903.lovableproject.com/src/components/ChatBot.tsx",
-  "has_blank_screen": true
-}
-\`\`\``}
+                                            replace the name from sufi K to Sami S`}
           </div>
         </div>
         <LandingAccordionItem />
