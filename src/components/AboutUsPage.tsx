@@ -61,6 +61,16 @@ const AboutUsPage: React.FC = () => {
       color: "#10b981",
       expertise: ['App Development', 'Mobile Apps', 'Cross Platform', 'User Experience'],
       imageUrl: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+    },
+    {
+      name: "Abdullah J",
+      role: "Head of Cold Email Outreach",
+      tagline: "Effective outreach is about timing and relevance.",
+      description: "Leads cold email outreach strategy and execution.",
+      message: "I lead cold email outreach at SamysAI.\n\nWe build outreach systems that prioritize quality over quantity. A cold email should feel like a relevant business suggestion rather than an intrusion, and that requires clean data, proper infrastructure, and clear messaging.\n\nMy focus is on the technical and strategic layers that ensure emails reach the right inbox and start the right conversation.",
+      color: "#f59e0b",
+      expertise: ['Cold Email', 'Lead Gen', 'Email Infrastructure', 'Deliverability'],
+      imageUrl: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg"
     }
   ];
 
@@ -218,8 +228,8 @@ const AboutUsPage: React.FC = () => {
               '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            i am asking to update this in 
-Meet the Team
+                                            i want you to add a new card the name of team member is Abdullah J 
+he is head of cold email outreach
             </h3>
           </div>
 
