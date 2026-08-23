@@ -13,7 +13,10 @@ const ServicesSection: React.FC = () => {
             AI Systems & Digital Services
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Explore the AI, development, and growth systems we build to help businesses automate operations, improve customer experiences, and scale with better technology.
+            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            enhance the speed of the website overall to keep it smooth.
           </p>
         </div>
         <LandingAccordionItem />
