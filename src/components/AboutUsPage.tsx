@@ -225,11 +225,7 @@ const AboutUsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16 text-center">
             <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
-              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            i want you to add a new card the name of team member is Abdullah J 
-he is head of cold email outreach
+              Meet the Team
             </h3>
           </div>
 
