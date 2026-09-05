@@ -39,6 +39,12 @@ const accordionItems = [
     imageUrl: 'https://images.unsplash.com/photo-1493612276216-ee3925520721',
     link: '/services/content-creation',
   },
+  {
+    id: 7,
+    title: 'Digital Marketing',
+    imageUrl: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312',
+    link: '/services/digital-marketing',
+  },
 ];
 
 const AccordionItem = ({ item, isActive, onMouseEnter, isMobile, index }: { item: typeof accordionItems[0], isActive: boolean, onMouseEnter: () => void, isMobile: boolean, index: number }) => {

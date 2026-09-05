@@ -98,7 +98,8 @@ const Navbar: React.FC = () => {
       label: 'Growth & Operations',
       items: [
         { name: 'Cold Email Dashboards', path: '/services/cold-email-dashboard' },
-        { name: 'Content Creation', path: '/services/content-creation' }
+        { name: 'Content Creation', path: '/services/content-creation' },
+        { name: 'Digital Marketing', path: '/services/digital-marketing' }
       ]
     }
   ];

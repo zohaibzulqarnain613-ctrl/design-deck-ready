@@ -26,6 +26,8 @@ Growth & Operations
   URL: https://samysai.com/services/cold-email-dashboard
 - Content Creation: AI-assisted content workflows for brand consistency.
   URL: https://samysai.com/services/content-creation
+- Digital Marketing: Structured strategies across SEO, content, social, email, paid, and analytics.
+  URL: https://samysai.com/services/digital-marketing
 
 Core Pages:
 - Home: https://samysai.com/
