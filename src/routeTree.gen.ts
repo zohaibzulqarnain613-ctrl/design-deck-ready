@@ -31,6 +31,7 @@ import { Route as ServicesAppDevelopmentRouteImport } from './routes/services/ap
 import { Route as ServicesColdEmailDashboardRouteImport } from './routes/services/cold-email-dashboard'
 import { Route as ServicesContentCreationRouteImport } from './routes/services/content-creation'
 import { Route as ServicesCrmAutoSyncRouteImport } from './routes/services/crm-auto-sync'
+import { Route as ServicesDigitalMarketingRouteImport } from './routes/services/digital-marketing'
 import { Route as ServicesIgDmBotRouteImport } from './routes/services/ig-dm-bot'
 import { Route as ServicesLinkedinOutreachRouteImport } from './routes/services/linkedin-outreach'
 import { Route as ServicesWebDevelopmentRouteImport } from './routes/services/web-development'
@@ -146,6 +147,12 @@ const ServicesCrmAutoSyncRoute = ServicesCrmAutoSyncRouteImport.update({
   path: '/services/crm-auto-sync',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesDigitalMarketingRoute =
+  ServicesDigitalMarketingRouteImport.update({
+    id: '/services/digital-marketing',
+    path: '/services/digital-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesIgDmBotRoute = ServicesIgDmBotRouteImport.update({
   id: '/services/ig-dm-bot',
   path: '/services/ig-dm-bot',
@@ -185,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/services/cold-email-dashboard': typeof ServicesColdEmailDashboardRoute
   '/services/content-creation': typeof ServicesContentCreationRoute
   '/services/crm-auto-sync': typeof ServicesCrmAutoSyncRoute
+  '/services/digital-marketing': typeof ServicesDigitalMarketingRoute
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -211,6 +219,7 @@ export interface FileRoutesByTo {
   '/services/cold-email-dashboard': typeof ServicesColdEmailDashboardRoute
   '/services/content-creation': typeof ServicesContentCreationRoute
   '/services/crm-auto-sync': typeof ServicesCrmAutoSyncRoute
+  '/services/digital-marketing': typeof ServicesDigitalMarketingRoute
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -239,6 +248,7 @@ export interface FileRoutesById {
   '/services/cold-email-dashboard': typeof ServicesColdEmailDashboardRoute
   '/services/content-creation': typeof ServicesContentCreationRoute
   '/services/crm-auto-sync': typeof ServicesCrmAutoSyncRoute
+  '/services/digital-marketing': typeof ServicesDigitalMarketingRoute
   '/services/ig-dm-bot': typeof ServicesIgDmBotRoute
   '/services/linkedin-outreach': typeof ServicesLinkedinOutreachRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/services/cold-email-dashboard'
     | '/services/content-creation'
     | '/services/crm-auto-sync'
+    | '/services/digital-marketing'
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/services/cold-email-dashboard'
     | '/services/content-creation'
     | '/services/crm-auto-sync'
+    | '/services/digital-marketing'
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
@@ -321,6 +333,7 @@ export interface FileRouteTypes {
     | '/services/cold-email-dashboard'
     | '/services/content-creation'
     | '/services/crm-auto-sync'
+    | '/services/digital-marketing'
     | '/services/ig-dm-bot'
     | '/services/linkedin-outreach'
     | '/services/web-development'
@@ -343,6 +356,7 @@ export interface RootRouteChildren {
   ServicesColdEmailDashboardRoute: typeof ServicesColdEmailDashboardRoute
   ServicesContentCreationRoute: typeof ServicesContentCreationRoute
   ServicesCrmAutoSyncRoute: typeof ServicesCrmAutoSyncRoute
+  ServicesDigitalMarketingRoute: typeof ServicesDigitalMarketingRoute
   ServicesIgDmBotRoute: typeof ServicesIgDmBotRoute
   ServicesLinkedinOutreachRoute: typeof ServicesLinkedinOutreachRoute
   ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
@@ -504,6 +518,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCrmAutoSyncRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/digital-marketing': {
+      id: '/services/digital-marketing'
+      path: '/services/digital-marketing'
+      fullPath: '/services/digital-marketing'
+      preLoaderRoute: typeof ServicesDigitalMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/ig-dm-bot': {
       id: '/services/ig-dm-bot'
       path: '/services/ig-dm-bot'
@@ -566,6 +587,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesColdEmailDashboardRoute: ServicesColdEmailDashboardRoute,
   ServicesContentCreationRoute: ServicesContentCreationRoute,
   ServicesCrmAutoSyncRoute: ServicesCrmAutoSyncRoute,
+  ServicesDigitalMarketingRoute: ServicesDigitalMarketingRoute,
   ServicesIgDmBotRoute: ServicesIgDmBotRoute,
   ServicesLinkedinOutreachRoute: ServicesLinkedinOutreachRoute,
   ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
