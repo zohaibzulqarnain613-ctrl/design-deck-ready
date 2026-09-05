@@ -71,6 +71,16 @@ const AboutUsPage: React.FC = () => {
       color: "#f59e0b",
       expertise: ['Cold Email', 'Lead Gen', 'Email Infrastructure', 'Deliverability'],
       imageUrl: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg"
+    },
+    {
+      name: "Ayesha S",
+      role: "Head of Digital Marketing",
+      tagline: "Marketing should be measurable, not mysterious.",
+      description: "Leads digital marketing, SEO, and growth campaigns.",
+      message: "I lead digital marketing at SamysAI.\n\nOur marketing work is built around clarity and results. We plan campaigns, content, and SEO around what the business actually needs to grow, and we measure what matters rather than chasing vanity metrics.\n\nFrom paid campaigns to organic content, the goal is the same: attract the right audience, earn their trust, and turn attention into action.",
+      color: "#f43f5e",
+      expertise: ['Digital Marketing', 'SEO', 'Growth Campaigns', 'Content Strategy'],
+      imageUrl: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg"
     }
   ];
 
