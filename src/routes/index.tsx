@@ -21,6 +21,16 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      { rel: "preconnect", href: "https://prod.spline.design", crossOrigin: "anonymous" },
+      { rel: "dns-prefetch", href: "https://prod.spline.design" },
+      {
+        rel: "preload",
+        as: "fetch",
+        href: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
+        crossOrigin: "anonymous",
+      },
+    ],
   }),
   component: HomePage,
 });
