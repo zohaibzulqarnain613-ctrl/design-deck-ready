@@ -5,6 +5,7 @@ const Spline = lazy(() => import('@splinetool/react-spline'));
 interface SplineSceneProps {
   scene: string;
   className?: string;
+  eager?: boolean;
 }
 
 class SplineErrorBoundary extends React.Component<
@@ -28,12 +29,17 @@ class SplineErrorBoundary extends React.Component<
 }
 
 
-const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '' }) => {
+const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '', eager = false }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const [error, setError] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (eager) {
+      setShouldLoad(true);
+      return;
+    }
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -53,7 +59,7 @@ const SplineScene: React.FC<SplineSceneProps> = ({ scene, className = '' }) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [eager]);
 
   const handleError = () => {
     console.error(`Failed to load Spline scene: ${scene}`);

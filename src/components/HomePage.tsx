@@ -148,6 +148,7 @@ const HomePage = () => {
                 <div className="relative float-animation w-full">
                   <SplineScene 
                     scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                     eager
                     className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] object-cover max-w-full overflow-visible rounded-lg relative z-10 scale-110"
                   />
                 </div>
