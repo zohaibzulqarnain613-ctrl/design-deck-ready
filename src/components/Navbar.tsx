@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from '@tanstack/react-router';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import logoAsset from '@/assets/samysai-logo.png.asset.json';
+import logoUrl from '@/assets/samysai-logo.png';
 import { SterlingGateKineticNavigation } from './ui/sterling-gate-kinetic-navigation';
 
 const Navbar: React.FC = () => {
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl animate-pulse"></div>
               <img
-                src={logoAsset.url}
+                src={logoUrl}
                 alt="SamysAI logo"
                 width={48}
                 height={48}

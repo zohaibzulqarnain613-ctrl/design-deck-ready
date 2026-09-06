@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoAsset from '@/assets/samysai-logo.png.asset.json';
+import logoUrl from '@/assets/samysai-logo.png';
 import { 
   Instagram, 
   Twitter, 
@@ -332,7 +332,7 @@ const ContactFooter = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="w-10 h-10 shadow-lg"
               >
-                <img src={logoAsset.url} alt="SamysAI logo" width={40} height={40} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
+                <img src={logoUrl} alt="SamysAI logo" width={40} height={40} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
               </motion.div>
               <span className="text-xl font-bold tracking-tighter text-white">SamysAI</span>
             </Link>
