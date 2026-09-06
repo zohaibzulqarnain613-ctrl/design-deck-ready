@@ -107,10 +107,12 @@ export const Component: React.FC<ComponentProps> = ({ testimonials }) => {
           {testimonial.image ? (
             <motion.img
               src={testimonial.image}
-              alt={`Testimonial ${index}`}
+              alt={testimonial.name}
               loading="lazy"
               decoding="async"
-              className="w-16 h-16 rounded-full border-4 hover:animate-pulse border-gray-300"
+              width={512}
+              height={512}
+              className="w-16 h-16 rounded-full border-4 hover:animate-pulse border-gray-300 object-cover object-center aspect-square shrink-0"
               animate={{ 
                 borderColor: (hoveredIndex === index || hasBeenHovered[index]) ? '#ACA0FB' : '#E5E7EB'
               }}

@@ -1,25 +1,27 @@
 import React from 'react';
 import { Component as TypewriterTestimonial } from '@/components/ui/typewriter-testimonial';
+import hananeImage from '@/assets/client-hanane.jpg';
+import davidImage from '@/assets/client-david.jpg';
 
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      image: '',
-      audio: 'audio_2.mp3',
-      text: 'Our AI integration projects are currently undergoing final performance auditing. This section will feature verified results and testimonials from our active client partners.',
-      name: 'Client Case Study',
-      jobtitle: 'In Progress',
+      image: hananeImage,
+      audio: '',
+      text: 'They rebuilt our website and handled the SEO side properly. Pages load fast, the structure finally makes sense, and we are showing up for searches we never ranked for before.',
+      name: 'Hanane Benalia',
+      jobtitle: 'Web Development and SEO',
+    },
+    {
+      image: davidImage,
+      audio: '',
+      text: 'The done for you cold email setup saved us a lot of guesswork. Inboxes stayed healthy, the copy sounded like us, and replies started coming in within the first few weeks.',
+      name: 'David Weber',
+      jobtitle: 'Cold Email Outreach',
     },
     {
       image: '',
-      audio: 'audio_3.mp3',
-      text: 'Detailed outcome reports and client feedback are currently being documented. We prioritize accurate, verified data over marketing placeholders.',
-      name: 'Client Case Study',
-      jobtitle: 'Documentation Phase',
-    },
-    {
-      image: '',
-      audio: 'audio_4.mp3',
+      audio: '',
       text: 'Technical performance metrics and growth indicators are being compiled for our recent enterprise deployments.',
       name: 'Enterprise Client',
       jobtitle: 'Case Study Pending',
