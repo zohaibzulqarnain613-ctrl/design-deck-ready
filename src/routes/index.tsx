@@ -24,12 +24,6 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "preconnect", href: "https://prod.spline.design", crossOrigin: "anonymous" },
       { rel: "dns-prefetch", href: "https://prod.spline.design" },
-      {
-        rel: "preload",
-        as: "fetch",
-        href: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
-        crossOrigin: "anonymous",
-      },
     ],
   }),
   component: HomePage,
