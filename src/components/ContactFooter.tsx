@@ -325,13 +325,13 @@ const ContactFooter = () => {
           className="container grid gap-12 px-4 py-16 md:px-6 lg:grid-cols-4 mx-auto max-w-7xl"
         >
           <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-3">
+             <Link to="/" className="flex items-center space-x-3">
               <motion.div
                 whileHover={{ rotate: 5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                className="w-10 h-10 shadow-lg"
               >
-                S
+                <img src={logoAsset.url} alt="SamysAI logo" width={40} height={40} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
               </motion.div>
               <span className="text-xl font-bold tracking-tighter text-white">SamysAI</span>
             </Link>
