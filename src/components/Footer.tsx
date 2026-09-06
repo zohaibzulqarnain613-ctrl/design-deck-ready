@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
-import { Cpu, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import logoAsset from '@/assets/samysai-logo.png.asset.json';
 
 const Footer: React.FC = () => {
   const handleSmoothScroll = (sectionId: string) => {
@@ -42,7 +43,14 @@ const Footer: React.FC = () => {
               <div className="flex flex-col items-center md:items-start space-y-6">
                 <div className="flex items-center space-x-3 group">
                   <div className="relative">
-                    <Cpu className="w-10 h-10 text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-colors duration-300" />
+                    <img
+                      src={logoAsset.url}
+                      alt="SamysAI logo"
+                      width={40}
+                      height={40}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover drop-shadow-lg"
+                    />
                     <div className="absolute inset-0 w-10 h-10 bg-blue-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <span className="text-3xl font-bold text-white drop-shadow-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all duration-300">
