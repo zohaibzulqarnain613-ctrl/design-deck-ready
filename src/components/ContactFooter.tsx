@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoAsset from '@/assets/samysai-logo.png.asset.json';
 import { 
   Instagram, 
   Twitter, 
