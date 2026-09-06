@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
 import { Phone } from 'lucide-react';
-import logoAsset from '@/assets/samysai-logo.png.asset.json';
+import logoUrl from '@/assets/samysai-logo.png';
 
 const Footer: React.FC = () => {
   const handleSmoothScroll = (sectionId: string) => {
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
                 <div className="flex items-center space-x-3 group">
                   <div className="relative">
                     <img
-                      src={logoAsset.url}
+                      src={logoUrl}
                       alt="SamysAI logo"
                       width={40}
                       height={40}
